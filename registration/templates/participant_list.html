@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Participant List</title>
+  </head>
+  <body>
+    <h1>Participant List</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Send QR 1</th>
+          <th>Send QR 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for participant in participants %}
+        <tr>
+          <td>{{ participant.name }}</td>
+          <td>{{ participant.email }}</td>
+          <td>
+            <a href="{% url 'send_qr' forloop.counter0 1 %}">Send QR 1</a>
+          </td>
+          <td>
+            <a href="{% url 'send_qr' forloop.counter0 2 %}">Send QR 2</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form action="{% url 'send_qr_all' 1 %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Send QR 1 to All</button>
+    </form>
+
+    <form action="{% url 'send_qr_all' 2 %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Send QR 2 to All</button>
+    </form>
+  </body>
+</html>
