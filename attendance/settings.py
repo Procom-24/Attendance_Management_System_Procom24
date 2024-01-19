@@ -117,6 +117,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+#STATIC_ROOT = BASE_DIR / 'productionfiles'
+
+#STATIC_URL = 'static/'
+
+#Add this in your settings.py file:
+STATICFILES_DIRS = [
+    BASE_DIR / 'registration/templates/static'
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -129,5 +138,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ayeshaitshad124@gmail.com'  
-EMAIL_HOST_PASSWORD = ''  # Replace with the generated app password
+EMAIL_HOST_USER = 'samaharizvi14@gmail.com'  
+EMAIL_HOST_PASSWORD = 'vcrq auck vsra pmld'  # Replace with the generated app password
+
+#EMAIL_HOST_USER = 'ayeshaitshad124@gmail.com'  

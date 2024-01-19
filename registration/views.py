@@ -83,12 +83,13 @@ def generate_qr(name, email, qr_type):
     img = qr.make_image(fill_color="black", back_color="white")
 
     
-    img_path = f"{name}_qr{qr_type}.png"
+    #img_path = f"{name}_qr{qr_type}.png"
+    img_path = f"qrcodes/{name}_qr{qr_type}.png"
     img.save(img_path)
 
     subject = f'QR Code {qr_type} for Event'
     message = f'Please find your QR code {qr_type} attached.'
-    from_email = 'ayeshaitshad124@gmail.com'
+    from_email = 'samaharizvi14@gmail.com'
     to_email = email
     email = EmailMessage(subject, message, from_email, [to_email])
     email.attach_file(img_path)
