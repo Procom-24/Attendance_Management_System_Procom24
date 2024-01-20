@@ -6,6 +6,10 @@ from django.core.mail import send_mail, EmailMessage
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
+from registration.models import Participants
 
 
 def load_participant_data():
@@ -69,6 +73,15 @@ def send_qr_all(request, qr_type):
         generate_qr(participant['name'], participant['email'], qr_type)
 
     return Response({'message': f"QR {qr_type} sent to all participants"}, status=status.HTTP_201_CREATED)
+
+
+def update_attendance(request, unique_identifier):
+    participant = get_object_or_404(Participants, unique_identifier=unique_identifier)
+    participant.attendanceStatus = "Present"
+    participant.save()
+
+    return JsonResponse({'status': 'success', 'message': f'{participant.firstname} marked as present.'})
+
 
 def generate_qr(name, email, qr_type):
     data = f"Participant: {name}, Email: {email}, QR Type: {qr_type}"
