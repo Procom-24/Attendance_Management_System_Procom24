@@ -83,7 +83,8 @@ def generate_qr(name, email, qr_type):
     img = qr.make_image(fill_color="black", back_color="white")
 
     
-    img_path = f"{name}_qr{qr_type}.png"
+    #img_path = f"{name}_qr{qr_type}.png"
+    img_path = f"qrcodes/{name}_qr{qr_type}.png"
     img.save(img_path)
 
     subject = f'QR Code {qr_type} for Event'
