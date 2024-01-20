@@ -6,12 +6,13 @@ class Participants(models.Model):
     participantID = models.AutoField(primary_key=True)
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    phonenumber = models.IntegerField()
-    studentid = models.CharField(max_length=255)
+    email = models.EmailField()
+    phonenumber = models.CharField(max_length=20)
+    # studentid = models.CharField(max_length=255)   procom main har student ki seperate uni id ka koi kaam nhi hoga, we only have concerns with particapnt id
     universityname = models.CharField(max_length=255)
     contestname = models.CharField(max_length=255)
-    age = models.IntegerField()
+    age = models.PositiveIntegerField()
+    attendanceStatus = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
@@ -28,11 +29,12 @@ class ParticipantCard(models.Model):
 class UserAccount(models.Model):
     userID = models.CharField(primary_key=True, max_length=255)
     username = models.CharField(max_length=255)
+    email = models.EmailField()
     passwordhash = models.CharField(max_length=255)
-    Participants_ParticipantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
+  #  Participants_ParticipantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"User {self.username} - {self.Participants_ParticipantID}"
+        return f"User {self.username}"
 
 class QRcode(models.Model):
     QRcodeId = models.AutoField(primary_key=True)
@@ -44,23 +46,24 @@ class QRcode(models.Model):
     def __str__(self):
         return f"QR Code {self.QRcodeId} - {self.Participants_participantID}"
 
-class Attendence(models.Model):
-    AttendenceID = models.AutoField(primary_key=True)
-    eventdate = models.DateField()
-    status = models.CharField(max_length=255)
-    Participants_participantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
+# merged attendance table in participants table and registration say hamara koi ta'aluq nhi so remove this
+# class Attendence(models.Model):
+#     AttendenceID = models.AutoField(primary_key=True)
+#     eventdate = models.DateField()
+#     status = models.CharField(max_length=255)
+#     Participants_participantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"Attendance {self.AttendenceID} - {self.Participants_participantID}"
+#     def __str__(self):
+#         return f"Attendance {self.AttendenceID} - {self.Participants_participantID}"
 
-class Registrations(models.Model):
-    RegistrationID = models.AutoField(primary_key=True)
-    registrationdate = models.DateField()
-    status = models.CharField(max_length=255)
-    Participants_participantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
+# class Registrations(models.Model):
+#     RegistrationID = models.AutoField(primary_key=True)
+#     registrationdate = models.DateField()
+#     status = models.CharField(max_length=255)
+#     Participants_participantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"Registration {self.RegistrationID} - {self.Participants_participantID}"
+#     def __str__(self):
+#         return f"Registration {self.RegistrationID} - {self.Participants_participantID}"
 
 class Certificates(models.Model):
     certificateID = models.CharField(primary_key=True, max_length=255)
