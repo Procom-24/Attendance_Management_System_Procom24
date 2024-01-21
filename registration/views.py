@@ -6,7 +6,10 @@ from django.core.mail import send_mail, EmailMessage
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import JsonResponse
+import csv
 
+from .models import Participants
 
 def load_participant_data():
 
@@ -27,6 +30,9 @@ participants = load_participant_data()
 @api_view(['GET'])
 def home(request):
     return render(request, 'home.html')
+@api_view(['GET'])
+def uploadPage(request):
+    return render(request, 'uploadData.html')
 
 @api_view(['GET'])
 def participant_list(request):
@@ -94,3 +100,36 @@ def generate_qr(name, email, qr_type):
     email = EmailMessage(subject, message, from_email, [to_email])
     email.attach_file(img_path)
     email.send()
+
+
+
+
+
+# @api_view(['POST'])
+def upload_csv(request):
+    if request.method == 'POST' and request.FILES['csv_file']:
+        csv_file = request.FILES['csv_file']
+
+        # Process the CSV file
+        data = process_csv(csv_file)
+
+        # Save data to the database
+        save_to_database(data)
+
+        return JsonResponse(data, safe=False)
+
+    return render(request, 'index.html')
+
+def process_csv(csv_file):
+    data = []
+    decoded_file = csv_file.read().decode('utf-8').splitlines()
+    csv_reader = csv.DictReader(decoded_file)
+
+    for row in csv_reader:
+        data.append(row)
+
+    return data
+
+def save_to_database(data):
+    for entry in data:
+        Participants.objects.create(**entry)
