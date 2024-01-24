@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV File Upload</title>
+  </head>
+  <body>
+    <h2>Upload CSV File</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="csv_file" accept=".csv" required />
+      <button type="button" onclick="uploadFile()">Upload</button>
+    </form>
+
+    <script>
+      function uploadFile() {
+        var form = document.getElementById("uploadForm");
+        var formData = new FormData(form);
+
+        fetch("/upload/", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then(() => {
+            console.log("Redirecting to /participants/");
+            window.location.href = "/participants/";
+          })
+
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
