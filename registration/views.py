@@ -62,7 +62,29 @@ def send_qr_all(request, qr_type):
     return Response({'message': f"QR {qr_type} sent to all participants"}, status=status.HTTP_201_CREATED)
 
 def generate_qr(name, email, qr_type):
-    # Your existing code for generating QR codes
+    data = f"Participant: {name}, Email: {email}, QR Type: {qr_type}"
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    
+    #img_path = f"{name}_qr{qr_type}.png"
+    img_path = f"qrcodes/{name}_qr{qr_type}.png"
+    img.save(img_path)
+
+    subject = f'QR Code {qr_type} for Event'
+    message = f'Please find your QR code {qr_type} attached.'
+    from_email = 'ayeshaitshad124@gmail.com'
+    to_email = email
+    email = EmailMessage(subject, message, from_email, [to_email])
+    email.attach_file(img_path)
+    email.send()
 
 def upload_csv(request):
     if request.method == 'POST' and request.FILES['csv_file']:

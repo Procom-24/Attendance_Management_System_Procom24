@@ -10,8 +10,8 @@ class Participants(models.Model):
     phonenumber = models.CharField(max_length=20)
     universityname = models.CharField(max_length=255)
     contestname = models.CharField(max_length=255)
-    age = models.CharField(max_length=3)
-    attendanceStatus = models.CharField(max_length=255,default='A')
+    age = models.PositiveIntegerField()
+    attendanceStatus = models.CharField(max_length=255, default='A')
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
