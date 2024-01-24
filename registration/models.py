@@ -10,7 +10,7 @@ class Participants(models.Model):
     phonenumber = models.CharField(max_length=20)
     universityname = models.CharField(max_length=255)
     contestname = models.CharField(max_length=255)
-    age = models.PositiveIntegerField()
+    age = models.CharField(max_length=3)
     attendanceStatus = models.CharField(max_length=255,default='A')
 
     def __str__(self):
@@ -35,9 +35,13 @@ class UserAccount(models.Model):
 
 class QRcode(models.Model):
     QRcodeId = models.AutoField(primary_key=True)
-    QRcodetype = models.CharField(max_length=255)
-    OTP = models.CharField(max_length=255)
-    confirmationstatus = models.CharField(max_length=255)
+    DataQRcode1 = models.CharField(max_length=255)
+    DataQRcode2 = models.CharField(max_length=255)
+    image_qr1 = models.ImageField(upload_to='qrcodes/', null=True, blank=True)
+    image_qr2 = models.ImageField(upload_to='qrcodes/', null=True, blank=True)
+
+    # OTP = models.CharField(max_length=255)
+    # confirmationstatus = models.CharField(max_length=255)
     Participants_participantID = models.ForeignKey(Participants, on_delete=models.CASCADE)
 
     def __str__(self):

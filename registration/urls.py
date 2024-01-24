@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from .views import participant_list, send_qr, send_qr_all, home,upload_csv,uploadPage
 
 urlpatterns = [
@@ -10,3 +12,5 @@ urlpatterns = [
     path('upload/', upload_csv, name='upload_csv'),
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

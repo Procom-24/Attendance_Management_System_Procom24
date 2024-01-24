@@ -14,11 +14,6 @@
       <button type="button" onclick="uploadFile()">Upload</button>
     </form>
 
-    <h2>Uploaded Data</h2>
-    <table id="dataTable" border="1">
-      <!-- Table content will be inserted here dynamically -->
-    </table>
-
     <script>
       function uploadFile() {
         var form = document.getElementById("uploadForm");
@@ -29,32 +24,12 @@
           body: formData,
         })
           .then((response) => response.json())
-          .then((data) => {
-            // Update table with the uploaded data
-            updateTable(data);
+          .then(() => {
+            console.log("Redirecting to /participants/");
+            window.location.href = "/participants/";
           })
+
           .catch((error) => console.error("Error:", error));
-      }
-
-      function updateTable(data) {
-        var table = document.getElementById("dataTable");
-        table.innerHTML = ""; // Clear existing table content
-
-        // Create header row
-        var headerRow = table.insertRow(0);
-        for (var key in data[0]) {
-          var cell = headerRow.insertCell();
-          cell.innerHTML = key;
-        }
-
-        // Create data rows
-        for (var i = 0; i < data.length; i++) {
-          var row = table.insertRow(i + 1);
-          for (var key in data[i]) {
-            var cell = row.insertCell();
-            cell.innerHTML = data[i][key];
-          }
-        }
       }
     </script>
   </body>
