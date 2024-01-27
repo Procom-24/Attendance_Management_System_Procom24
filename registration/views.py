@@ -1,6 +1,6 @@
 import pandas as pd
 import qrcode
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail, EmailMessage
 from rest_framework.decorators import api_view
@@ -61,6 +61,13 @@ def send_qr_all(request, qr_type):
 
     return Response({'message': f"QR {qr_type} sent to all participants"}, status=status.HTTP_201_CREATED)
 
+@api_view(['POST'])
+def update_attendance(request, unique_identifier):
+    participant = get_object_or_404(Participants, unique_identifier=unique_identifier)
+    participant.attendanceStatus = "P"
+    participant.save()
+
+    return JsonResponse({'status': 'success', 'message': f'{participant.firstname} marked as present.'})
 def generate_qr(name, email, qr_type):
     data = f"Participant: {name}, Email: {email}, QR Type: {qr_type}"
     qr = qrcode.QRCode(
@@ -116,3 +123,5 @@ def save_to_database(data):
         Participants.objects.create(**entry)
 
     generate_qr()
+    
+
