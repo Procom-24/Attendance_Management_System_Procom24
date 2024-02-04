@@ -21,8 +21,8 @@ body {
 }
 
 .logoimg {
-    width: 100px; /* Adjust the width of the logo as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 100px; 
+    height: auto; 
 }
 
 .innerdiv {
@@ -153,4 +153,63 @@ td{
     padding: 10px;
     color: #010f2d;
     font-size: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+    
+
+    .innerdiv {
+        width: 90%;
+        margin-top: 150px;
+    }
+
+    /* Hide the logo on smaller screens or adjust its size */
+    .logo {
+        display: block;
+        left: auto;
+    }
+
+    /* Adjust the font size or other styles for smaller screens */
+    .mainhead {
+        font-size: 30px;
+    }
+
+    /* Adjust the width of the table to make it scroll horizontally */
+    .datatable {
+        width: 100%;
+        table-layout: auto;
+    }
+
+    /* Responsive styles for the search form */
+    .search-form {
+        flex-direction: column;
+        align-items: inherit;
+    }
+
+    .search-form input[type="text"] {
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .search-form button {
+        border-radius: 5px;
+    }
+
+    .table{
+        overflow: scroll;
+        overflow-y:hidden;
+    }
+
+    .step-links{
+        padding: 20px 0px;
+    }
+
+    .firstprev{
+        justify-content:space-between;
+    }
+
+    .pagebutton{
+        padding: 5px 5px;
+        font-size: 14px;
+    }
 }
