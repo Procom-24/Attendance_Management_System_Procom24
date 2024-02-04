@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="login-container">
+            <form action="{% url 'login' %}" method="POST">
+                <h1> Admin Login </h1>
+                {% csrf_token %}
+
+                <label for="name">Email:</label>
+                <input type="text" id="name" name="user_email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="user_password">
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
