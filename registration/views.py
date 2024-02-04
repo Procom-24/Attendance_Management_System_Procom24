@@ -49,10 +49,6 @@ def uploadPage(request):
 
 #     return render(request, 'participant_list.html', {'participants': participants})
 
-
-
-from django.db.models import Q
-
 def participant_list(request):
     search_query = request.GET.get('search', '')
     page = request.GET.get('page', 1)
