@@ -12,6 +12,9 @@ from django.conf import settings
 from .models import Participants, QRcode
 import csv
 from django.core.files.base import ContentFile
+from django.contrib.auth import authenticate, login
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 @api_view(['GET'])
 def home(request):
@@ -21,14 +24,63 @@ def home(request):
 def uploadPage(request):
     return render(request, 'uploadData.html')
 
+# def participant_list(request):
+#     try:
+#         participants = Participants.objects.all()
+#         context = {'participants': participants}
+#         return render(request, 'participant_list.html', context)
+#     except Exception as e:
+#         print(f"Error loading participant data: {e}")
+#         return HttpResponse("Error loading participant data from the database.")
+
+
+
+# def participant_list(request):
+#     participants = Participants.objects.all()  # Replace YourModel with the actual model name
+#     paginator = Paginator(participants, 10)  # Show 10 participants per page
+
+#     page = request.GET.get('page')
+#     try:
+#         participants = paginator.page(page)
+#     except PageNotAnInteger:
+#         participants = paginator.page(1)
+#     except EmptyPage:
+#         participants = paginator.page(paginator.num_pages)
+
+#     return render(request, 'participant_list.html', {'participants': participants})
+
 def participant_list(request):
-    try:
+    search_query = request.GET.get('search', '')
+    page = request.GET.get('page', 1)
+
+    if search_query:
+        # Split the search query into individual terms
+        search_terms = search_query.split()
+
+        # Construct a Q object to search for first name or last name containing any of the search terms
+        first_name_q = Q()
+        last_name_q = Q()
+        for term in search_terms:
+            first_name_q |= Q(firstname__icontains=term)
+            last_name_q |= Q(lastname__icontains=term)
+
+        # Query participants with first name or last name matching any of the search terms
+        participants = Participants.objects.filter(first_name_q | last_name_q)
+    else:
         participants = Participants.objects.all()
-        context = {'participants': participants}
-        return render(request, 'participant_list.html', context)
-    except Exception as e:
-        print(f"Error loading participant data: {e}")
-        return HttpResponse("Error loading participant data from the database.")
+
+    # Set up pagination
+    paginator = Paginator(participants, 10)  # Show 10 participants per page
+    try:
+        participants = paginator.page(page)
+    except PageNotAnInteger:
+        participants = paginator.page(1)
+    except EmptyPage:
+        participants = paginator.page(paginator.num_pages)
+
+    context = {'participants': participants, 'search_query': search_query}
+    return render(request, 'participant_list.html', context)
+
 
 @api_view(['GET'])
 def send_qr(request, participant_id, qr_type):
@@ -123,5 +175,26 @@ def save_to_database(data):
         Participants.objects.create(**entry)
 
     generate_qr()
-    
+
+# logic for login is incomplete
+def login(request):
+    if request.method == 'POST':
+        # Retrieve email and password from form submission
+        email = request.POST.get('user_email')
+        password = request.POST.get('user_password')
+
+        # Authenticate user
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            # If user is authenticated, login the user and redirect to a success page
+            login(request, user)
+            return redirect('participant_list.html')  # Replace 'success_page' with the URL name of your desired success page
+        else:
+            # If authentication fails, display an error message
+            error_message = "Invalid email or password. Please try again."
+            return render(request, 'login.html', {'error_message': error_message})
+
+    # If request method is not POST, render the login page
+    return render(request, 'login.html')
 
