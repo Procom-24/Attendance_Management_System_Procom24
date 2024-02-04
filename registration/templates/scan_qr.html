@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan QR Code</title>
+  </head>
+  <body>
+    <h1>Scan QR Code to Mark Attendance</h1>
+
+    <video id="qr-video" width="100%" height="100%" playsinline></video>
+
+    <script
+      type="text/javascript"
+      src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"
+    ></script>
+
+    <script>
+      // Check for browser support
+      const supportsMediaDevices =
+        navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
+
+      if (supportsMediaDevices) {
+        const video = document.getElementById("qr-video");
+
+        // Access the camera
+        navigator.mediaDevices
+          .getUserMedia({ video: { facingMode: "environment" } })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (err) {
+            console.error("Error accessing camera:", err);
+          });
+
+        // Initialize the QR code scanner
+        const qrScanner = new QrScanner(video, (result) => {
+          // Send the scanned data to the backend for processing
+          markAttendance("Abbas,1288,DSA,qr1");
+        });
+
+        // Start scanning
+        qrScanner.start();
+        // Function to send scanned data to the Django backend
+        function markAttendance(qrData) {
+          // Make an AJAX request to Django backend to mark attendance
+          fetch("/mark-attendance/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": getCookie("csrftoken"),
+            },
+            body: JSON.stringify({ qrData: qrData }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Handle the response from the backend
+              console.log(data);
+              alert(data.message); // You can customize this alert or update the UI accordingly
+            })
+            .catch((error) => {
+              console.error("Error marking attendance:", error);
+            });
+        }
+
+        // Function to get the CSRF token from cookies
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+      } else {
+        console.error("getUserMedia is not supported");
+      }
+    </script>
+  </body>
+</html>

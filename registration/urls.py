@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage, update_attendance
+from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage,scan_qr,mark_attendance
 
 urlpatterns = [
     path('', home, name='home'),  # URL pattern for the root path
@@ -10,7 +10,8 @@ urlpatterns = [
     path('send_qr_all/<int:qr_type>/', send_qr_all, name='send_qr_all'),
     path('uploadFile/', uploadPage, name='uploadPage'),
     path('upload/', upload_csv, name='upload_csv'),
-    path('update_attendance/<str:unique_identifier>/', update_attendance, name='update_attendance'),
+    path('scan-qr/', scan_qr, name='scan_qr'),
+    path('mark-attendance/', mark_attendance, name='mark_attendance'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
