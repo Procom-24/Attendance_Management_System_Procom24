@@ -15,10 +15,18 @@ from django.core.files.base import ContentFile
 from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.core.files import File
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
+from .models import QRcode
 
 @api_view(['GET'])
 def home(request):
     return render(request, 'home.html')
+
+def scan_qr(request):
+    return render(request, 'scan_qr.html')
 
 @api_view(['GET'])
 def uploadPage(request):
@@ -113,38 +121,40 @@ def send_qr_all(request, qr_type):
 
     return Response({'message': f"QR {qr_type} sent to all participants"}, status=status.HTTP_201_CREATED)
 
-@api_view(['POST'])
-def update_attendance(request, unique_identifier):
-    participant = get_object_or_404(Participants, unique_identifier=unique_identifier)
-    participant.attendanceStatus = "P"
-    participant.save()
+# @api_view(['POST'])
+# def update_attendance(request, unique_identifier):
+#     participant = get_object_or_404(Participants, unique_identifier=unique_identifier)
+#     participant.attendanceStatus = "P"
+#     participant.save()
 
-    return JsonResponse({'status': 'success', 'message': f'{participant.firstname} marked as present.'})
-def generate_qr(name, email, qr_type):
-    data = f"Participant: {name}, Email: {email}, QR Type: {qr_type}"
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-    )
-    qr.add_data(data)
-    qr.make(fit=True)
-    img = qr.make_image(fill_color="black", back_color="white")
+#     return JsonResponse({'status': 'success', 'message': f'{participant.firstname} marked as present.'})
+
+# def generate_qr(name, email, qr_type):
+#     data = f"Participant: {name}, Email: {email}, QR Type: {qr_type}"
+#     qr = qrcode.QRCode(
+#         version=1,
+#         error_correction=qrcode.constants.ERROR_CORRECT_L,
+#         box_size=10,
+#         border=4,
+#     )
+#     qr.add_data(data)
+#     qr.make(fit=True)
+#     img = qr.make_image(fill_color="black", back_color="white")
 
     
-    #img_path = f"{name}_qr{qr_type}.png"
-    img_path = f"qrcodes/{name}_qr{qr_type}.png"
-    img.save(img_path)
+#     #img_path = f"{name}_qr{qr_type}.png"
+#     img_path = f"qrcodes/{name}_qr{qr_type}.png"
+#     img.save(img_path)
 
-    subject = f'QR Code {qr_type} for Event'
-    message = f'Please find your QR code {qr_type} attached.'
-    from_email = 'ayeshaitshad124@gmail.com'
-    to_email = email
-    email = EmailMessage(subject, message, from_email, [to_email])
-    email.attach_file(img_path)
-    email.send()
+#     subject = f'QR Code {qr_type} for Event'
+#     message = f'Please find your QR code {qr_type} attached.'
+#     from_email = 'samaharizvi14@gmail.com'
+#     to_email = email
+#     email = EmailMessage(subject, message, from_email, [to_email])
+#     email.attach_file(img_path)
+#     email.send()
 
+# csv file upload save data functionality
 def upload_csv(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
@@ -168,14 +178,130 @@ def process_csv(csv_file):
 
     return data
 
+def generate_qr_code(participant_id, data_qrcode1, data_qrcode2):
+    qr1 = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr1.add_data(data_qrcode1)
+    qr1.make(fit=True)
+    img1 = qr1.make_image(fill_color="black", back_color="white")
+
+    qr2 = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr2.add_data(data_qrcode2)
+    qr2.make(fit=True)
+    img2 = qr2.make_image(fill_color="black", back_color="white")
+
+    buffer1 = BytesIO()
+    img1.save(buffer1)
+    buffer1.seek(0)
+
+    buffer2 = BytesIO()
+    img2.save(buffer2)
+    buffer2.seek(0)
+
+    return File(buffer1), File(buffer2)
+
+# def save_to_database(data):
+#     for entry in data:
+#         if any(value is None or value == '' for value in entry.values()):
+#             continue
+#         Participants.objects.create(**entry)
+
+#     generate_qr()
+
 def save_to_database(data):
     for entry in data:
         if any(value is None or value == '' for value in entry.values()):
             continue
-        Participants.objects.create(**entry)
 
-    generate_qr()
+        participant = Participants.objects.create(**entry)
 
+        data_qrcode1 = f"{entry.get('firstname')},{participant.participantID},{entry.get('contestname')},qr1"
+        data_qrcode2 = f"{entry.get('firstname')},{participant.participantID},{entry.get('contestname')},qr2"
+
+        image_qr1, image_qr2 = generate_qr_code(
+            participant.participantID, data_qrcode1, data_qrcode2
+        )
+        
+        qr_code_instance = QRcode.objects.create(
+            DataQRcode1=data_qrcode1,
+            DataQRcode2=data_qrcode2,
+            Participants_participantID=participant
+        )
+
+        try:
+            qr_code_instance.image_qr1.save(f"qrcode_{participant.participantID}_1.png", image_qr1, save=True)
+            qr_code_instance.image_qr2.save(f"qrcode_{participant.participantID}_2.png", image_qr2, save=True)
+        except Exception as e:
+            print(f"Error saving images for participant {participant.participantID}: {str(e)}")
+    cleanup_photos()
+    
+def cleanup_photos():
+    try:
+        photos_folder = os.path.join(settings.MEDIA_ROOT, 'qrcodes')
+        all_files = set(os.listdir(photos_folder))
+
+        for file_to_remove in all_files:
+            file_path = os.path.join(photos_folder, file_to_remove)
+            os.remove(file_path)
+            print(f'Removed file: {file_path}')
+
+        print('Cleanup process completed successfully!')
+
+    except Exception as e:
+        print(f'An error occurred during cleanup: {str(e)}')
+   
+
+
+def mark_attendance(request):
+    if request.method == 'POST':
+        qr_data = request.POST.get('qrData', '')
+        print("Received QR Data:", qr_data)  # Check if the data is received properly
+
+        if qr_data:
+            try:
+                qr_code = QRcode.objects.filter(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data)).first()
+                if qr_code:
+                    participant = qr_code.Participants_participantID
+                    participant.attendanceStatus = 'P'
+                    participant.save()
+                    return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
+                else:
+                    return JsonResponse({'message': 'QR code not found'})
+            except Exception as e:
+                print(e)  # Print the actual exception for debugging purposes
+                return JsonResponse({'message': 'Error occurred while processing the QR code'})
+        else:
+            return JsonResponse({'message': 'No QR code data received'})
+    else:
+        return JsonResponse({'message': 'Invalid request method'})
+   
+        
+        
+# def mark_attendance(request):
+#     if request.method == 'POST':
+#         qr_data = request.POST.get('qrData', '')
+#         print("Received QR Data:", qr_data)  # Check if the data is received properly
+#         try:
+#             qr_code = QRCode.objects.get(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data))
+#             participant = qr_code.Participants_participantID
+#             participant.attendanceStatus = 'P'
+#             participant.save()
+
+#             return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
+#         except QRCode.DoesNotExist:
+#             return JsonResponse({'message': 'QR code not found'})
+#     else:
+#         return JsonResponse({'message': 'Invalid request method'})
+    
 # logic for login is incomplete
 def login(request):
     if request.method == 'POST':

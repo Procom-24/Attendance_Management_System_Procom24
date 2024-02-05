@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+</head>
+
+<body>
+    <video id="camera-preview" width="640" height="480" autoplay></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.2/dist/jsQR.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('camera-preview');
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    video.srcObject = stream;
+                })
+                .catch((error) => {
+                    console.error('Error accessing camera:', error);
+                });
+
+            video.addEventListener('loadeddata', () => {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                setInterval(() => {
+                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+                    const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                    if (code) {
+                        console.log('Decoded QR code:', code.data);
+
+                        // Perform an AJAX query with the decoded data
+                        const decodedData = code.data;
+                        sendAjaxQuery(decodedData);
+                    }
+                }, 1000);
+            });
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(";").shift();
+                return null;
+            }
+
+            function sendAjaxQuery(data) {
+                // Replace 'your_server_endpoint' with your actual server endpoint
+                const endpoint = '/mark-attendance/';
+                const csrfToken = getCookie('csrftoken');
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify({ qrData: data }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert(data.message); // You can customize this alert or update the UI accordingly
+                    })
+                    .catch(error => {
+                        console.error('Error marking attendance:', error);
+                    });
+            }
+
+        });
+    </script>
+</body>
+
+</html>
