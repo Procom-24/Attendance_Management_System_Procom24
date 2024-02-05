@@ -142,6 +142,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'samaharizvi14@gmail.com'  
-EMAIL_HOST_PASSWORD = 'vcrq auck vsra pmid'  # Replace with the generated app password
+EMAIL_HOST_PASSWORD = ''  # Replace with the generated app password
 
 #EMAIL_HOST_USER = 'ayeshaitshad124@gmail.com'  
