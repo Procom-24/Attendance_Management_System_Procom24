@@ -23,24 +23,9 @@
                     <p>Participants List</p>
                 </button>
             </a>
-
             <a href="{% url 'scan_qr' %}">
                 <button>
                     <p>Scan QR-Code</p>
-                </button>
-            </a>
-
-            {% if request.session.user_id == 'admin' %}
-                <a href="{% url 'uploadPage' %}">
-                    <button>
-                        <p>Upload Data</p>
-                    </button>
-                </a>
-            {% endif %}
-
-            <a href="{% url 'logout' %}">
-                <button>
-                    <p>Log Out</p>
                 </button>
             </a>
         </div>

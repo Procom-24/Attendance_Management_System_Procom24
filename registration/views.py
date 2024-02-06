@@ -18,17 +18,29 @@ from django.core.files import File
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
 
+
 @api_view(['GET'])
 def home(request):
-    return render(request, 'home.html')
+    if 'user_id' in request.session:
+        return render(request, 'home.html')
+    else:
+        return render(request, 'login.html')
 
 def scan_qr(request):
     return render(request, 'scan_qr.html')
 
 @api_view(['GET'])
 def uploadPage(request):
-    return render(request, 'uploadData.html')
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
 
+        if user_id == 'admin':
+            return render(request, 'uploadData.html')
+        else:
+            return render(request, 'forbidden.html')
+    else:
+        return render(request, 'login.html')
+    
 # def participant_list(request):
 #     try:
 #         participants = Participants.objects.all()
@@ -153,17 +165,24 @@ def send_qr_all(request, qr_type):
 
 # csv file upload save data functionality
 def upload_csv(request):
-    if request.method == 'POST' and request.FILES['csv_file']:
-        csv_file = request.FILES['csv_file']
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
+        if user_id == 'admin':
+            if request.method == 'POST' and request.FILES['csv_file']:
+                csv_file = request.FILES['csv_file']
 
-        # Process the CSV file
-        data = process_csv(csv_file)
+                # Process the CSV file
+                data = process_csv(csv_file)
 
-        # Save data to the database
-        save_to_database(data)
-        return JsonResponse({'status': 'success'})
+                # Save data to the database
+                save_to_database(data)
+                return JsonResponse({'status': 'success'})
 
-    return render(request, 'index.html')
+            return render(request, 'home.html')
+        else:
+            return render(request, 'forbidden.html')
+    else:
+        return render(request, 'login.html')
 
 def process_csv(csv_file):
     data = []
@@ -326,6 +345,8 @@ def mark_attendance(request):
     
 # logic for login_view takes details from userAccount
 def login_view(request):
+    if 'user_id' in request.session:
+        return render(request, 'home.html')
     if request.method == 'POST':
         # Retrieve email and password from form submission
         usernames = request.POST.get('user_name')
@@ -339,8 +360,9 @@ def login_view(request):
 
         if user is not None:
             # If user is authenticated, set session and redirect to a success page
-            # request.session['user_id'] = user.userID  # Store user ID in session
-            return redirect('/home/')  # Replace 'participant_list' with the URL name of your desired success page
+            request.session['user_id'] = user.userID
+
+            return redirect('/home/')
         else:
             # If authentication fails, display an error message
             error_message = "Invalid email or password. Please try again."
@@ -348,3 +370,9 @@ def login_view(request):
 
     # If request method is not POST, render the login page
     return render(request, 'login.html')
+
+
+def logout(request):
+    if 'user_id' in request.session:
+        del request.session['user_id']
+    return redirect('/home/')
