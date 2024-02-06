@@ -1,11 +1,11 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage, scan_qr, mark_attendance, login
+from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage, scan_qr, mark_attendance, login_view, home
 
 urlpatterns = [
+    path('', login_view, name='login_view'),
     path('home/', home, name='home'),
-    path('', login, name='login'),
     path('participants/', participant_list, name='participant_list'),
     path('send_qr/<int:participant_id>/<int:qr_type>/', send_qr, name='send_qr'),
     path('send_qr_all/<int:qr_type>/', send_qr_all, name='send_qr_all'),
