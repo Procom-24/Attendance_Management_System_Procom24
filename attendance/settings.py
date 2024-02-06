@@ -145,3 +145,5 @@ EMAIL_HOST_USER = 'samaharizvi14@gmail.com'
 EMAIL_HOST_PASSWORD = ''  # Replace with the generated app password
 
 #EMAIL_HOST_USER = 'ayeshaitshad124@gmail.com'  
+
+LOGIN_REDIRECT_URL = '/'

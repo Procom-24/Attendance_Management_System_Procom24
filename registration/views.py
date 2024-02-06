@@ -9,17 +9,14 @@ from rest_framework import status
 from io import BytesIO
 from django.conf.urls.static import static
 from django.conf import settings
-from .models import Participants, QRcode
+from .models import Participants, QRcode, UserAccount
 import csv
 from django.core.files.base import ContentFile
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as django_login
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Q
 from django.core.files import File
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
 from django.db.models import Q
-from .models import QRcode
+from django.contrib.auth.hashers import check_password
 
 @api_view(['GET'])
 def home(request):
@@ -301,21 +298,49 @@ def mark_attendance(request):
 #             return JsonResponse({'message': 'QR code not found'})
 #     else:
 #         return JsonResponse({'message': 'Invalid request method'})
+  
+
+#hardcoded login for login admin and user
+# def login_view(request):
+#     if request.method == 'POST':
+#         admin_name = 'admin'
+#         admin_pass ='admin123'
+#         hardcoded_username = 'user'
+#         hardcoded_password = 'pass'
+
+#         username = request.POST.get('user_email')
+#         password = request.POST.get('user_password')
+
+#         if (username == hardcoded_username and password == hardcoded_password) | (username == admin_name and password == admin_pass):
+#             # # Dummy authentication for testing
+#             # user = authenticate(username=username, password=password)
+#             # if user is not None:
+#             # django_login(request, user)
+#             return redirect('/home/')
+#         else:
+#             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+#         # else:
+#         #     return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+
+#     return render(request, 'login.html')
     
-# logic for login is incomplete
-def login(request):
+# logic for login_view takes details from userAccount
+def login_view(request):
     if request.method == 'POST':
         # Retrieve email and password from form submission
-        email = request.POST.get('user_email')
+        usernames = request.POST.get('user_name')
         password = request.POST.get('user_password')
 
         # Authenticate user
-        user = authenticate(request, email=email, password=password)
+        try:
+            user = UserAccount.objects.get(username = usernames , passwordhash=password)
+        except UserAccount.DoesNotExist:
+            user = None
 
         if user is not None:
-            # If user is authenticated, login the user and redirect to a success page
-            login(request, user)
-            return redirect('participant_list.html')  # Replace 'success_page' with the URL name of your desired success page
+            # If user is authenticated, set session and redirect to a success page
+            # request.session['user_id'] = user.userID  # Store user ID in session
+            return redirect('/home/')  # Replace 'participant_list' with the URL name of your desired success page
         else:
             # If authentication fails, display an error message
             error_message = "Invalid email or password. Please try again."
@@ -323,4 +348,3 @@ def login(request):
 
     # If request method is not POST, render the login page
     return render(request, 'login.html')
-
