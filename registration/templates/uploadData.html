@@ -1,36 +1,134 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
+    <link rel="stylesheet" href="{% static 'uploadstyle.css' %}" />
     <title>CSV File Upload</title>
-  </head>
-  <body>
-    <h2>Upload CSV File</h2>
-    <form id="uploadForm" enctype="multipart/form-data">
-      {% csrf_token %}
-      <input type="file" name="csv_file" accept=".csv" required />
-      <button type="button" onclick="uploadFile()">Upload</button>
-    </form>
+    
+</head>
+<body>
+  <div class="background-image"></div>
+    <div class="outerdiv">
+      <div class="logo">
+        <img src="{% static 'logo.png' %}" alt="logo" class="logoimg" />
+      </div>
+      <h2>Upload CSV File</h2>
+      <form id="uploadForm" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="file-drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)" onclick="triggerFileInput()">
+              <label for="fileInput">Drag & Drop CSV file here or click to browse</label>
+              <input type="file" name="csv_file" accept=".csv" id="fileInput" required onchange="uploadandSee()">
+          </div>
+          <div class="fileinputmobile" onclick="triggerFileInput()">
+            <label for="fileInput">Select a file from the device</label>
+            <input type="file" name="csv_file" accept=".csv" id="fileInput" required onchange="uploadandSee()">
+          </div>
+          <div class="content">
+            <div id="fileName"></div>
+            <table id="fileContent"></table>
+          </div>
+          <button type="button" onclick="uploadFile()">Upload the file to Database</button>
+      </form>
+    </div>
+  
+<script>
+    function uploadandSee() {
+        var fileInput = document.getElementById("fileInput");
+        var file = fileInput.files[0];
+        
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var content = event.target.result;
+                var fileName = file.name;
+                
+                console.log("File Name:", fileName);
+                console.log("File Content:", content);
+                
+                document.getElementById('fileName').innerText = "File Name: " + fileName;
+                displayFileContent(content);
+            };
+            reader.readAsText(file);
+        } else {
+            console.error("No file selected.");
+        }
+    }
 
-    <script>
-      function uploadFile() {
-        var form = document.getElementById("uploadForm");
+    function displayFileContent(content) {
+        var lines = content.split('\n');
+        var table = document.getElementById('fileContent');
+        table.innerHTML = ''; // Clear previous content
+        
+        // Create table headers
+        var headers = lines[0].split(',');
+        var headerRow = table.insertRow();
+        headers.forEach(function(header) {
+            var cell = headerRow.insertCell();
+            cell.textContent = header;
+        });
+        
+        // Create table rows
+        for (var i = 1; i < lines.length; i++) {
+            var cells = lines[i].split(',');
+            if (cells.length === headers.length) { // Only process lines with correct number of cells
+                var row = table.insertRow();
+                cells.forEach(function(cell) {
+                    var cellElement = row.insertCell();
+                    cellElement.textContent = cell;
+                });
+            }
+        }
+    }
+
+    function uploadFile(){
+      var form = document.getElementById("uploadForm");
         var formData = new FormData(form);
 
         fetch("/upload/", {
-          method: "POST",
-          body: formData,
+            method: "POST",
+            body: formData,
         })
-          .then((response) => response.json())
-          .then(() => {
-            console.log("Redirecting to /participants/");
-            window.location.href = "/participants/";
-          })
+            .then((response) => response.json())
+            .then(() => {
+                console.log("Redirecting to /participants/");
+                window.location.href = "/participants/";
+            })
+            .catch((error) => console.error("Error:", error));
+    }
 
-          .catch((error) => console.error("Error:", error));
-      }
-    </script>
-  </body>
+    function triggerFileInput() {
+        document.getElementById('fileInput').click(); // Trigger file input click event
+    }
+
+    function dragOverHandler(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.dataTransfer.dropEffect = 'copy';
+    }
+
+    function dropHandler(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById("fileInput").files = event.dataTransfer.files;
+        document.querySelector('.file-drop-area').classList.remove('highlight');
+        uploadandSee(); // Process dropped files
+    }
+
+    function dragEnterHandler(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        document.querySelector('.file-drop-area').classList.add('highlight');
+    }
+
+    function dragLeaveHandler(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        document.querySelector('.file-drop-area').classList.remove('highlight');
+    }
+</script>
+</body>
 </html>

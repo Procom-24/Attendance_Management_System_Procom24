@@ -1,0 +1,156 @@
+
+body {
+    font-family: Trebuchet MS, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background2.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.logo{
+    position: absolute;
+}
+
+.logoimg {
+    width: 150px; 
+    height: auto;
+    transition: all 0.5s ease;
+}
+
+.outerdiv{
+    margin-top: 12vh;
+    margin-bottom: 8vh;
+    background: rgba( 255, 255, 255, 0.3);
+    backdrop-filter: blur( 50px );
+    -webkit-backdrop-filter: blur( 50px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 10px;
+    width: 90%;
+    padding: 20px;
+    transition: all 0.5s ease;
+}
+
+h2 {
+    text-align: center;
+    margin: 50px;
+    font-size: xx-large;
+  }
+  
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    display: none; /* Hide the file input */
+}
+
+.file-drop-area {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    padding: 100px;
+    text-align: center;
+    width: 40%;
+    cursor: pointer;
+    border-width: 4px;
+}
+
+.file-drop-area.highlight {
+    background-color: #e0f3ff;
+}
+
+.file-drop-area label,.fileinputmobile label {
+    cursor: pointer; /* Make label clickable */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    margin: 30px;
+    cursor: pointer;
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 20px;
+    max-width: 60%;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.content{
+    padding: 10px;
+    max-width: 90%;
+    overflow: auto;
+}
+
+#fileContent {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#fileContent th, #fileContent td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+#fileContent th {
+    background-color: #f2f2f2;
+}
+
+#fileName {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.fileinputmobile{
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    .logoimg{
+        width: 20%;
+        transition: all 0.5s ease;
+    }
+
+    .outerdiv{
+        width: 80%;
+    }
+
+    .file-drop-area{
+        display: none;
+    }
+
+    .fileinputmobile{
+        display: block;
+        text-decoration: underline;
+        margin-bottom: 20px;
+    }
+
+    h2{
+        margin-bottom: 30px;
+    }
+    
+}
