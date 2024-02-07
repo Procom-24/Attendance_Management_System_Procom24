@@ -12,17 +12,55 @@
       href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
       rel="stylesheet"
     />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'nav.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
     <title>Participant List</title>
   </head>
 
   <body>
+    <nav class="nav">    
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'logo.png' %}" alt="logo" class="logo-image" />
+        </a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class='bx bx-menu'></i>
+      </div>
+
+      <div class="right-nav">
+        <ul class="right-ul">
+          <li>
+            <a href="{% url 'home' %}" class="underline-animation">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'participant_list' %}" class="underline-animation"
+              >Participants List</a
+            >
+          </li>
+
+          <li>
+            <a href="{% url 'scan_qr' %}" class="underline-animation"
+              >Scan QR</a
+            >
+          </li>
+          {% if request.session.user_id == 'admin' %}
+            <li>
+                <a href="{% url 'uploadPage' %}" class="underline-animation"
+                >Upload Data</a
+                >
+            </li>
+          {% endif %}
+
+          <li><a href="{% url 'logout' %}" class="logout">logOut</a></li>
+        </ul>
+      </div>
+    </nav>
+    
     <div class="outerdiv">
-      <a class="logo" href="{% url 'home' %}">
-        <img src="{% static 'logo.png' %}" alt="logo" class="logoimg" />
-      </a>
-      
       <div class="innerdiv">
 
         <h1 class="mainhead">
@@ -120,5 +158,13 @@
 
       </div>
     </div>
+
+    <script>
+      function toggleMenu() {
+          var nav = document.querySelector('.right-nav');
+          nav.style.display = nav.style.display === "block" ? "none" : "block";
+      }
+    </script>
+
   </body>
 </html>

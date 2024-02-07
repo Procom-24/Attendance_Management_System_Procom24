@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97vw;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 100px;
+    margin: 20px;
+    border-radius: 20px;
+    background: rgba(255, 238, 238, 0.264);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    gap: 50px;
+}
+
+.logo {
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.logo-image{
+    height: 40px;
+    width: 40px;
+}
+
+.right-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.right-ul li {
+    display: inline;
+    margin-right: 12px;
+}
+
+.right-ul .underline-animation {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    transition: transform 0.25s ease-out;
+}
+  
+.right-ul .underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -4px;
+    left: 0;
+    background-color: #06CDFF;
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+  
+.right-ul .underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.right-nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logout{
+    border: 2px solid #06CDFF;
+    border-radius: 10px;
+    padding: 5px 7px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    transition: transform 0.25s ease-out;
+}
+
+.logout:hover{
+    background-color: #8ae8ff21;
+    color: white;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 30px;
+    color: #fff; 
+}
+
+@media screen and (max-width: 856px) {
+    .hamburger {
+        display: block;
+    }
+
+    .right-nav {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background: rgba(255, 238, 238, 0.246);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(23px);
+        -webkit-backdrop-filter: blur(8.5px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 15px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .right-nav ul {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .right-nav ul li {
+        margin: 10px 0;
+    }
+
+    .right-nav ul li a {
+        color: #fff;
+    }
+
+    .nav {
+        padding: 0px 35px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
