@@ -19,11 +19,15 @@
 
   <body>
     <div class="outerdiv">
-      <div class="logo">
+      <a class="logo" href="{% url 'home' %}">
         <img src="{% static 'logo.png' %}" alt="logo" class="logoimg" />
-      </div>
+      </a>
+      
       <div class="innerdiv">
-        <h1 class="mainhead">Participant List</h1>
+
+        <h1 class="mainhead">
+          Participant List
+        </h1>
 
         {% if search_query %}
             <a href="{% url 'participant_list' %}" class="back-button"><i class='bx bx-arrow-back'></i></a>
@@ -47,8 +51,10 @@
               <th class="tabheadings">University</th>
               <th class="tabheadings">Contest</th>
               <th class="tabheadings">Attendance Status</th>
-              <th class="tabheadings">Send QR 1</th>
-              <th class="tabheadings">Send QR 2</th>
+              {% if request.session.user_id == 'admin' %}
+                <th class="tabheadings">Send QR 1</th>
+                <th class="tabheadings">Send QR 2</th>
+              {% endif %}
             </tr>
           </thead>
           <tbody>
@@ -62,12 +68,15 @@
               <td>{{ participant.contestname }}</td>
               <td>{{ participant.attendanceStatus }}</td>
 
-              <td>
-                <a href="{% url 'send_qr' forloop.counter0 1 %}">Send QR 1</a>
-              </td>
-              <td>
-                <a href="{% url 'send_qr' forloop.counter0 2 %}">Send QR 2</a>
-              </td>
+              {% if request.session.user_id == 'admin' %}
+                <td>
+                  <a href="{% url 'send_qr' forloop.counter0 1 %}">Send QR 1</a>
+                </td>
+                <td>
+                  <a href="{% url 'send_qr' forloop.counter0 2 %}">Send QR 2</a>
+                </td>
+              {% endif %}
+
             </tr>
             {% endfor %}
           </tbody>
@@ -94,18 +103,21 @@
           </span>
       </div>
 
-        <div class="submit_button">
-          <form action="{% url 'send_qr_all' 1 %}" method="post" class="qrsub">
-            {% csrf_token %}
-            <button type="submit" class="buttons">Send QR 1 to All</button>
-          </form>
-          <br />
-          <br />
-          <form action="{% url 'send_qr_all' 2 %}" method="post" class="qrsub">
-            {% csrf_token %}
-            <button type="submit" class="buttons">Send QR 2 to All</button>
-          </form>
-        </div>
+      {% if request.session.user_id == 'admin' %}
+      <div class="submit_button">
+        <form action="{% url 'send_qr_all' 1 %}" method="post" class="qrsub">
+          {% csrf_token %}
+          <button type="submit" class="buttons">Send QR 1 to All</button>
+        </form>
+        <br />
+        <br />
+        <form action="{% url 'send_qr_all' 2 %}" method="post" class="qrsub">
+          {% csrf_token %}
+          <button type="submit" class="buttons">Send QR 2 to All</button>
+        </form>
+      </div>
+    {% endif %}
+
       </div>
     </div>
   </body>
