@@ -17,6 +17,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files import File
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
+import json
 
 
 @api_view(['GET'])
@@ -279,8 +280,12 @@ def cleanup_photos():
 
 def mark_attendance(request):
     if request.method == 'POST':
-        qr_data = request.POST.get('qrData', '')
-        print("Received QR Data:", qr_data)  # Check if the data is received properly
+        body_unicode = request.body.decode('utf-8')
+        body_data = json.loads(body_unicode)
+   
+        qr_data = body_data.get('qrData', '')
+
+        print("Received QR Data:", qr_data)  
 
         if qr_data:
             try:
@@ -299,49 +304,7 @@ def mark_attendance(request):
             return JsonResponse({'message': 'No QR code data received'})
     else:
         return JsonResponse({'message': 'Invalid request method'})
-   
         
-        
-# def mark_attendance(request):
-#     if request.method == 'POST':
-#         qr_data = request.POST.get('qrData', '')
-#         print("Received QR Data:", qr_data)  # Check if the data is received properly
-#         try:
-#             qr_code = QRCode.objects.get(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data))
-#             participant = qr_code.Participants_participantID
-#             participant.attendanceStatus = 'P'
-#             participant.save()
-
-#             return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
-#         except QRCode.DoesNotExist:
-#             return JsonResponse({'message': 'QR code not found'})
-#     else:
-#         return JsonResponse({'message': 'Invalid request method'})
-  
-
-#hardcoded login for login admin and user
-# def login_view(request):
-#     if request.method == 'POST':
-#         admin_name = 'admin'
-#         admin_pass ='admin123'
-#         hardcoded_username = 'user'
-#         hardcoded_password = 'pass'
-
-#         username = request.POST.get('user_email')
-#         password = request.POST.get('user_password')
-
-#         if (username == hardcoded_username and password == hardcoded_password) | (username == admin_name and password == admin_pass):
-#             # # Dummy authentication for testing
-#             # user = authenticate(username=username, password=password)
-#             # if user is not None:
-#             # django_login(request, user)
-#             return redirect('/home/')
-#         else:
-#             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-#         # else:
-#         #     return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-
-#     return render(request, 'login.html')
     
 # logic for login_view takes details from userAccount
 def login_view(request):
