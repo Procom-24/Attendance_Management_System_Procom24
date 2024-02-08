@@ -1,13 +1,56 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'nav.css' %}" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>QR Code Scanner</title>
 </head>
 
 <body>
+    <nav class="nav">    
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'logo.png' %}" alt="logo" class="logo-image" />
+          </a>
+        </div>
+  
+        <div class="hamburger" onclick="toggleMenu()">
+          <i class='bx bx-menu'></i>
+        </div>
+  
+        <div class="right-nav">
+          <ul class="right-ul">
+            <li>
+              <a href="{% url 'home' %}" class="underline-animation">Home</a>
+            </li>
+            <li>
+              <a href="{% url 'participant_list' %}" class="underline-animation"
+                >Participants List</a
+              >
+            </li>
+  
+            <li>
+              <a href="{% url 'scan_qr' %}" class="underline-animation"
+                >Scan QR</a
+              >
+            </li>
+            {% if request.session.user_id == 'admin' %}
+              <li>
+                  <a href="{% url 'uploadPage' %}" class="underline-animation"
+                  >Upload Data</a
+                  >
+              </li>
+            {% endif %}
+  
+            <li><a href="{% url 'logout' %}" class="logout">logOut</a></li>
+          </ul>
+        </div>
+      </nav>
+
     <video id="camera-preview" width="640" height="480" autoplay></video>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
@@ -77,6 +120,11 @@
             }
 
         });
+
+        function toggleMenu() {
+            var nav = document.querySelector('.right-nav');
+            nav.style.display = nav.style.display === "block" ? "none" : "block";
+        }
     </script>
 </body>
 
