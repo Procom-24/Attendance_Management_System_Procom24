@@ -13,18 +13,6 @@ body {
     z-index: 1;
 }
 
-.logo {
-    position: absolute;
-    top: 20px; 
-    left: 20px;
-    z-index: 5;
-}
-
-.logoimg {
-    width: 100px; 
-    height: auto; 
-}
-
 .innerdiv {
     z-index: 2;
     margin-top: 15vh;
@@ -156,8 +144,6 @@ td{
 }
 
 @media screen and (max-width: 1000px) {
-    
-
     .innerdiv {
         width: 90%;
         margin-top: 150px;

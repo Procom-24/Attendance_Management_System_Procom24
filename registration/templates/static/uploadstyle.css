@@ -4,9 +4,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000;
-    color: #fff;
     display: flex;
     justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
 .background-image {
@@ -21,18 +22,8 @@ body {
     z-index: -1;
 }
 
-.logo{
-    position: absolute;
-}
-
-.logoimg {
-    width: 150px; 
-    height: auto;
-    transition: all 0.5s ease;
-}
-
 .outerdiv{
-    margin-top: 12vh;
+    margin-top: 22vh;
     margin-bottom: 8vh;
     background: rgba( 255, 255, 255, 0.3);
     backdrop-filter: blur( 50px );
@@ -130,11 +121,6 @@ button:hover {
 }
 
 @media screen and (max-width: 1000px){
-    .logoimg{
-        width: 20%;
-        transition: all 0.5s ease;
-    }
-
     .outerdiv{
         width: 80%;
     }

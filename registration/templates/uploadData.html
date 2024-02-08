@@ -6,16 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
+    <link rel="stylesheet" href="{% static 'nav.css' %}" />
     <link rel="stylesheet" href="{% static 'uploadstyle.css' %}" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>CSV File Upload</title>
     
 </head>
 <body>
+  
+  <nav class="nav">    
+    <div class="logo">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'logo.png' %}" alt="logo" class="logo-image" />
+      </a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class='bx bx-menu'></i>
+    </div>
+
+    <div class="right-nav">
+      <ul class="right-ul">
+        <li>
+          <a href="{% url 'home' %}" class="underline-animation">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'participant_list' %}" class="underline-animation"
+            >Participants List</a
+          >
+        </li>
+
+        <li>
+          <a href="{% url 'scan_qr' %}" class="underline-animation"
+            >Scan QR</a
+          >
+        </li>
+        {% if request.session.user_id == 'admin' %}
+          <li>
+              <a href="{% url 'uploadPage' %}" class="underline-animation"
+              >Upload Data</a
+              >
+          </li>
+        {% endif %}
+
+        <li><a href="{% url 'logout' %}" class="logout">logOut</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="background-image"></div>
     <div class="outerdiv">
-      <div class="logo">
-        <img src="{% static 'logo.png' %}" alt="logo" class="logoimg" />
-      </div>
       <h2>Upload CSV File</h2>
       <form id="uploadForm" enctype="multipart/form-data">
           {% csrf_token %}
@@ -128,6 +168,11 @@
         event.preventDefault();
         event.stopPropagation();
         document.querySelector('.file-drop-area').classList.remove('highlight');
+    }
+
+    function toggleMenu() {
+      var nav = document.querySelector('.right-nav');
+      nav.style.display = nav.style.display === "block" ? "none" : "block";
     }
 </script>
 </body>
