@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(45deg, #440083, #230741);
+}
+
+.empty {
+    filter: blur(2px);
+}
+
+.cam-container {
+    .overlay {
+        --border-style: 3px solid violet;
+        --border-space: 20px;
+
+        position: absolute;
+        width: 640px;
+        height: 480px;
+    }
+
+    .overlay-helper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay-element {
+        padding: 20px;
+        width: 150px;
+        height: 100px;
+        position: absolute;
+    }
+
+    .overlay-text {
+        font-size: 1.75em;
+        color: white;
+        font-family: monospace;
+    }
+
+    .overlay .top-left {
+        border-left: var(--border-style);
+        border-top: var(--border-style);
+        top: var(--border-space);
+        left: var(--border-space);
+        text-align: left;
+    }
+
+    .overlay .top-right {
+        border-right: var(--border-style);
+        border-top: var(--border-style);
+        top: var(--border-space);
+        right: var(--border-space);
+        text-align: right;
+    }
+
+    .overlay .bottom-left {
+        border-left: var(--border-style);
+        border-bottom: var(--border-style);
+        bottom: var(--border-space);
+        left: var(--border-space);
+        text-align: left;
+    }
+
+    .overlay .bottom-right {
+        border-right: var(--border-style);
+        border-bottom: var(--border-style);
+        bottom: var(--border-space);
+        right: var(--border-space);
+        text-align: right;
+    }
+
+    video {
+        width: 640px;
+        height: 480px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .empty {
+        display: none;
+    }
+
+    .cam-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+
+        .overlay {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -1,34 +1,31 @@
-
 body {
-    font-family: Trebuchet MS, sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    background-image: linear-gradient(45deg, #440083, #230741);
 }
 
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('background2.png');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+.empty {
+    filter: blur(2px);
 }
 
-.outerdiv{
-    margin-top: 22vh;
-    margin-bottom: 8vh;
-    background: rgba( 255, 255, 255, 0.3);
-    backdrop-filter: blur( 50px );
-    -webkit-backdrop-filter: blur( 50px );
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outerdiv {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
     width: 90%;
     padding: 20px;
@@ -39,8 +36,8 @@ h2 {
     text-align: center;
     margin: 50px;
     font-size: xx-large;
-  }
-  
+}
+
 
 form {
     display: flex;
@@ -51,11 +48,12 @@ form {
 
 input[type="file"] {
     margin-bottom: 20px;
-    display: none; /* Hide the file input */
+    display: none;
+    /* Hide the file input */
 }
 
 .file-drop-area {
-    border: 2px dashed #007bff;
+    border: 2px dashed #06CDFF;
     border-radius: 5px;
     padding: 100px;
     text-align: center;
@@ -68,28 +66,31 @@ input[type="file"] {
     background-color: #e0f3ff;
 }
 
-.file-drop-area label,.fileinputmobile label {
-    cursor: pointer; /* Make label clickable */
+.file-drop-area label,
+.fileinputmobile label {
+    cursor: pointer;
+    /* Make label clickable */
 }
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: rgb(53, 19, 87);
     color: #fff;
     border: none;
     margin: 30px;
     cursor: pointer;
-    font-family: Trebuchet MS, sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 20px;
     max-width: 60%;
     border-radius: 10px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #06CDFF;
+    color: black;
 }
 
-.content{
+.content {
     padding: 10px;
     max-width: 90%;
     overflow: auto;
@@ -101,7 +102,8 @@ button:hover {
     width: 100%;
 }
 
-#fileContent th, #fileContent td {
+#fileContent th,
+#fileContent td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
@@ -116,27 +118,27 @@ button:hover {
     font-weight: bold;
 }
 
-.fileinputmobile{
+.fileinputmobile {
     display: none;
 }
 
-@media screen and (max-width: 1000px){
-    .outerdiv{
+@media screen and (max-width: 1000px) {
+    .outerdiv {
         width: 80%;
     }
 
-    .file-drop-area{
+    .file-drop-area {
         display: none;
     }
 
-    .fileinputmobile{
+    .fileinputmobile {
         display: block;
         text-decoration: underline;
         margin-bottom: 20px;
     }
 
-    h2{
+    h2 {
         margin-bottom: 30px;
     }
-    
+
 }
