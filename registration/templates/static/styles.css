@@ -2,152 +2,153 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden; 
-  }
-  
-  #vanta-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; 
-  }
-  
-  .container {
-      display: flex;
-      height: 100vh;
-      align-items: center;
-  }
-  
-  .firstcolumn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60%;
-  
-  }
-  
-  .formcolumn{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40%;
-  }
-  
-  .firstcolumn img {
-      width:  600px;
-      height: auto;
-  }
-  
-  .login-container {
-      position: relative;
-      max-width: 400px;
-      background-color: white;
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 3rem;
-      margin: 10px;
-  }
-  
-  h1 {
-      font-size: 2rem;
-      color: rebeccapurple;
-      text-align: center;
-  }
-  
-  .inputbox {
-      position: relative;
-      margin: 30px 0;
-      max-width: 310px;
-      border-bottom: 2px solid rebeccapurple;
-  }
-  
-  .inputbox label {
-      color: rebeccapurple;
-      font-size: 1.3rem;
-      pointer-events: none;
-      transition: all 0.5s ease-in-out;
-  }
-  
-  .inputbox input {
-      width: 100%;
-      height: 50px;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      padding: 0 35px 0 5px;
-      color: rebeccapurple;
-  }
-  
-  .password-container{
-      display: flex;
-      align-items: center;
-  }
-  
-  i{
-      color: rebeccapurple;
-      cursor: pointer;
-  }
-  
-  
-  button {
-      width: 100%;
-      height: 40px;
-      border-radius: 40px;
-      background-color: rebeccapurple;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.4s ease;
-      color: #fff;
-  }
-  
-  button:hover {
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#vanta-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+.firstcolumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+
+}
+
+.formcolumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.firstcolumn img {
+    width: 600px;
+    height: auto;
+}
+
+.login-container {
+    position: relative;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+    margin: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: rebeccapurple;
+    text-align: center;
+}
+
+.inputbox {
+    position: relative;
+    margin: 30px 0;
+    max-width: 310px;
+    border-bottom: 2px solid rebeccapurple;
+}
+
+.inputbox label {
+    color: rebeccapurple;
+    font-size: 1.3rem;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: rebeccapurple;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+}
+
+i {
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background-color: rebeccapurple;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    color: #fff;
+}
+
+button:hover {
     background-color: rgb(0, 0, 0, 0.5);
-  }
-  
-  @media screen and (max-width: 875px){
-  
-      body{
-          overflow: auto;
-      }
-      .container{
-          flex-direction: column;
-      }
-  
-      .firstcolumn img{
-          /* width: 250px; */
-          width: 40%;
-          margin: 60px;
-          transition: all 0.5s ease;
-          min-width: 250px;
-      }
-  
-      .firstcolumn{
-          width: auto;
-      }
-  
-      .formcolumn{
-          width: auto;
-      }
-      .login-container {
-          margin: 0px 30px;
-          margin-bottom: 50px;
-          max-width: 280px;
-          padding: 2rem 2.5rem;
-      }
-  
-  }
-  
+}
+
+@media screen and (max-width: 875px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .firstcolumn img {
+        /* width: 250px; */
+        width: 40%;
+        margin: 60px;
+        transition: all 0.5s ease;
+        min-width: 250px;
+    }
+
+    .firstcolumn {
+        width: auto;
+    }
+
+    .formcolumn {
+        width: auto;
+    }
+
+    .login-container {
+        margin: 0px 30px;
+        margin-bottom: 50px;
+        max-width: 280px;
+        padding: 2rem 2.5rem;
+    }
+
+}
