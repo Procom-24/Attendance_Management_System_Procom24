@@ -11,6 +11,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .models import Participants, QRcode, UserAccount
 import csv
+import base64
 from django.core.files.base import ContentFile
 from django.contrib.auth import authenticate, login as django_login
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -41,7 +42,7 @@ def uploadPage(request):
             return render(request, 'forbidden.html')
     else:
         return render(request, 'login.html')
-    
+   
 # def participant_list(request):
 #     try:
 #         participants = Participants.objects.all()
@@ -123,13 +124,36 @@ def send_qr(request, participant_id, qr_type):
 @api_view(['POST'])
 def send_qr_all(request, qr_type):
     participants = Participants.objects.all()
-    if participants is None:
-        return HttpResponse("Error loading participant data. Please check the CSV file.")
+    if not participants:
+        return HttpResponse("Error loading participant data. Please check the database.")
+
+    email_from = "samaharizvi14@gmail.com"
+    subject = "Your QR Code"
+    successful_deliveries = 0
 
     for participant in participants:
-        generate_qr(participant.firstname, participant.email, qr_type)
+        qr_image = None
+        if qr_type == '1':
+            qr_image = participant.qrcode.image_qr1.read() if participant.qrcode else None
+        elif qr_type == '2':
+            qr_image = participant.qrcode.image_qr2.read() if participant.qrcode else None
+       
+        if qr_image:
+            recipient_email = participant.email
+            if qr_type == '1':
+                QT = "QR Code 1"
+            elif qr_type == '2':
+                QT = "QR Code 2"
+            message = f"Please find your {QT} attached below."
+           
+            qr_image_base64 = base64.b64encode(qr_image).decode('utf-8')
+            sent = send_mail(subject, message, email_from, [recipient_email], fail_silently=False, html_message=f'<img src="data:image/png;base64,{qr_image_base64}">')
+            successful_deliveries += sent
 
-    return Response({'message': f"QR {qr_type} sent to all participants"}, status=status.HTTP_201_CREATED)
+    if successful_deliveries == len(participants):
+        return HttpResponse(f"QR {qr_type} sent to all participants")
+    else:
+        return HttpResponse(f"Error: Failed to send QR {qr_type} to some participants")
 
 # @api_view(['POST'])
 # def update_attendance(request, unique_identifier):
@@ -151,7 +175,7 @@ def send_qr_all(request, qr_type):
 #     qr.make(fit=True)
 #     img = qr.make_image(fill_color="black", back_color="white")
 
-    
+   
 #     #img_path = f"{name}_qr{qr_type}.png"
 #     img_path = f"qrcodes/{name}_qr{qr_type}.png"
 #     img.save(img_path)
@@ -247,7 +271,7 @@ def save_to_database(data):
         image_qr1, image_qr2 = generate_qr_code(
             participant.participantID, data_qrcode1, data_qrcode2
         )
-        
+       
         qr_code_instance = QRcode.objects.create(
             DataQRcode1=data_qrcode1,
             DataQRcode2=data_qrcode2,
@@ -260,7 +284,7 @@ def save_to_database(data):
         except Exception as e:
             print(f"Error saving images for participant {participant.participantID}: {str(e)}")
     cleanup_photos()
-    
+   
 def cleanup_photos():
     try:
         photos_folder = os.path.join(settings.MEDIA_ROOT, 'qrcodes')
@@ -276,6 +300,7 @@ def cleanup_photos():
     except Exception as e:
         print(f'An error occurred during cleanup: {str(e)}')
    
+
 
 
 def mark_attendance(request):
@@ -304,8 +329,50 @@ def mark_attendance(request):
             return JsonResponse({'message': 'No QR code data received'})
     else:
         return JsonResponse({'message': 'Invalid request method'})
-        
-    
+
+       
+       
+# def mark_attendance(request):
+#     if request.method == 'POST':
+#         qr_data = request.POST.get('qrData', '')
+#         print("Received QR Data:", qr_data)  # Check if the data is received properly
+#         try:
+#             qr_code = QRCode.objects.get(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data))
+#             participant = qr_code.Participants_participantID
+#             participant.attendanceStatus = 'P'
+#             participant.save()
+
+#             return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
+#         except QRCode.DoesNotExist:
+#             return JsonResponse({'message': 'QR code not found'})
+#     else:
+#         return JsonResponse({'message': 'Invalid request method'})
+ 
+
+#hardcoded login for login admin and user
+# def login_view(request):
+#     if request.method == 'POST':
+#         admin_name = 'admin'
+#         admin_pass ='admin123'
+#         hardcoded_username = 'user'
+#         hardcoded_password = 'pass'
+
+#         username = request.POST.get('user_email')
+#         password = request.POST.get('user_password')
+
+#         if (username == hardcoded_username and password == hardcoded_password) | (username == admin_name and password == admin_pass):
+#             # # Dummy authentication for testing
+#             # user = authenticate(username=username, password=password)
+#             # if user is not None:
+#             # django_login(request, user)
+#             return redirect('/home/')
+#         else:
+#             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+#         # else:
+#         #     return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+
+#     return render(request, 'login.html')
+   
 # logic for login_view takes details from userAccount
 def login_view(request):
     if 'user_id' in request.session:
