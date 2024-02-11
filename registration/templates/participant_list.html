@@ -81,10 +81,8 @@
                             <th class="tabheadings">University</th>
                             <th class="tabheadings">Contest</th>
                             <th class="tabheadings">Attendance Status</th>
-                            {% if request.session.user_id == 'admin' %}
                             <th class="tabheadings">Send QR 1</th>
                             <th class="tabheadings">Send QR 2</th>
-                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -97,16 +95,12 @@
                             <td>{{ participant.universityname }}</td>
                             <td>{{ participant.contestname }}</td>
                             <td>{{ participant.attendanceStatus }}</td>
-
-                            {% if request.session.user_id == 'admin' %}
                             <td>
                                 <a href="{% url 'send_qr' forloop.counter0 1 %}">Send QR 1</a>
                             </td>
                             <td>
                                 <a href="{% url 'send_qr' forloop.counter0 2 %}">Send QR 2</a>
                             </td>
-                            {% endif %}
-
                         </tr>
                         {% endfor %}
                     </tbody>
