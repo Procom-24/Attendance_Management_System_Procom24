@@ -17,8 +17,9 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
 ]
 
-# This is a catch-all for any other URL. It will render the notfound.html template
-urlpatterns += [path('<path:path>', TemplateView.as_view(template_name='notfound.html'))]
+# after removing the below code, oe can see the QR codes
+# # This is a catch-all for any other URL. It will render the notfound.html template
+# urlpatterns += [path('<path:path>', TemplateView.as_view(template_name='notfound.html'))]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
