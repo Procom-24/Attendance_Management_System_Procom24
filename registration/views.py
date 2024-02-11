@@ -24,6 +24,7 @@ import json
 @api_view(['GET'])
 def home(request):
     if 'user_id' in request.session:
+        print(request.session['user_id'])
         return render(request, 'home.html')
     else:
         return render(request, 'login.html')
@@ -69,37 +70,44 @@ def uploadPage(request):
 #     return render(request, 'participant_list.html', {'participants': participants})
 
 def participant_list(request):
-    search_query = request.GET.get('search', '')
-    page = request.GET.get('page', 1)
+    if 'user_id' in request.session:
+        search_query = request.GET.get('search', '')
+        page = request.GET.get('page', 1)
+        print("deddf3f3ef3f3e4f34")
 
-    if search_query:
-        # Split the search query into individual terms
-        search_terms = search_query.split()
+        print(request.user)
 
-        # Construct a Q object to search for first name or last name containing any of the search terms
-        first_name_q = Q()
-        last_name_q = Q()
-        for term in search_terms:
-            first_name_q |= Q(firstname__icontains=term)
-            last_name_q |= Q(lastname__icontains=term)
 
-        # Query participants with first name or last name matching any of the search terms
-        participants = Participants.objects.filter(first_name_q | last_name_q)
+        if search_query:
+            # Split the search query into individual terms
+            search_terms = search_query.split()
+
+
+            # Construct a Q object to search for first name or last name containing any of the search terms
+            first_name_q = Q()
+            last_name_q = Q()
+            for term in search_terms:
+                first_name_q |= Q(firstname__icontains=term)
+                last_name_q |= Q(lastname__icontains=term)
+            # Query participants with first name or last name matching any of the search terms
+            participants = Participants.objects.filter(first_name_q | last_name_q)
+        else:
+            participants = Participants.objects.all()
+
+
+        # Set up pagination
+        paginator = Paginator(participants, 10)  # Show 10 participants per page
+        try:
+            participants = paginator.page(page)
+        except PageNotAnInteger:
+            participants = paginator.page(1)
+        except EmptyPage:
+            participants = paginator.page(paginator.num_pages)
+
+        context = {'participants': participants, 'search_query': search_query}
+        return render(request, 'participant_list.html', context)
     else:
-        participants = Participants.objects.all()
-
-    # Set up pagination
-    paginator = Paginator(participants, 10)  # Show 10 participants per page
-    try:
-        participants = paginator.page(page)
-    except PageNotAnInteger:
-        participants = paginator.page(1)
-    except EmptyPage:
-        participants = paginator.page(paginator.num_pages)
-
-    context = {'participants': participants, 'search_query': search_query}
-    return render(request, 'participant_list.html', context)
-
+        return render(request, 'login.html')
 
 @api_view(['GET'])
 def send_qr(request, participant_id, qr_type):
