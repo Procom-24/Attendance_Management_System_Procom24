@@ -1,52 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
-    <link rel="stylesheet" href="{% static 'styles_home.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
-</head>
+    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}" />
+    <link rel="stylesheet" href="{% static 'styles_home.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css" />
+  </head>
 
-<body>
-    <div class="empty"></div>
+  <body>
     <div class="container">
-        <div class="logo"><img src="{% static 'PROCOM24_LOGO.png' %}" alt="logo"></div>
-        <div class="buttons">
-            <a href="{% url 'participant_list' %}">
-                <button>
-                    <p>Participants List</p>
-                </button>
-            </a>
+      <div class="background-image"></div>
+      <img src="{% static 'PROCOM24_LOGO.png' %}" />
+      <div class="buttons">
+        <a href="{% url 'participant_list' %}">
+          <button>
+            <p>Participants List</p>
+          </button>
+        </a>
 
-            <a href="{% url 'scan_qr' %}">
-                <button>
-                    <p>Scan QR-Code</p>
-                </button>
-            </a>
+        <a href="{% url 'scan_qr' %}">
+          <button>
+            <p>Scan QR-Code</p>
+          </button>
+        </a>
 
-            {% if request.session.user_id == 'admin' %}
-            <a href="{% url 'uploadPage' %}">
-                <button>
-                    <p>Upload Data</p>
-                </button>
-            </a>
-            {% endif %}
+        {% if request.session.user_id == 'admin' %}
+        <a href="{% url 'uploadPage' %}">
+          <button>
+            <p>Upload Data</p>
+          </button>
+        </a>
+        {% endif %}
 
-            <a href="{% url 'logout' %}">
-                <button>
-                    <p>Log Out</p>
-                </button>
-            </a>
-        </div>
+        <a href="{% url 'logout' %}">
+          <button>
+            <p>Log Out</p>
+          </button>
+        </a>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

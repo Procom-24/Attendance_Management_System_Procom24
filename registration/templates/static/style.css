@@ -1,17 +1,21 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(45deg, #440083, #230741);
-    font-family: 'Nunito', sans-serif;
+    background-color: #333;
+    /* background: url(background2.png) center/cover; */
+    font-family: Trebuchet MS, sans-serif;
 }
 
-.empty {
-    filter: blur(2px);
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background2.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .outerdiv {
@@ -25,12 +29,30 @@ body {
     z-index: 2;
     margin-top: 15vh;
     margin-bottom: 8vh;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba( 255, 255, 255, 0.3);
     padding: 0px 10px;
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur( 50px );
+    -webkit-backdrop-filter: blur( 50px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius: 10px;
+    overflow: auto;
+}
+
+.camera-container{
+    z-index: 2;
+    margin: 10px;
+    margin-top: 15vh;
+    margin-bottom: 8vh;
+    background: rgba( 255, 255, 255, 0.3);
+    padding: 5px 10px;
+    backdrop-filter: blur( 50px );
+    -webkit-backdrop-filter: blur( 50px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mainhead {
@@ -41,36 +63,18 @@ body {
 }
 
 .datatable {
-    color: #fff;
-    display: inline-block;
-    vertical-align: top;
-    max-width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    border-collapse: collapse;
-    border-spacing: 0;
-
-    th,
-    td {
-        padding: 6px 12px;
-        border: 1px solid #FFFFFF;
-    }
+    color: #fff; 
 }
-
 .tabheadings {
     background-color: #110a2a;
     text-transform: uppercase;
     padding: 5px;
 }
-
 a {
-    color: #fff;
-    /* Neon color for text */
+        color: #fff; /* Neon color for text */
 }
-
 a:hover {
-    color: #04a0cb;
-    /* Neon color for text */
+        color: #04a0cb; /* Neon color for text */
 }
 
 .submit_button {
@@ -78,21 +82,18 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: none;
 }
 
 .buttons {
-    border: none;
-    background: none;
     font-size: 15px;
     margin: 20px;
     padding: 10px;
     color: #fff;
-    background-color: #251763;
+    background-color: #010f2d;
     transition: transform 0.3s ease;
-    font-family: 'Nunito', sans-serif;
+    font-family: Trebuchet MS, sans-serif;
     letter-spacing: 0.03vw;
-    border-radius: 5px;
+    border: none;
 }
 
 .buttons:hover {
@@ -102,26 +103,22 @@ a:hover {
     cursor: pointer;
 }
 
-td {
+td{
     padding: 5px 7px;
 }
-
-.pagination {
+.pagination{
     display: flex;
     justify-content: center;
 }
-
-.step-links {
+.step-links{
     width: 100%;
-    display: flex;
+    display: flex; 
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
-
-.current {
+.current{
     color: #fff;
 }
-
 .pagebutton {
     padding: 5px 20px;
     font-size: 16px;
@@ -141,8 +138,8 @@ td {
 }
 
 .search-form {
-    margin: 10px;
-    margin-bottom: 20px;
+    margin: 20px;
+    /* margin-bottom: 20px; */
     display: flex;
     align-items: center;
 }
@@ -152,12 +149,12 @@ td {
     padding: 15px;
     border: 1px solid #fff;
     border-radius: 5px 0 0 5px;
-    font-family: 'Nunito', sans-serif;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .search-form input[type="text"]:focus {
     border-radius: 5px;
-    outline: 2px solid #010f2d;
+    outline: 2px solid #010f2d; 
 }
 
 .search-form button {
@@ -167,9 +164,7 @@ td {
     border: 1px solid #010f2d;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    font-size: medium;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .back-button {
@@ -177,6 +172,18 @@ td {
     padding: 10px;
     color: #010f2d;
     font-size: 30px;
+}
+
+p{
+    font-size: large;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+}
+
+video{
+    padding: 30px;
+    /* width: 80%; */
 }
 
 @media screen and (max-width: 1000px) {
@@ -217,20 +224,20 @@ td {
         border-radius: 5px;
     }
 
-    .table {
+    .table{
         overflow: scroll;
-        overflow-y: hidden;
+        overflow-y:hidden;
     }
 
-    .step-links {
+    .step-links{
         padding: 20px 0px;
     }
 
-    .firstprev {
-        justify-content: space-between;
+    .firstprev{
+        justify-content:space-between;
     }
 
-    .pagebutton {
+    .pagebutton{
         padding: 5px 5px;
         font-size: 14px;
     }

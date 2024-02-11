@@ -1,106 +1,100 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
-    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Candal" />
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
+    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
 </head>
 
 <body>
     <div id="vanta-container"></div>
-    <div class="container">
-        <div class="firstcolumn">
-            <img src="{% static 'PROCOM24_LOGO.png' %}" alt="Left Image">
-        </div>
-        <div class="formcolumn">
-            <div class="login-container">
+        <div class="container">
+            <div class="firstcolumn">
+                <img src="{% static 'PROCOM24_LOGO.png' %}" alt="Left Image">
+            </div>
+            <div class="formcolumn">
+                <div class="login-container">
 
-                <form action="{% url 'login_view' %}" method="POST">
-                    {% csrf_token %}
-                    <h1>Login</h1>
-                    <div class="inputbox">
-                        <input type="username" placeholder="Username" required name="user_name">
-                    </div>
-                    <div class="inputbox">
-                        <div class="password-container">
-                            <input type="password" id="user-password-input" placeholder="Password" required
-                                name="user_password">
-                            <span id="password-toggle" onclick="togglePasswordVisibility()">
-                                <i id="show" class="fas fa-eye"></i>
-                                <i id="hide" class="fas fa-eye-slash"></i>
-                            </span>
+                    <form action="{% url 'login_view' %}" method="POST">
+                        {% csrf_token %}
+                        <h1>Login</h1>
+                        <div class="inputbox">
+                            <input type="username" placeholder="Username" required name="user_name">
                         </div>
-                    </div>
-                    <button>Log in</button>
-                </form>
+                        <div class="inputbox">
+                            <div class="password-container">
+                                <input type="password" id="user-password-input" placeholder="Password" required name="user_password">
+                                <span id="password-toggle" onclick="togglePasswordVisibility()">
+                                    <i id="show" class="fas fa-eye"></i>
+                                    <i id="hide" class="fas fa-eye-slash"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <button>Log in</button>
+                    </form>
+                    
 
-
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
 
-            checkPasswordVisibility();
+                checkPasswordVisibility();
 
-            VANTA.FOG({
-                el: "#vanta-container",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                highlightColor: '#000000',
-                midtoneColor: '#363647',
-                lowlightColor: '#2400b6',
-                baseColor: '#560d95',
-                speed: 1.70,
-                zoom: 0.60
-            });
-        })
+                VANTA.FOG({
+                    el: "#vanta-container",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    highlightColor: '#000000',
+                    midtoneColor: '#363647',
+                    lowlightColor: '#2400b6',
+                    baseColor: '#560d95',
+                    speed: 1.70,
+                    zoom: 0.60
+                });
+            })
 
-        function togglePasswordVisibility() {
-            var passwordField = document.getElementById("user-password-input");
-            var showIcon = document.getElementById("show");
-            var hideIcon = document.getElementById("hide");
+            function togglePasswordVisibility() {
+                var passwordField = document.getElementById("user-password-input");
+                var showIcon = document.getElementById("show");
+                var hideIcon = document.getElementById("hide");
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                showIcon.style.display = "inline";
-                hideIcon.style.display = "none";
-            } else {
-                passwordField.type = "password";
-                showIcon.style.display = "none";
-                hideIcon.style.display = "inline";
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    showIcon.style.display = "inline";
+                    hideIcon.style.display = "none";
+                } else {
+                    passwordField.type = "password";
+                    showIcon.style.display = "none";
+                    hideIcon.style.display = "inline";
+                }
             }
-        }
+            
+            function checkPasswordVisibility() {
+                var passwordField = document.getElementById("user-password-input");
+                var showIcon = document.getElementById("show");
+                var hideIcon = document.getElementById("hide");
 
-        function checkPasswordVisibility() {
-            var passwordField = document.getElementById("user-password-input");
-            var showIcon = document.getElementById("show");
-            var hideIcon = document.getElementById("hide");
-
-            if (passwordField.type === "password") {
-                showIcon.style.display = "none";
-                hideIcon.style.display = "inline";
-            } else {
-                showIcon.style.display = "inline";
-                hideIcon.style.display = "none";
+                if (passwordField.type === "password") {
+                    showIcon.style.display = "none";
+                    hideIcon.style.display = "inline";
+                } else {
+                    showIcon.style.display = "inline";
+                    hideIcon.style.display = "none";
+                }
             }
-        }
-    </script>
+        </script>
 </body>
-
 </html>

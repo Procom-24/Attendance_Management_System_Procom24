@@ -5,63 +5,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="{% static 'nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
-    <link rel="stylesheet" href="{% static 'styles_scanqr.css' %}">
-    <link rel="stylesheet" href="{% static 'nav.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>QR Code Scanner</title>
 </head>
 
 <body>
-    <div class="empty"></div>
-    <nav class="nav">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'logo.png' %}" alt="logo" class="logo-image" />
-            </a>
-        </div>
+  <div class="background-image"></div>
+  <nav >
+    <!-- <div class="navcontainer"> -->
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'PROCOM24_LOGO.png' %}" alt="logo" class="logo-image" />
+        </a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class='bx bx-menu'></i>
+      </div>
+      <div class="right-nav">
+        <ul class="right-ul">
+          <li><a href="{% url 'home' %}" class="underline-animation">Home</a></li>
+          <li><a href="{% url 'participant_list' %}" class="underline-animation">Participants List</a></li>
+          <li><a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a></li>
+          {% if request.session.user_id == 'admin' %}
+            <li><a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a></li>
+          {% endif %}
+          <li><a href="{% url 'logout' %}" class="logout">LogOut</a></li>
+        </ul>
+      </div>
+    <!-- </div> -->
+  </nav>
+    
+  <div class="outerdiv">
+    <div class="camera-container">
 
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class='bx bx-menu'></i>
-        </div>
+      <p>Place the QR code in the center of the camera</p>
+      <video id="camera-preview" inverted playsinline muted autoplay loop class="webcam"></video>
 
-        <div class="right-nav">
-            <ul class="right-ul">
-                <li>
-                    <a href="{% url 'home' %}" class="underline-animation">Home</a>
-                </li>
-                <li>
-                    <a href="{% url 'participant_list' %}" class="underline-animation">Participants List</a>
-                </li>
-
-                <li>
-                    <a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a>
-                </li>
-                {% if request.session.user_id == 'admin' %}
-                <li>
-                    <a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a>
-                </li>
-                {% endif %}
-
-                <li><a href="{% url 'logout' %}" class="logout">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="cam-container">
-        <div class="overlay">
-            <div class="overlay-helper">
-                <div class="overlay-element top-left"></div>
-                <div class="overlay-element top-right"></div>
-                <div class="overlay-element bottom-left"></div>
-                <div class="overlay-element bottom-right"></div>
-            </div>
-        </div>
-        <video id="camera-preview" autoplay></video>
     </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
 
