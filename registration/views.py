@@ -1,7 +1,7 @@
 import pandas as pd
 import qrcode
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.core.mail import send_mail, EmailMessage
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -9,7 +9,7 @@ from rest_framework import status
 from io import BytesIO
 from django.conf.urls.static import static
 from django.conf import settings
-from .models import Participants, QRcode, UserAccount
+from .models import Participants, QRcode, UserAccount, ParticipantCard
 import csv
 import base64
 from django.core.files.base import ContentFile
@@ -19,7 +19,7 @@ from django.core.files import File
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
 import json
-
+from django.utils import timezone
 
 @api_view(['GET'])
 def home(request):
@@ -109,59 +109,117 @@ def participant_list(request):
     else:
         return render(request, 'login.html')
 
+from email.mime.image import MIMEImage
+from django.core.mail import EmailMessage
+from django.http import JsonResponse
+from .models import Participants, QRcode
+
 @api_view(['GET'])
 def send_qr(request, participant_id, qr_type):
-    participants = Participants.objects.all()
-    if participants is None:
-        return HttpResponse("Error loading participant data. Please check the CSV file.")
-
     try:
-        participant_id = int(participant_id) + 1
-    except ValueError:
-        return HttpResponse("Invalid participant_id. Please provide a valid integer.")
+        participant = Participants.objects.get(participantID=participant_id)  # Get the specific participant
+        qrcode_instance = QRcode.objects.filter(Participants_participantID=participant.participantID).first()
 
-    specified_person = participants.filter(id=participant_id)
+        if qrcode_instance:
+            # Select the appropriate QR code image based on the qr_type.
+            qr_image = qrcode_instance.image_qr1 if qr_type == '1' else qrcode_instance.image_qr2
 
-    if not specified_person.exists():
-        return HttpResponse(f"No participant found with the ID '{participant_id}'.")
+            # You need to set your actual subject and SMTP details
+            subject = f"Here's your QR {qr_type}"
+            message = f"Dear {participant.firstname},\n\nPlease find your QR code attached.\n\nBest regards,\nProcom 24"
+            from_email = 'samaharizvi14@gmail.com'  # Set the sender email address here
 
-    generate_qr(specified_person[0].firstname, specified_person[0].email, qr_type)
+            # Prepare the email
+            email = EmailMessage(
+                subject,
+                message,
+                from_email,
+                [participant.email]  # Participant's email address
+            )
 
-    return Response({'message': f"QR {qr_type} sent to participant with ID {participant_id}"}, status=status.HTTP_201_CREATED)
+            # Attach the QR code image if it exists
+            if qr_image:
+                with qr_image.open() as img:
+                    mime_image = MIMEImage(img.read())
+                    mime_image.add_header('Content-ID', f'<QR_Code_{qr_type}>')
+                    mime_image.add_header('Content-Disposition', f'attachment; filename="QR_Code_{qr_type}.png"')
+                    email.attach(mime_image)
+
+            # Send the email
+            email.send()
+
+            return JsonResponse({"success": True, "message": f"Email sent to participant with subject: {subject}"})
+        else:
+            return JsonResponse({"success": False, "message": "QR Code not found for the participant."})
+
+    except Participants.DoesNotExist:
+        return JsonResponse({"success": False, "message": "Participant not found."})
+    except QRcode.DoesNotExist:
+        return JsonResponse({"success": False, "message": "QR Code record not found."})
+    except Exception as e:
+        return JsonResponse({"success": False, "message": f"An error occurred while sending the email: {str(e)}"})
+
+
+
+from email.mime.image import MIMEImage
+from django.core.mail import EmailMessage
+from django.http import JsonResponse
+from .models import Participants, QRcode
 
 @api_view(['POST'])
 def send_qr_all(request, qr_type):
     participants = Participants.objects.all()
-    if not participants:
-        return HttpResponse("Error loading participant data. Please check the database.")
 
-    email_from = "samaharizvi14@gmail.com"
-    subject = "Your QR Code"
+    if not participants:
+        return JsonResponse({"success": False, "message": "Error loading participant data. Please check the database."})
+
     successful_deliveries = 0
+    failed_deliveries = 0
+
+    # You need to set your actual subject, message, and SMTP details
+    subject = f"Here's your QR {qr_type}"
+    message = f"Dear Participant,\n\nPlease find your QR code {qr_type} attached.\n\nBest regards,\nProcom 24"
+    from_email = 'samaharizvi14@gmail.com'
 
     for participant in participants:
-        qr_image = None
-        if qr_type == '1':
-            qr_image = participant.qrcode.image_qr1.read() if participant.qrcode else None
-        elif qr_type == '2':
-            qr_image = participant.qrcode.image_qr2.read() if participant.qrcode else None
-       
-        if qr_image:
-            recipient_email = participant.email
-            if qr_type == '1':
-                QT = "QR Code 1"
-            elif qr_type == '2':
-                QT = "QR Code 2"
-            message = f"Please find your {QT} attached below."
-           
-            qr_image_base64 = base64.b64encode(qr_image).decode('utf-8')
-            sent = send_mail(subject, message, email_from, [recipient_email], fail_silently=False, html_message=f'<img src="data:image/png;base64,{qr_image_base64}">')
-            successful_deliveries += sent
+        # Fetches the QRcode related to the participant
+        qrcode_instance = QRcode.objects.filter(Participants_participantID=participant.participantID).first()
+
+        if qrcode_instance:
+            # Select the appropriate QR code image based on the qr_type.
+            qr_image = qrcode_instance.image_qr1 if qr_type == '1' else qrcode_instance.image_qr2
+
+            try:
+                # Construct the email message
+                email = EmailMessage(
+                    subject,
+                    message,
+                    from_email,
+                    [participant.email]
+                )
+
+                # Attach the QR code image if it exists.
+                if qr_image:
+                    with qr_image.open() as img:
+                        mime_image = MIMEImage(img.read())
+                        mime_image.add_header('Content-ID', f'<QR_Code_{qr_type}>')
+                        mime_image.add_header('Content-Disposition', f'attachment; filename="QR_Code_{qr_type}.png"')  # Adjust as needed
+                        email.attach(mime_image)
+
+                # Send the email
+                email.send()
+                successful_deliveries += 1
+
+            except Exception as e:
+                print(f"Error sending email to {participant.email}: {e}")
+                failed_deliveries += 1
 
     if successful_deliveries == len(participants):
-        return HttpResponse(f"QR {qr_type} sent to all participants")
+        return JsonResponse({"success": True, "message": f"Emails sent to all participants with subject: '{subject}'"})
     else:
-        return HttpResponse(f"Error: Failed to send QR {qr_type} to some participants")
+        error_message = f"Error: Failed to send emails to some participants. {failed_deliveries} emails failed."
+        return JsonResponse({"success": False, "message": error_message})
+
 
 # @api_view(['POST'])
 # def update_attendance(request, unique_identifier):
@@ -258,13 +316,6 @@ def generate_qr_code(participant_id, data_qrcode1, data_qrcode2):
 
     return File(buffer1), File(buffer2)
 
-# def save_to_database(data):
-#     for entry in data:
-#         if any(value is None or value == '' for value in entry.values()):
-#             continue
-#         Participants.objects.create(**entry)
-
-#     generate_qr()
 
 def save_to_database(data):
     for entry in data:
@@ -325,18 +376,67 @@ def mark_attendance(request):
                 qr_code = QRcode.objects.filter(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data)).first()
                 if qr_code:
                     participant = qr_code.Participants_participantID
-                    participant.attendanceStatus = 'P'
-                    participant.save()
-                    return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
+                    qr_type = qr_data.split(',')[-1]  # Extract qr_type from qr_data
+                    if qr_type == 'qr1':
+                        # Check if a participant card already exists
+                        existing_card = ParticipantCard.objects.filter(Participants_participantID=participant).exists()
+                        if existing_card:
+                            return JsonResponse({'message': f'Card already issued to participant: {participant.participantID}'})
+                        else:
+                            # Generate participant card
+                            ParticipantCard.objects.create(issuedate=timezone.now(), validitystatus='Valid', Participants_participantID=participant)
+                            return JsonResponse({'message': f'Card issued to participant: {participant.participantID}'})
+                    elif qr_type == 'qr2':
+                        # Mark attendance
+                        participant.attendanceStatus = 'P'
+                        participant.save()
+                        return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
                 else:
                     return JsonResponse({'message': 'QR code not found'})
             except Exception as e:
                 print(e)  # Print the actual exception for debugging purposes
-                return JsonResponse({'message': 'Error occurred while processing the QR code'})
+                return JsonResponse({'message': 'Error occurred while processing the QR code'}, status=500)
         else:
-            return JsonResponse({'message': 'No QR code data received'})
+            return JsonResponse({'message': 'No QR code data received'}, status=400)
     else:
-        return JsonResponse({'message': 'Invalid request method'})
+        return HttpResponseBadRequest('Invalid request method')
+
+# from .models import QRcode, Participants
+
+# def mark_attendance(request):
+#     if request.method == 'POST':
+#         body_unicode = request.body.decode('utf-8')
+#         body_data = json.loads(body_unicode)
+   
+#         qr_data = body_data.get('qrData', '')
+#         qr_type = body_data.get('qrType', '')
+
+#         print("Received QR Data:", qr_data)  
+
+#         if qr_data and qr_type in ['1', '2']:
+#             try:
+#                 qr_code = QRcode.objects.filter(Q(DataQRcode1=qr_data) | Q(DataQRcode2=qr_data)).first()
+#                 if qr_code:
+#                     participant = qr_code.Participants_participantID
+
+#                     if qr_type == '1':
+#                         # Generate participant card
+#                         ParticipantCard.objects.create(issuedate=timezone.now(), validitystatus='Valid', Participants_participantID=participant)
+#                     elif qr_type == '2':
+#                         # Mark attendance
+#                         participant.attendanceStatus = 'P'
+#                         participant.save()
+
+#                     return JsonResponse({'message': f'Action performed for participant: {participant.participantID}'})
+#                 else:
+#                     return JsonResponse({'message': 'QR code not found'})
+#             except Exception as e:
+#                 print(e)  # Print the actual exception for debugging purposes
+#                 return JsonResponse({'message': 'Error occurred while processing the QR code'})
+#         else:
+#             return JsonResponse({'message': 'Invalid QR code data received'})
+#     else:
+#         return JsonResponse({'message': 'Invalid request method'})
 
        
        
@@ -414,3 +514,4 @@ def logout(request):
     if 'user_id' in request.session:
         del request.session['user_id']
     return redirect('/home/')
+
