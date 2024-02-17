@@ -1,3 +1,7 @@
+*{
+    font-family: 'Nunito', sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    font-family: 'Nunito', sans-serif;
     width: 100%;
 }
 
@@ -12,7 +17,7 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 }
@@ -24,6 +29,19 @@ body {
     width: 100%;
     height: 100%;
     background-image: url('background2.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(70%);
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #550b62, #2b003e);
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -147,19 +165,36 @@ body {
     }
 }
 
+.not-found img{
+    display: block;
+    filter: invert(100);
+    width: 200px; 
+    position: relative; 
+    margin: 0px; 
+    transition: all 0.5s ease;
+    margin-top: 40px;
+}
+
+.alert{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
 img{
     display: none;
-    width: 250px; 
+    width: 350px; 
     position: relative; 
-    margin-top: -100px; 
-    margin-bottom: 100px; 
+    /* margin-top: -100px;  */
     transition: all 0.5s ease;
-
 }
 
 @media screen and (max-width: 425px) {
     .buttons {
         max-width: 480px;
+        margin-top: -50px;
     }
 }
 
@@ -167,5 +202,13 @@ img{
     img{
         display: block;
         transition: all 0.5s ease;
+        /* margin-bottom: 100px;  */
+    }
+    .not-found img{
+        width: 150px;
+        margin-top: 100px;
+    }
+    .alert{
+        margin-top: -120px;
     }
 }
