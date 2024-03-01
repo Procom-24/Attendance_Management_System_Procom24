@@ -1,16 +1,14 @@
 from django.db import models
 
-# Create your models here.
-
 class Participants(models.Model):
     participantID = models.AutoField(primary_key=True)
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
+    cnic = models.CharField(max_length=13, unique=True, default='')  # CNIC field added
     email = models.EmailField()
     phonenumber = models.CharField(max_length=20)
     universityname = models.CharField(max_length=255)
     contestname = models.CharField(max_length=255)
-    age = models.PositiveIntegerField()
     attendanceStatus = models.CharField(max_length=255, default='A')
 
     def __str__(self):
@@ -30,6 +28,7 @@ class UserAccount(models.Model):
     username = models.CharField(max_length=255)
     email = models.EmailField(null=True)
     passwordhash = models.CharField(max_length=255)
+    
     def __str__(self):
         return f"User {self.username}"
 

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage, scan_qr, mark_attendance, login_view, home, logout
+from .views import participant_list, send_qr, send_qr_all, home, upload_csv, uploadPage, scan_qr, mark_attendance, login_view, home, logout, manual_attendance
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
     path('upload/', upload_csv, name='upload_csv'),
     path('scan-qr/', scan_qr, name='scan_qr'),
     path('mark-attendance/', mark_attendance, name='mark_attendance'),
+    path('mark_attendance/<int:participant_id>/', manual_attendance, name='manual_attendance'), 
     path('logout/', logout, name='logout'),
 ]
 
