@@ -148,36 +148,31 @@
         <!-- Pagination -->
         <div class="pagination">
           <span class="step-links">
-            <div class="firstprev">
-              {% if participants.has_previous %}
-              <a class="pagebutton" href="?page=1">&laquo; first</a>
-              <a
-                class="pagebutton"
-                href="?page={{ participants.previous_page_number }}"
-                >previous</a
-              >
-              {% endif %}
-            </div>
-            <span class="current">
-              Page {{ participants.number }} of {{
-              participants.paginator.num_pages }}
-            </span>
-            <div class="nextlast">
-              {% if participants.has_next %}
-              <a
-                class="pagebutton"
-                href="?page={{ participants.next_page_number }}"
-                >next</a
-              >
-              <a
-                class="pagebutton"
-                href="?page={{ participants.paginator.num_pages }}"
-                >last &raquo;</a
-              >
-              {% endif %}
-            </div>
+              <div class="firstprev">
+                  {% if participants.has_previous %}
+                  <a class="pagebutton" href="?page=1">&laquo; First</a>
+                  <a class="pagebutton" href="?page={{ participants.previous_page_number }}">Previous</a>
+                  {% endif %}
+              </div>
+              <span class="current">
+                  Page {{ participants.number }} of {{ participants.paginator.num_pages }}
+              </span>
+              <div class="nextlast">
+                  {% if participants.has_next %}
+                  <a class="pagebutton" href="?page={{ participants.next_page_number }}">Next</a>
+                  <a class="pagebutton" href="?page={{ participants.paginator.num_pages }}">Last &raquo;</a>
+                  {% endif %}
+              </div>
           </span>
-        </div>
+        <!-- <span class="current">
+            Page {{ participants.number }} of {{ participants.paginator.num_pages }}
+        </span> -->
+      <!-- <div class="nextlast">
+        {% if participants.has_next %}
+            <a class="pagebutton" href="?page={{ participants.next_page_number }}">next</a>
+            <a class="pagebutton" href="?page={{ participants.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </div> -->
 
         {% if request.session.user_id == 'admin' %}
         <div class="submit_button">
