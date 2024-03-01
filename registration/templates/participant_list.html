@@ -101,14 +101,15 @@
                 <!-- <th class="tabheadings">Name</th> -->
                 <th class="tabheadings">First Name</th>
                 <th class="tabheadings">Last Name</th>
+                <th class="tabheadings">CNIC</th>
                 <th class="tabheadings">Email</th>
                 <th class="tabheadings">Contact NO.</th>
                 <th class="tabheadings">University</th>
                 <th class="tabheadings">Contest</th>
-                <th class="tabheadings">Card Issued</th>
                 <th class="tabheadings">Attendance Status</th>
                 <th class="tabheadings">Send QR 1</th>
                 <th class="tabheadings">Send QR 2</th>
+                <th class="tabheadings">Mark Attendance</th>
               </tr>
             </thead>
             <tbody>
@@ -116,15 +117,11 @@
               <tr>
                 <td>{{ participant.firstname }}</td>
                 <td>{{ participant.lastname }}</td>
+                <td>{{ participant.cnic }}</td>
                 <td>{{ participant.email }}</td>
                 <td>{{ participant.phonenumber }}</td>
                 <td>{{ participant.universityname }}</td>
                 <td>{{ participant.contestname }}</td>
-                <td> {% if participant.participantcard_set.all %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}</td> <!--if card of that participant exists print yes else no-->
                 <td>{{ participant.attendanceStatus }}</td>
                 <td>
                   <a href="{% url 'send_qr' participant.participantID 1 %}"
@@ -134,6 +131,13 @@
                 <td>
                   <a href="{% url 'send_qr' participant.participantID 2 %}"
                     >Send QR 2</a
+                  >
+                </td>
+
+                <td>
+                  <a
+                    href="{% url 'manual_attendance' participant.participantID %}"
+                    >Mark Attendance</a
                   >
                 </td>
               </tr>

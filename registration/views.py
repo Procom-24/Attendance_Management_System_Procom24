@@ -83,7 +83,6 @@ def participant_list(request):
     if 'user_id' in request.session:
         search_query = request.GET.get('search', '')
         page = request.GET.get('page', 1)
-        print("deddf3f3ef3f3e4f34")
 
         print(request.user)
 
@@ -347,8 +346,9 @@ def save_to_database(data):
 
         participant = Participants.objects.create(**entry)
 
-        data_qrcode1 = f"{entry.get('firstname')},{participant.participantID},{entry.get('contestname')},qr1"
-        data_qrcode2 = f"{entry.get('firstname')},{participant.participantID},{entry.get('contestname')},qr2"
+        data_qrcode1 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr1"
+        
+        data_qrcode2 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr2"
 
         image_qr1, image_qr2 = generate_qr_code(
             participant.participantID, data_qrcode1, data_qrcode2
@@ -423,6 +423,28 @@ def cleanup_photos():
 #             return JsonResponse({'message': 'No QR code data received'}, status=400)
 #     else:
 #         return HttpResponseBadRequest('Invalid request method')
+# def manual_attendance(request,participant_id):
+#     try:
+#         participant = Participants.objects.get(participantID=participant_id)
+#         participant.attendanceStatus = 'P'
+#         participant.save()
+#         return redirect('participant_list')
+#     except Participants.DoesNotExist:
+#         return JsonResponse({'success': False, 'message': f'Participant {participant_id} not found'})
+# views.py
+def manual_attendance(request, participant_id=None):  # Modify the view to accept the participant_id parameter
+    try:
+        if participant_id is not None:  # Check if participant_id is provided
+            participant = Participants.objects.get(participantID=participant_id)
+            participant.attendanceStatus = 'P'
+            participant.save()
+            return redirect('participant_list')
+        else:
+            return JsonResponse({'success': False, 'message': 'Participant ID not provided'})
+    except Participants.DoesNotExist:
+        return JsonResponse({'success': False, 'message': f'Participant PR-{participant_id} not found'})
+
+    
 def mark_attendance(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
@@ -446,9 +468,9 @@ def mark_attendance(request):
                             qr2_sent_response = send_qr(request, participant.participantID, qr_type=2)
                             qr2_sent_data = json.loads(qr2_sent_response.content)
                             if qr2_sent_data.get('success'):
-                                return JsonResponse({'message': f'Card already issued to participant: {participant.participantID}. QR code 2 sent.'})
+                                return JsonResponse({'message': f'Card already issued to participant: PR-{participant.participantID}. QR code 2 sent.'})
                             else:
-                                return JsonResponse({'message': f'Failed to send QR code 2 after issuing card to participant: {participant.participantID}'})
+                                return JsonResponse({'message': f'Failed to send QR code 2 after issuing card to participant: PR-{participant.participantID}'})
                         else:
                             # Generate participant card
                             ParticipantCard.objects.create(issuedate=timezone.now(), validitystatus='Valid', Participants_participantID=participant)
@@ -456,16 +478,16 @@ def mark_attendance(request):
                             qr2_sent_response = send_qr(request, participant.participantID, qr_type=2)
                             qr2_sent_data = json.loads(qr2_sent_response.content)
                             if qr2_sent_data.get('success'):
-                                return JsonResponse({'message': f'Card issued to participant: {participant.participantID}. QR code 2 sent.'})
+                                return JsonResponse({'message': f'Card issued to participant: PR-{participant.participantID}. QR code 2 sent.'})
                             else:
-                                return JsonResponse({'message': f'Failed to send QR code 2 after issuing card to participant: {participant.participantID}'})
+                                return JsonResponse({'message': f'Failed to send QR code 2 after issuing card to participant: PR-{participant.participantID}'})
                             return JsonResponse({'message': f'Card issued to participant: {participant.participantID}'})
                         
                     elif qr_type == 'qr2':
                         # Mark attendance
                         participant.attendanceStatus = 'P'
                         participant.save()
-                        return JsonResponse({'message': f'Attendance marked for participant: {participant.participantID}'})
+                        return JsonResponse({'message': f'Attendance marked for participant: PR-{participant.participantID}'})
                 else:
                     return JsonResponse({'message': 'QR code not found'})
             except Exception as e:
