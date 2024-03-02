@@ -498,6 +498,34 @@ def mark_attendance(request):
     else:
         return HttpResponseBadRequest('Invalid request method')
 
+
+def generate_csv(request):
+    participants = Participants.objects.filter(
+        attendanceStatus='P',
+        participantcard__validitystatus='Valid'
+    )
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="participants.csv"'
+
+    # Define CSV headers
+    fieldnames = ['First Name', 'Last Name', 'Email', 'Phone', 'University Name', 'Contest Name']
+
+    writer = csv.DictWriter(response, fieldnames=fieldnames)
+    writer.writeheader()
+
+    for participant in participants:
+        writer.writerow({
+            'First Name': participant.firstname,
+            'Last Name': participant.lastname,
+            'Email': participant.email,
+            'Phone': participant.phonenumber,
+            'University Name': participant.universityname,
+            'Contest Name': participant.contestname,
+        })
+
+    return response
+
 # from .models import QRcode, Participants
 
 # def mark_attendance(request):
