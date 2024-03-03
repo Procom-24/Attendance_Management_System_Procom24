@@ -31,6 +31,11 @@
             <li><a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a></li>
             {% if request.session.user_id == 'admin' %}
               <li><a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a></li>
+              <li>
+                <a href="{% url 'generate_csv' %}" download="participants.csv" class="underline-animation">
+                    Presentees CSV
+                </a>
+                </li>
             {% endif %}
             <li><a href="{% url 'logout' %}" class="logout">LogOut</a></li>
           </ul>

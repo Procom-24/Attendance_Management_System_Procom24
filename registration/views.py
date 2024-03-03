@@ -296,7 +296,42 @@ def upload_csv(request):
             return render(request, 'forbidden.html')
     else:
         return render(request, 'login.html')
+    
+def save_to_database(data):
+    for entry in data:
+        # Check if the CNIC already exists in the database
+        if 'cnic' in entry:
+            existing_participant = Participants.objects.filter(cnic=entry['cnic']).first()
+            if existing_participant:
+                # If CNIC exists, skip uploading this row
+                print(f"Skipping participant with CNIC: {entry['cnic']} as it already exists in the database.")
+                continue
 
+        if any(value is None or value == '' for value in entry.values()):
+            continue
+
+        participant = Participants.objects.create(**entry)
+
+        data_qrcode1 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr1"
+        
+        data_qrcode2 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr2"
+
+        image_qr1, image_qr2 = generate_qr_code(
+            participant.participantID, data_qrcode1, data_qrcode2
+        )
+       
+        qr_code_instance = QRcode.objects.create(
+            DataQRcode1=data_qrcode1,
+            DataQRcode2=data_qrcode2,
+            Participants_participantID=participant
+        )
+
+        try:
+            qr_code_instance.image_qr1.save(f"qrcode_{participant.participantID}_1.png", image_qr1, save=True)
+            qr_code_instance.image_qr2.save(f"qrcode_{participant.participantID}_2.png", image_qr2, save=True)
+        except Exception as e:
+            print(f"Error saving images for participant {participant.participantID}: {str(e)}")
+    cleanup_photos()    
 def process_csv(csv_file):
     data = []
     decoded_file = csv_file.read().decode('utf-8').splitlines()
@@ -339,33 +374,33 @@ def generate_qr_code(participant_id, data_qrcode1, data_qrcode2):
     return File(buffer1), File(buffer2)
 
 
-def save_to_database(data):
-    for entry in data:
-        if any(value is None or value == '' for value in entry.values()):
-            continue
+# def save_to_database(data):
+#     for entry in data:
+#         if any(value is None or value == '' for value in entry.values()):
+#             continue
 
-        participant = Participants.objects.create(**entry)
+#         participant = Participants.objects.create(**entry)
 
-        data_qrcode1 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr1"
+#         data_qrcode1 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr1"
         
-        data_qrcode2 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr2"
+#         data_qrcode2 = f"PR-{participant.participantID},{entry.get('firstname')},{entry.get('lastname')},{entry.get('contestname')},qr2"
 
-        image_qr1, image_qr2 = generate_qr_code(
-            participant.participantID, data_qrcode1, data_qrcode2
-        )
+#         image_qr1, image_qr2 = generate_qr_code(
+#             participant.participantID, data_qrcode1, data_qrcode2
+#         )
        
-        qr_code_instance = QRcode.objects.create(
-            DataQRcode1=data_qrcode1,
-            DataQRcode2=data_qrcode2,
-            Participants_participantID=participant
-        )
+#         qr_code_instance = QRcode.objects.create(
+#             DataQRcode1=data_qrcode1,
+#             DataQRcode2=data_qrcode2,
+#             Participants_participantID=participant
+#         )
 
-        try:
-            qr_code_instance.image_qr1.save(f"qrcode_{participant.participantID}_1.png", image_qr1, save=True)
-            qr_code_instance.image_qr2.save(f"qrcode_{participant.participantID}_2.png", image_qr2, save=True)
-        except Exception as e:
-            print(f"Error saving images for participant {participant.participantID}: {str(e)}")
-    cleanup_photos()
+#         try:
+#             qr_code_instance.image_qr1.save(f"qrcode_{participant.participantID}_1.png", image_qr1, save=True)
+#             qr_code_instance.image_qr2.save(f"qrcode_{participant.participantID}_2.png", image_qr2, save=True)
+#         except Exception as e:
+#             print(f"Error saving images for participant {participant.participantID}: {str(e)}")
+#     cleanup_photos()
    
 def cleanup_photos():
     try:
@@ -506,10 +541,10 @@ def generate_csv(request):
     )
 
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="participants.csv"'
+    response['Content-Disposition'] = 'attachment; filename="procom_participants.csv"'
 
     # Define CSV headers
-    fieldnames = ['First Name', 'Last Name', 'Email', 'Phone', 'University Name', 'Contest Name']
+    fieldnames = ['First Name', 'Last Name', 'CNIC', 'Email', 'Phone', 'University Name', 'Contest Name']
 
     writer = csv.DictWriter(response, fieldnames=fieldnames)
     writer.writeheader()
@@ -518,6 +553,7 @@ def generate_csv(request):
         writer.writerow({
             'First Name': participant.firstname,
             'Last Name': participant.lastname,
+            'CNIC': participant.cnic,
             'Email': participant.email,
             'Phone': participant.phonenumber,
             'University Name': participant.universityname,
