@@ -7,8 +7,15 @@
     <title>Home</title>
     <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}" />
     <link rel="stylesheet" href="{% static 'styles_home.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:400,300"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
@@ -27,8 +34,13 @@
             <p>Scan QR-Code</p>
           </button>
         </a>
-
         {% if request.session.user_id == 'admin' %}
+        <a href="{% url 'generate_csv' %}" download="participants.csv">
+          <button>
+            <p>Presentees CSV</p>
+          </button>
+        </a>
+        {% endif %} {% if request.session.user_id == 'admin' %}
         <a href="{% url 'uploadPage' %}">
           <button>
             <p>Upload Data</p>
