@@ -261,9 +261,11 @@ def process_csv(csv_file):
     data = []
     decoded_file = csv_file.read().decode('utf-8').splitlines()
     csv_reader = csv.DictReader(decoded_file)
-
+    
     for row in csv_reader:
+        row['firstname'] = row.pop('\ufefffirstname') 
         data.append(row)
+                    
 
     return data
 
@@ -349,12 +351,10 @@ def mark_attendance(request):
                         existing_card = ParticipantCard.objects.filter(Participants_participantID=participant).exists()
                         if existing_card:
                             # If a card is already issued, send QR code 2 automatically
-                            qr2_sent_response = send_qr(request, participant.participantID, qr_type=2)
-                            qr2_sent_data = json.loads(qr2_sent_response.content)
-                            if qr2_sent_data.get('success'):
-                                return JsonResponse({'message': f'Card already issued to participant: PR-{participant.participantID}. QR code 2 sent.'})
-                            else:
-                                return JsonResponse({'message': f'Failed to send QR code 2 after issuing card to participant: PR-{participant.participantID}'})
+                            # qr2_sent_response = send_qr(request, participant.participantID, qr_type=2)
+                            # qr2_sent_data = json.loads(qr2_sent_response.content)
+                            # if qr2_sent_data.get('success'):
+                            return JsonResponse({'message': f'Card already issued to participant: PR-{participant.participantID}. QR code already sent'})
                         else:
                             # Generate participant card
                             ParticipantCard.objects.create(issuedate=timezone.now(), validitystatus='Valid', Participants_participantID=participant)
