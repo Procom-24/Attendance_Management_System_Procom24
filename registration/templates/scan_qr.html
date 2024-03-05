@@ -3,128 +3,185 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'nav.css' %}" />
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-    <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>QR Code Scanner</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'nav.css' %}" />
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title>QR Code Scanner</title>
 </head>
 
 <body>
   <div class="background-image"></div>
-  <nav >
+  <nav>
     <!-- <div class="navcontainer"> -->
-      <div class="logo">
-        <a href="{% url 'home' %}">
-          <img src="{% static 'PROCOM24_LOGO.png' %}" alt="logo" class="logo-image" />
-        </a>
-      </div>
-      <div class="hamburger" onclick="toggleMenu()">
-        <i class='bx bx-menu'></i>
-      </div>
-      <div class="right-nav">
-        <ul class="right-ul">
-          <li><a href="{% url 'home' %}" class="underline-animation">Home</a></li>
-          <li><a href="{% url 'participant_list' %}" class="underline-animation">Participants List</a></li>
-          <li><a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a></li>
-          {% if request.session.user_id == 'admin' %}
-            <li><a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a></li>
-            <li>
-              <a href="{% url 'generate_csv' %}" download="participants.csv" class="underline-animation">
-                  Presentees CSV
-              </a>
-              </li>
-          {% endif %}
-          <li><a href="{% url 'logout' %}" class="logout">LogOut</a></li>
-        </ul>
-      </div>
+    <div class="logo">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'PROCOM24_LOGO.png' %}" alt="logo" class="logo-image" />
+      </a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class='bx bx-menu'></i>
+    </div>
+    <div class="right-nav">
+      <ul class="right-ul">
+        <li><a href="{% url 'home' %}" class="underline-animation">Home</a></li>
+        <li><a href="{% url 'participant_list' %}" class="underline-animation">Participants List</a></li>
+        <li><a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a></li>
+        {% if request.session.user_id == 'admin' %}
+        <li><a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a></li>
+        <li>
+          <a href="{% url 'generate_csv' %}" download="participants.csv" class="underline-animation">
+            Presentees CSV
+          </a>
+        </li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}" class="logout">LogOut</a></li>
+      </ul>
+    </div>
     <!-- </div> -->
   </nav>
-    
+
   <div class="outerdiv">
     <div class="camera-container">
+      <style>
+        #toggle-camera-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+          border: none;
+          background-color: transparent;
+          color: #fff;
+          font-size: 16px;
+          cursor: pointer;
+        }
 
+        #toggle-camera-button i {
+          margin-right: 5px;
+        }
+
+        #toggle-camera-button:hover i {
+          color: #110a2a;
+        }
+      </style>
+      <button id="toggle-camera-button">
+        <i class="fas fa-camera"></i> Switch Camera
+      </button>
       <p>Place the QR code in the center of the camera</p>
-      <video id="camera-preview" inverted playsinline muted autoplay loop class="webcam"></video>
+      <video id="camera-preview" playsinline autoplay class="webcam"></video>
 
     </div>
   </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.2/dist/jsQR.js"></script> -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('camera-preview');
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.2/dist/jsQR.js"></script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('camera-preview');
 
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then((stream) => {
-                    video.srcObject = stream;
-                })
-                .catch((error) => {
-                    console.error('Error accessing camera:', error);
-                });
+      // Function to handle errors when accessing the camera
+      const handleCameraError = (error) => {
+        console.error('Error accessing camera:', error);
+      };
 
-            video.addEventListener('loadeddata', () => {
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
+      // Function to start the camera with the specified constraints
+      const startCamera = (constraints) => {
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then((stream) => {
+            video.srcObject = stream;
+          })
+          .catch(handleCameraError);
+      };
 
-                setInterval(() => {
-                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-                    const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-                    if (code) {
-                        console.log('Decoded QR code:', code.data);
-
-                        // Perform an AJAX query with the decoded data
-                        const decodedData = code.data;
-                        sendAjaxQuery(decodedData);
-                    }
-                }, 1000);
-            });
-            function getCookie(name) {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(";").shift();
-                return null;
-            }
-
-            function sendAjaxQuery(data) {
-                // Replace 'your_server_endpoint' with your actual server endpoint
-                const endpoint = '/mark-attendance/';
-                const csrfToken = getCookie('csrftoken');
-
-                fetch(endpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken,
-                    },
-                    body: JSON.stringify({ qrData: data }),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        alert(data.message); // You can customize this alert or update the UI accordingly
-                    })
-                    .catch(error => {
-                        console.error('Error marking attendance:', error);
-                    });
-            }
-
-        });
-
-        function toggleMenu() {
-            var nav = document.querySelector('.right-nav');
-            nav.style.display = nav.style.display === "block" ? "none" : "block";
+      // Function to toggle between front and back cameras
+      const toggleCamera = () => {
+        // Check if facingMode constraint is already set
+        if (!constraints.video.facingMode) {
+          constraints.video.facingMode = 'user'; // Start with the front camera
+        } else {
+          constraints.video.facingMode = (constraints.video.facingMode === 'user') ? 'environment' : 'user'; // Toggle between front and back cameras
         }
-    </script>
+
+        // Stop the current stream
+        video.srcObject.getTracks().forEach(track => track.stop());
+
+        // Start the camera with updated constraints
+        startCamera(constraints);
+      };
+
+      // Set initial camera constraints
+      let constraints = { video: { facingMode: 'environment' } }; // Start with the back camera on mobile devices
+
+      // Start the camera with initial constraints
+      startCamera(constraints);
+
+      // Add click event listener to toggle camera button (if any)
+      const toggleCameraButton = document.getElementById('toggle-camera-button');
+      if (toggleCameraButton) {
+        toggleCameraButton.addEventListener('click', toggleCamera);
+      }
+      video.addEventListener('loadeddata', () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        setInterval(() => {
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code) {
+            console.log('Decoded QR code:', code.data);
+
+            // Perform an AJAX query with the decoded data
+            const decodedData = code.data;
+            sendAjaxQuery(decodedData);
+          }
+        }, 1000);
+      });
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+        return null;
+      }
+
+      function sendAjaxQuery(data) {
+        // Replace 'your_server_endpoint' with your actual server endpoint
+        const endpoint = '/mark-attendance/';
+        const csrfToken = getCookie('csrftoken');
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken,
+          },
+          body: JSON.stringify({ qrData: data }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            alert(data.message); // You can customize this alert or update the UI accordingly
+          })
+          .catch(error => {
+            console.error('Error marking attendance:', error);
+          });
+      }
+
+    });
+
+    function toggleMenu() {
+      var nav = document.querySelector('.right-nav');
+      nav.style.display = nav.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
 
 </html>
