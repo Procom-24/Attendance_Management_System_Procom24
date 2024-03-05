@@ -141,7 +141,7 @@ def send_qr(request, participant_id, qr_type):
        
     except Exception as e:
         print(f"Error sending email to {participant.email}: {e}")
-        return JsonResponse({"success": False, "message": f"Error sending email to participant with ID {participant_id}."})
+        return JsonResponse({"success": False, "message": f"Error sending email to participant with ID {participant_id} : {e}"})
 
 
 
