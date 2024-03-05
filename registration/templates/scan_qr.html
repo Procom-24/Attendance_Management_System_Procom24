@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="icon" type="image/png" href="{% static 'logo icon.png' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <title>QR Code Scanner</title>
 </head>
 <body>
@@ -28,6 +29,11 @@
           <li><a href="{% url 'scan_qr' %}" class="underline-animation">Scan QR</a></li>
           {% if request.session.user_id == 'admin' %}
             <li><a href="{% url 'uploadPage' %}" class="underline-animation">Upload Data</a></li>
+            <li>
+              <a href="{% url 'generate_csv' %}" download="participants.csv" class="underline-animation">
+                  Presentees CSV
+              </a>
+              </li>
           {% endif %}
           <li><a href="{% url 'logout' %}" class="logout">LogOut</a></li>
         </ul>
@@ -37,7 +43,22 @@
   <div class="outerdiv">
     <div class="camera-container">
       <p>Place the QR code in the center of the camera</p>
-      <button id="switch-camera-button">Switch Camera</button>
+      <style>
+        #switch-camera-button {
+          background-color: #fff;
+          color: #110a2a;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        #switch-camera-button:hover {
+          background-color: #110a2a;
+          color: #fff;
+        }
+      </style>
+      <button class="fas fa-camera" id="switch-camera-button"> Switch Camera</button>
       <video id="camera-preview" inverted playsinline muted autoplay loop class="webcam"></video>
     </div>
   </div>
