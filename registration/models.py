@@ -3,12 +3,13 @@ from django.db import models
 class Participants(models.Model):
     participantID = models.AutoField(primary_key=True)
     firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255, default='-')
     cnic = models.CharField(max_length=13, default='')  # CNIC field added
     email = models.EmailField()
     phonenumber = models.CharField(max_length=20)
     universityname = models.CharField(max_length=255)
     contestname = models.CharField(max_length=255)
+    members = models.IntegerField(default=1)
     attendanceStatus = models.CharField(max_length=255, default='A')
 
     def __str__(self):

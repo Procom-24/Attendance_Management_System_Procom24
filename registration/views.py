@@ -88,6 +88,94 @@ def participant_list(request):
         return render(request, 'login.html')
 
 
+# def send_qr(request, participant_id, qr_type):
+#     try:
+#         participant = Participants.objects.get(participantID=participant_id)
+#     except ObjectDoesNotExist:
+#         return JsonResponse({"success": False, "message": f"Participant with ID PR-{participant_id} not found."})
+
+#     # Fetches the QR code related to the participant
+#     qrcode_instance = QRcode.objects.filter(Participants_participantID=participant_id).first()
+
+#     if not qrcode_instance:
+#         return JsonResponse({"success": False, "message": f"No QR code found for participant with ID PR-{participant_id}."})
+
+#     # Select the appropriate QR code image based on the qr_type.
+#     if qr_type == 1:
+#         qr_image = qrcode_instance.image_qr1
+#     elif qr_type == 2:
+#         qr_image = qrcode_instance.image_qr2
+#     else:
+#        # Handle other cases here
+#         qr_image = None  # or any other default value or error handling logic
+
+#     if not qr_image:
+#         return JsonResponse({"success": False, "message": f"No QR code image found for type {qr_type}."})
+
+#     # Path to the QR code image is fetched from the database. Actual image retrieval may depend on how the image is stored.
+
+#     # You need to set your actual subject, message, and SMTP details
+#     subject = f"QR {qr_type} for competition {participant.contestname}"
+#     message = """
+#     Subject: Important Instructions for Team Leads - Participant Cards Collection
+
+#     Dear Team Leader,
+
+#     We hope this email finds you well and excited for the upcoming event, PROCOM'24. As team leads, it is essential for you to follow certain procedures to ensure smooth registration and participation for your team.
+
+#     Attached to this email, you will find unique QR codes assigned specifically to your team. These QR codes will serve as the key to collect participant cards for your team members.
+
+#     Here are the steps you need to follow:
+
+#     1. *QR Code Collection:* Please ensure that only the designated team lead retrieves the QR codes attached to this email. If your team is participating in multiple competitions, you will receive multiple QR codes, one for each competition.
+
+#     2. *Registration Desk:* Upon arrival at the entrance gate, the team lead must present all the QR codes associated with your team at the registration desk. Our staff will scan each QR code to verify their participation in the respective competitions.
+
+#     3. *Participant Cards:* Once all QR codes are successfully scanned, participant cards will be provided to your team members. It is crucial that the entire team is present at the registration desk during this process.
+
+#     Additionally, please ensure that your team arrives at least 30 minutes prior to their competition time. Procom will not be held responsible for any inconvenience caused due to teams arriving with insufficient time.
+
+#     Please note the following:
+
+#     - *Responsibility:* Failure to present all QR codes at the registration desk will result in the inability to collect participant cards. Procom24 will not be held responsible for any inconvenience caused due to non-compliance with this procedure.
+
+#     - *Team Presence:*  The presence of the entire team at the registration desk is mandatory for the collection of participant cards. Individual team members will not be able to collect their cards separately. If any of your members are absent, rest of the team must be present with their team lead during entry. No additional team members can enter afterwards; only one entry per team is allowed.
+
+#     We appreciate your cooperation in following these instructions to ensure a seamless experience for everyone involved. If you have any questions or require further assistance, please do not hesitate to contact us.
+
+#     Best regards,
+#     PROCOM'24 Organizing Team
+#     """
+#     from_email = 'procom.net@nu.edu.pk'
+
+#     try:
+#         # Construct the email message
+#         email = EmailMessage(
+#             subject,
+#             message,
+#             from_email,
+#             [participant.email]
+#         )
+
+#         # Attach the QR code image
+#         with qr_image.open() as img:
+#             mime_image = MIMEImage(img.read())
+#             mime_image.add_header('Content-ID', f'<QR_Code_{qr_type}>')
+#             mime_image.add_header('Content-Disposition', f'attachment; filename="QR_Code_{qr_type}.png"')  # Adjust as needed
+#             email.attach(mime_image)
+
+#         # Send the email
+#         email.send()
+#         return JsonResponse({"success": True, "message": f"Email sent to participant with ID PR-{participant_id} with subject: '{subject}'"})
+       
+#     except Exception as e:
+#         print(f"Error sending email to {participant.email}: {e}")
+#         return JsonResponse({"success": False, "message": f"Error sending email to participant with ID {participant_id} : {e}"})
+
+
+from django.template.loader import render_to_string
+from django.http import JsonResponse
+
 def send_qr(request, participant_id, qr_type):
     try:
         participant = Participants.objects.get(participantID=participant_id)
@@ -103,8 +191,12 @@ def send_qr(request, participant_id, qr_type):
     # Select the appropriate QR code image based on the qr_type.
     if qr_type == 1:
         qr_image = qrcode_instance.image_qr1
+        subject='Important Instructions for Team Leads - Participant Cards Collection'
+        email_message_path = 'email_message1.txt'
     elif qr_type == 2:
         qr_image = qrcode_instance.image_qr2
+        subject='QR Code for Attendance'
+        email_message_path = 'email_message2.txt'
     else:
        # Handle other cases here
         qr_image = None  # or any other default value or error handling logic
@@ -112,18 +204,18 @@ def send_qr(request, participant_id, qr_type):
     if not qr_image:
         return JsonResponse({"success": False, "message": f"No QR code image found for type {qr_type}."})
 
-    # Path to the QR code image is fetched from the database. Actual image retrieval may depend on how the image is stored.
+    # Read the email message content from the respective file
+    email_message = render_to_string(email_message_path)
 
-    # You need to set your actual subject, message, and SMTP details
-    subject = f"Here's your QR {qr_type}"
-    message = f"Dear Participant ,\n\nPlease find your QR code {qr_type} attached.\n\nBest regards,\nProcom 24"
-    from_email = 'samaharizvi14@gmail.com'
+    # You need to set your actual subject and SMTP details
+    subject = subject
+    from_email = 'procom.net@nu.edu.pk'
 
     try:
         # Construct the email message
         email = EmailMessage(
             subject,
-            message,
+            email_message,  # Use the content from the respective file
             from_email,
             [participant.email]
         )
@@ -137,11 +229,18 @@ def send_qr(request, participant_id, qr_type):
 
         # Send the email
         email.send()
-        return JsonResponse({"success": True, "message": f"Email sent to participant with ID PR-{participant_id} with subject: '{subject}'"})
-       
+
+        # Return JSON response with success message
+        response_data = {"success": True, "message": f"Email sent to participant with ID PR-{participant_id} with subject: '{subject}'"}
+        # Pass response data to JavaScript function to show it in a popup
+        return JsonResponse(response_data)
+
     except Exception as e:
-        print(f"Error sending email to {participant.email}: {e}")
-        return JsonResponse({"success": False, "message": f"Error sending email to participant with ID {participant_id} : {e}"})
+        error_message = f"Error sending email to {participant.email}: {e}"
+        # Return JSON response with error message
+        response_data = {"success": False, "message": error_message}
+        # Pass response data to JavaScript function to show it in a popup
+        return JsonResponse(response_data)
 
 
 
@@ -156,24 +255,27 @@ def send_qr_all(request, qr_type):
     successful_deliveries = 0
     failed_deliveries = 0
 
-    # You need to set your actual subject, message, and SMTP details
-    subject = f"Here's your QR {qr_type}"
-    message = f"Dear Participant,\n\nPlease find your QR code {qr_type} attached.\n\nBest regards,\nProcom 24"
-    from_email = 'samaharizvi14@gmail.com'
-
     for participant in participants:
         # Fetches the QRcode related to the participant
         qrcode_instance = QRcode.objects.filter(Participants_participantID=participant.participantID).first()
-
         if qrcode_instance:
             # Select the appropriate QR code image based on the qr_type.
             qr_image = qrcode_instance.image_qr1 if qr_type == 1 else qrcode_instance.image_qr2
-
+            if qr_type == 1:
+                subject='Important Instructions for Team Leads - Participant Cards Collection'
+            elif qr_type == 2:
+                subject='QR Code for Attendance'
             try:
                 # Construct the email message
+                email_message_path = f'email_message{qr_type}.txt'
+                email_message = render_to_string(email_message_path)
+
+                subject = subject
+                from_email = 'procom.net@nu.edu.pk'
+
                 email = EmailMessage(
                     subject,
-                    message,
+                    email_message,
                     from_email,
                     [participant.email]
                 )
@@ -183,7 +285,7 @@ def send_qr_all(request, qr_type):
                     with qr_image.open() as img:
                         mime_image = MIMEImage(img.read())
                         mime_image.add_header('Content-ID', f'<QR_Code_{qr_type}>')
-                        mime_image.add_header('Content-Disposition', f'attachment; filename="QR_Code_{qr_type}.png"')  # Adjust as needed
+                        mime_image.add_header('Content-Disposition', f'attachment; filename="QR_Code_{qr_type}.png"')
                         email.attach(mime_image)
 
                 # Send the email
@@ -195,7 +297,7 @@ def send_qr_all(request, qr_type):
                 failed_deliveries += 1
 
     if successful_deliveries == len(participants):
-        return JsonResponse({"success": True, "message": f"Emails sent to all participants with subject: '{subject}'"})
+        return JsonResponse({"success": True, "message": f"Emails sent to all participants with subject: 'QR {qr_type}'"})
     else:
         error_message = f"Error: Failed to send emails to some participants. {failed_deliveries} emails failed."
         return JsonResponse({"success": False, "message": error_message})
@@ -230,7 +332,7 @@ def save_to_database(data):
                 # If CNIC exists, skip uploading this row
                 print(f"Multiple entry of participant with CNIC: {entry['cnic']}")
 
-        if any(value is None or value == '' for value in entry.values()):
+        if any(value is None for value in entry.values()):
             continue
 
         participant = Participants.objects.create(**entry)
