@@ -111,6 +111,7 @@
                 <th class="tabheadings">Contact NO.</th>
                 <th class="tabheadings">University</th>
                 <th class="tabheadings">Contest</th>
+                <th class="tabheadings">Members</th>
                 <th class="tabheadings">Attendance Status</th>
                 <th class="tabheadings">Send QR 1</th>
                 <th class="tabheadings">Send QR 2</th>
@@ -127,6 +128,7 @@
                 <td>{{ participant.phonenumber }}</td>
                 <td>{{ participant.universityname }}</td>
                 <td>{{ participant.contestname }}</td>
+                <td>{{ participant.members }}</td>
                 <td>{{ participant.attendanceStatus }}</td>
                 <td>
                   <a href="{% url 'send_qr' participant.participantID 1 %}"
@@ -197,6 +199,33 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Your existing JavaScript code
+            
+            function sendAjaxQuery(data) {
+                const endpoint = '/send_qr/';
+                const csrfToken = getCookie('csrftoken');
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify({ qrData: data }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display response in a popup box
+                    alert(data.message); // You can customize this alert or update the UI accordingly
+                })
+                .catch(error => {
+                    console.error('Error sending QR:', error);
+                });
+            }
+        });
+
+        
       function toggleMenu() {
         var nav = document.querySelector(".right-nav");
         nav.style.display = nav.style.display === "block" ? "none" : "block";
@@ -204,3 +233,4 @@
     </script>
   </body>
 </html>
+
