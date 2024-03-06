@@ -228,8 +228,7 @@ def save_to_database(data):
             existing_participant = Participants.objects.filter(cnic=entry['cnic']).first()
             if existing_participant:
                 # If CNIC exists, skip uploading this row
-                print(f"Skipping participant with CNIC: {entry['cnic']} as it already exists in the database.")
-                continue
+                print(f"Multiple entry of participant with CNIC: {entry['cnic']}")
 
         if any(value is None or value == '' for value in entry.values()):
             continue

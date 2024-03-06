@@ -4,7 +4,7 @@ class Participants(models.Model):
     participantID = models.AutoField(primary_key=True)
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
-    cnic = models.CharField(max_length=13, unique=True, default='')  # CNIC field added
+    cnic = models.CharField(max_length=13, default='')  # CNIC field added
     email = models.EmailField()
     phonenumber = models.CharField(max_length=20)
     universityname = models.CharField(max_length=255)
