@@ -142,7 +142,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'procom.net@nu.edu.pk'  
-EMAIL_HOST_PASSWORD = 'fajwsxlpyhbmejpt'  # Replace with the generated app password
+EMAIL_HOST_PASSWORD = 'bnopcjkqlwcgbggm'  # Replace with the generated app password
 
 #EMAIL_HOST_USER = 'ayeshaitshad124@gmail.com'  
 

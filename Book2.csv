@@ -1,72 +1,639 @@
 ﻿firstname,lastname,cnic,email,phonenumber,universityname,contestname,members
-Abbas,-,12345678912312,abbasghori0229@gmail.com,3032008961,FAST NUCES,DSA,2
-Ashad,Abdullah,12345543912313,k213296@nu.edu.pk,3032008962,FAST NUCES,DSA,1
-Asad,Abdullah,12344534634634,k213296@nu.edu.pk,3032008962,FAST NUCES,DSA,2
-Saad,Abdullah,12345546464543,k214578@nu.edu.pk,3032008962,FAST NUCES,DSA,3
-Ahad,Abdullah,12345543914533,k213402@nu.edu.pk,3032008962,FAST NUCES,DSA,3
-Shuja,Abdullah,12345543453513,k213241@nu.edu.pk,3032008962,FAST NUCES,Code Sprint,3
-Abbas,Abdullah,12345543979763,samahabatool7@gmail.com,3032008962,FAST NUCES,DSA
-Ashad,Abdullah,12345543912313,k213296@nu.edu.pk,3032008962,FAST NUCES,Chat Craft,3
-Ali,Khan,12345678912314,k214578@nu.edu.pk,3032008968,FAST NUCES,DSA,1
-Amna,Khan,12345678912315,k213296@nu.edu.pk,3032008969,FAST NUCES,DSA,4
-Anas,Khan,12345678912316,k214578@nu.edu.pk,3032008970,FAST NUCES,DSA,5
-Ayesha,Irshad,12345678912317,k214578@nu.edu.pk,3032008971,FAST NUCES,DSA,4
-Ashar,Khan,12345678912318,k224241@nu.edu.pk,3032008972,FAST NUCES,DSA,5
-Syed,Khan,12345678912319,k225156@nu.edu.pk,3032008973,FAST NUCES,DSA,5
-Soha,Khan,12345678912320,k213862@nu.edu.pk,3032008974,FAST NUCES,DSA,1
-Hamza,Khan,12345678912321,k214578@nu.edu.pk,3032008975,FAST NUCES,DSA
-Hassan,Khan,12345678912322,k214578@nu.edu.pk,3032008976,FAST NUCES,DSA
-Hina,Khan,12345678912323,k214578@nu.edu.pk,3032008977,FAST NUCES,DSA
-Iqbal,Khan,12345678912324,k214578@nu.edu.pk,3032008978,FAST NUCES,DSA
-Javed,Khan,12345678912325,k214578@nu.edu.pk,3032008979,FAST NUCES,DSA
-Kamran,Khan,12345678912326,k214578@nu.edu.pk,3032008980,FAST NUCES,DSA
-Khalid,Khan,12345678912327,k214578@nu.edu.pk,3032008981,FAST NUCES,DSA
-Khurram,Khan,12345678912328,k214578@nu.edu.pk,3032008982,FAST NUCES,DSA
-Majid,Khan,12345678912329,k214578@nu.edu.pk,3032008983,FAST NUCES,DSA
-Nadia,Khan,12345678912330,k214578@nu.edu.pk,3032008984,FAST NUCES,DSA
-Naveed,Khan,12345678912331,k214578@nu.edu.pk,3032008985,FAST NUCES,DSA
-Obaid,Khan,12345678912332,k214578@nu.edu.pk,3032008986,FAST NUCES,DSA
-Qasim,Khan,12345678912333,k214578@nu.edu.pk,3032008987,FAST NUCES,DSA
-Rabia,Khan,12345678912334,k214578@nu.edu.pk,3032008988,FAST NUCES,DSA
-Saba,Khan,12345678912335,k214578@nu.edu.pk,3032008989,FAST NUCES,DSA
-Saif,Khan,12345678912336,k214578@nu.edu.pk,3032008990,FAST NUCES,DSA
-Salma,Khan,12345678912337,k214578@nu.edu.pk,3032008991,FAST NUCES,DSA
-Sana,Khan,12345678912338,k214578@nu.edu.pk,3032008992,FAST NUCES,DSA
-Saqib,Khan,12345678912339,k214578@nu.edu.pk,3032008993,FAST NUCES,DSA
-Shahid,Khan,12345678912340,k214578@nu.edu.pk,3032008994,FAST NUCES,DSA
-Shakir,Khan,12345678912341,k214578@nu.edu.pk,3032008995,FAST NUCES,DSA
-Tahir,Khan,12345678912342,k214578@nu.edu.pk,3032008996,FAST NUCES,DSA
-Tariq,Khan,12345678912343,k214578@nu.edu.pk,3032008997,FAST NUCES,DSA
-Umar,Khan,12345678912344,k214578@nu.edu.pk,3032008998,FAST NUCES,DSA
-Usman,Khan,12345678912345,k214578@nu.edu.pk,3032008999,FAST NUCES,DSA
-Waqar,Khan,12345678912346,k214578@nu.edu.pk,3032009000,FAST NUCES,DSA
-Yasir,Khan,12345678912347,k214578@nu.edu.pk,3032009001,FAST NUCES,DSA
-Zaheer,Khan,12345678912348,k214578@nu.edu.pk,3032009002,FAST NUCES,DSA
-Zain,Khan,12345678912349,k214578@nu.edu.pk,3032009003,FAST NUCES,DSA
-Zeeshan,Khan,12345678912350,k214578@nu.edu.pk,3032009004,FAST NUCES,DSA
-Abdul,Khan,12345678912351,k214578@nu.edu.pk,3032009005,FAST NUCES,DSA
-Aslam,Khan,12345678912352,k214578@nu.edu.pk,3032009006,FAST NUCES,DSA
-Faizan,Khan,12345678912353,k214578@nu.edu.pk,3032009007,FAST NUCES,DSA
-Jamil,Khan,12345678912354,k214578@nu.edu.pk,3032009008,FAST NUCES,DSA
-Junaid,Khan,12345678912355,k214578@nu.edu.pk,3032009009,FAST NUCES,DSA
-Kashif,Khan,12345678912356,k214578@nu.edu.pk,3032009010,FAST NUCES,DSA
-Khizar,Khan,12345678912357,k214578@nu.edu.pk,3032009011,FAST NUCES,DSA
-Maqsood,Khan,12345678912358,k214578@nu.edu.pk,3032009012,FAST NUCES,DSA
-Nasir,Khan,12345678912359,k214578@nu.edu.pk,3032009013,FAST NUCES,DSA
-Rashid,Khan,12345678912360,k214578@nu.edu.pk,3032009014,FAST NUCES,DSA
-Rehan,Khan,12345678912361,k214578@nu.edu.pk,3032009015,FAST NUCES,DSA
-Saleem,Khan,12345678912362,k214578@nu.edu.pk,3032009016,FAST NUCES,DSA
-Shoaib,Khan,12345678912363,k214578@nu.edu.pk,3032009017,FAST NUCES,DSA
-Tayyab,Khan,12345678912364,k214578@nu.edu.pk,3032009018,FAST NUCES,DSA
-Younus,Khan,12345678912365,k214578@nu.edu.pk,3032009019,FAST NUCES,DSA
-Yousaf,Khan,12345678912366,k214578@nu.edu.pk,3032009020,FAST NUCES,DSA
-Zia,Khan,12345678912367,k214578@nu.edu.pk,3032009021,FAST NUCES,DSA
-Zubair,Khan,12345678912368,k214578@nu.edu.pk,3032009022,FAST NUCES,DSA
-Fahad,Khan,12345678912369,k214578@nu.edu.pk,3032009023,FAST NUCES,DSA
-Kamal,Khan,12345678912370,k214578@nu.edu.pk,3032009024,FAST NUCES,DSA
-Rizwan,Khan,12345678912371,k214578@nu.edu.pk,3032009025,FAST NUCES,DSA
-Saeed,Khan,12345678912372,k214578@nu.edu.pk,3032009026,FAST NUCES,DSA
-Adeel,Khan,12345678912373,k214578@nu.edu.pk,3032009027,FAST NUCES,DSA
-Haris,Khan,12345678912374,k214578@nu.edu.pk,3032009028,FAST NUCES,DSA
-Raheel,-,12345678912375,k214578@nu.edu.pk,3032009029,FAST NUCES,DSA,2
-Salman,-,12345678912376,k214578@nu.edu.pk,3032009030,FAST NUCES,DSA,4
+Muhammad,Zajnan Aslam,2222222222222,k230880@nu.edu.pk,3394001817,missingo,Fifa,1
+Muhammad,Hasan Bin Zahid,2222222222222,hasanzahid56763@gmail.com,3559393068,missingo,Fifa,1
+faris,faisal,3520097680287,farisfaisal2004@gmail.com,3131161183,FAST,Fifa,1
+Syed,Shabahat Hussain,2222222222222,syedmshabahathussain@gmail.com,3378097205,missingo,FIFA,1
+Asad,Tariq,2222222222222,k214899@nu.edu.pk,3322503863,missingo,Fifa,1
+Awais,Raza Umrani,2222222222222,awaisrazaum615@gmail.com,3043801832,missingo,Fifa,1
+Shayan,Rais,2222222222222,shanraisshan@gmail.com,3352621149,missingo,Fifa,1
+Ebad,Ur Rehman,2222222222222,riaz.faruqi99@gmail.com,3353218938,Sir Syed,Fifa,1
+Syed,Zaeem Ali,2222222222222,alisyedzaeem3@gmail.com,3322730492,Iqra,Fifa,1
+Muhammad,Anas,2222222222222,mohammadanas0925@gmail.com,3194062621,KU,Fifa,1
+muhammas,sudais,4200091743399,k224364@nu.edu.pk,3122466677,Fast,Fifa,1
+Maaz,Raheel Khan,4200047711513,maazraheelkhan1@gmail.com,3312301438,Sir Syed,Fifa,1
+Syed,Fakhre Hyder,4320557180237,03181312129m@gmail.com,3181312129,Sindh university campus thatta,Fifa,1
+Muhammad,ali,4250168240857,imposter4877@gmail.com,3162449436,Fast,Fifa,1
+Ahsan,Yousuf,4230131017281,ahsanyousuf2005@icloud.com,3353182368,Bahria University,Fifa,1
+Muhammad,Ammar Ibrahim Khan,4220133583327,ammarkhanmaik123@gmail.com,3141308372,FAST,Fifa,1
+Muhammad,Abdullah,4210170631939,irtizaahmed99@gmail.com,3182255211,NEDUET,FIFA,1
+Saif,Ahmed Khan,4210197959857,k224073@nu.edu.pk,3330249478,FAST,FIFA,1
+Saadequain,Yousuf Khan,4220125725927,saadequain13@gmail.com,3142214860,ApTech metro Star gate,FIFA,1
+Muhammad,Anas Hussain,4220139470941,k224401@nu.edu.pk,3351897406,FAST NU,FIFA,1
+Talha,Ahmed,4210193072655,talhaahmed2412@gmail.com,3332122488,Ned University of Engineering and Technology,FIFA,1
+AbdulHadi,Yaseen,4210168373875,abdulhadiyaseen2004@gmail.com,3260345093,FASTNUCES,FIFA,1
+Muhammad,Qasim,4230176837185,k214901@nu.edu.pk,3112693083,Fast Universit,FIFA,1
+Abdul,Wasay,4210108566625,k213435@nu.edu.pk,3178914956,FAST NUCES KHI,FIFA,1
+Taha,Ahmed,4220135633943,taha.ahd007@gmail.com,3082713838,FASTNUCES,FIFA,1
+Asim,Khan,4210114249999,asimn6062@gmail.com,3330330703,Fast,FIFA,1
+Syed,Faraan Bin Hussain,4210196342653,0131@st.thelabschool.pk,3453468881,The LAB School,FIFA,1
+Awwab,Ahmed Shaikh,4210196342653,0155@st.thelabschool.pk,3453468881,The LAB School,FIFA,1
+Muhammad,Ayaan Bin Sohail,4210197028615,0064@st.thelabschool.pk,3453468881,The LAB School,FIFA,1
+Saif,Ur Rehman,4220111931457,0169@st.thelabschool.pk,3453468881,The LAB School,FIFA,1
+Muhammad,Ibrahim,4220113892229,0157@st.thelabschool.pk,3453468881,The LAB School,FIFA,1
+Muhammad,Huzaifa,4220127666681,k230627@nu.edu.pk,3128607820,FAST,FIFA,1
+Muhammad,Hamza,4220152255503,k214588@nu.edu.pk,3132646357,FAST,FIFA,1
+Taha,sharif,4210174640125,K224145@nu.edu.pk,3302489114,FAST,FIFA,1
+Rahim,Khan,4210120546711,k214536@nu.edu.pk,3363927036,FAST,FIFA,1
+Shahrukh,wahidi,4210195191307,shahrukhwahidi12@gmail.com,3433474103,Aptech,PUBG,1
+Aarij,khawer,4220195168271,k225181@nu.edu.pk,3323921488,DJ SINDH COLLEGE,PUBG,4
+Muhammad,ali,4250168240857,k236088@nu.edu.pk,3162449436,FAST,PUBG,5
+Saeed,jakhro,4230196388547,jakhrosaeed@gmail.com,3132081471,Whales College,PUBG,4
+Momin,,4220107087251,mominnadeem66@gmail.com,3421283965,KEIT,PUBG,5
+Abdul,Ahad Khan,4250182704985,abdulahadk565@gmail.com,3121501420,Indus University,Pubg,5
+Shah,Muhammad,4410687515741,shahshahmuhammad29@gmail.com,3129315047,missingo,Pubg,5
+Syed,Hassan,4250191285987,Syed.hasan.imam25@gmail.com,3168611471,Ubit ambassador reference ( m.mehdi ),PUBG Mobile,4
+Suraksha,Sachdev,4310379451276,suraksha.bbakdkf20@ibasuk.edu.pk,3337370649,Sukkur IBA University,PUBG Mobile,4
+Muhammad,Shabbar,4210120544465,shabbaraza206@gmail.com,3368913901,NUCES Fast,PUBG Mobile,4
+Muhammad,sahban,2222222222222,muhammadsahban03433438495@gmail.com,3433438495,missingo,PUBG Mobile,5
+Teham,Shamikh,2222222222222,skullpsycho31@gmail.com,1111111111,missingo,PUBG Mobile,5
+Jawad,Ali,2222222222222,alikhanjawad37@gmail.com,1111111111,missingo,PUBG Mobile,5
+Shaheer,,2222222222222,shaheermemon96@gmail.com,1111111111,missingo,PUBG Mobile,5
+Arsim,Qasim,2222222222222,arsimgamingyt123@gmail.com,1111111111,missingo,PUBG Mobile,5
+Daniyal,Khan,2222222222222,khandaniyal493@gmail.com,1111111111,missingo,PUBG Mobile,5
+Shani,,2222222222222,shanimudassir22@gmail.com,1111111111,missingo,PUBG Mobile,5
+Daniyal,Siddiqui,2222222222222,daniyalsiddiqui102@gmail.com,1111111111,missingo,PUBG Mobile,5
+Shah,Muhammad,2222222222222,shahshahmuhammad29@gmail.com,1111111111,missingo,PUBG Mobile,5
+Muhammad,Abrar jeyaja,2222222222222,abrarjiaja68@gmail.com,1111111111,missingo,PUBG Mobile,5
+Muhammad,Sameed,4210172238593,k213100@nu.edu.pk,1111111111,missingo,PUBG Mobile,5
+Syed,Haziq,4240120696683,syedhaziq2468@gmail.com,1111111111,missingo,PUBG Mobile,5
+Muhammad,Shahzaib,4210176380513,sk3164933@gmail.com,1111111111,missingo,PUBG Mobile,4
+daniyal,sheikh,4220147619913,hbeast615@gmail.com,1111111111,missingo,PUBG Mobile,5
+Furqan,,4220127506523,shehramaptech123@gmail.com,1111111111,missingo,PUBG Mobile,5
+Muhammed,Sheharyar Siddiqui,4210105203551,shaheryarsiddiqui913@gmail.com,3341664214,missingo,PUBG Mobile,5
+Muhammed,Sheharyar Siddiqui,4210105203551,shaheryarsiddiqui913@gmail.com,3341664214,missingo,PUBG Mobile,5
+Alishaz,,2222222222222,alishazssies@gmail.com,3342048676,missingo,Chess,1
+Areeb,,4210144879663,k224623@nu.edu.pk,3072033474,Fast,Chess,1
+Omairasdaq,,4210169905417,k230840@nu.edu.pk,3366820202,Fast,Chess,1
+Muhammad,Taaha,4230152272411,k230548@nu.edu.pk,3243410764,Fast,Chess,1
+Muhammad,Anas,4210137505165,k224639@nu.edu.pk,3188939099,Fast,Chess,1
+Muhammad,Faizan Jawaid,4200071462369,fznjwd1@gmail.com,3433438767,Fast,Chess,1
+Sameer,Ahmed,4250125316577,sameer.ahmed3920@gmail.com,3343825408,SMIU,Chess,1
+M.,Shayan Liaquat,4210164237623,k213301@nu.edu.pk,3320829325,Fast,Chess,1
+Shahzaib,,4540258670141,muhammadshahzaib3444@gmail.com,3101249956,Dawood University,Chess,1
+Saad,Rasheed,4210174292123,saadrasheed20@gmail.com,3322468679,FAST,Chess,1
+Muhammad,Sameer,4230131505897,k224359@nu.edu.pk,3363352540,Fast,Chess,1
+Muhammad,Fouzan Asif Siddiqui,4220182965345,mfouzan.asif@gmail.com,3312054869,FAST NUCES,Chess,1
+Hamza,Humayun,4220168297301,k230566@nu.edu.pk,3253484262,Fast,Chess,1
+Arsh,Omar mufti,4220126109589,k224037@nu.edu.pk,3452433224,FAST,Chess,1
+Zayaan,Khan,4210177674371,zayaan.k.ladhani@gmail.com,3332509764,salim habib university,chess,1
+Nisha,Novlani,4310370249656,Nishanovlani.bscskdkf22@ibasuk.edu.pk,3347304145,Sukkur IBA,Photography Competition,1
+Aqsa,Fatima,4210192816932,k213872@nu.edu.pk,3200033490,Baqai Medical College,Photography Competition,1
+Syed,Aadil Ahmed,4210196481721,syed.aadil3011@gmail.com,3310242447,Private,Photography Competition,1
+Saad,,4210140295101,Dmdost80@gmail.com,3362218461,Sceptre,Photography Competition,1
+Shobha,Duseja,4550412472908,shobuduseja13@gmail.com,3343276037,NED university,Photography Competition,1
+M.,Saad,4220166593937,K224572@nu.edu.pk,3080011778,FAST,Photography Competition,1
+Musadiq,Gilal,4520359038097,k201681@nu.edu.pk,3433492364,FAST,Photography Competition,1
+Ismail,,2222222222222,k225005@nu.edu.pk,3340341302,missingo,Reels Competition,1
+Hamza,Khan,4220124313527,hktobeprecise@gmail.com,3334937773,UBIT,Reels Competition,1
+Hasan,Iqbal,4240155176141,hihasaniqbal@gmail.com,3443649746,Fast Nuces,Reels Competition,1
+Mirza,Abdul Wasay,4220179130407,k224087@nu.edu.pk,3368226866,FASTNU Khi,Reels Competition,1
+Zuhaib,Aziz,4530126161329,zuhaibaziz532@gmail.com,3053018726,Dawood university of engineering & Technology Karachi,Reels Competition,1
+Nihal,Ali,4210164591913,k224054@nu.edu.pk,3312956840,FAST NUCES Karachi,Reels Competition,1
+Anshmia,,4200074352216,k224151@nu.edu.pk,3028231818,FAST,Reels Competition,1
+Mah,e Seema,4220143766128,k225054@nu.edu.pk,3172027694,FAST,Reels Competition,1
+Wania,meerunlb,4250145981662,K230014@nu.edu.pk,3022271776,FAST,Scavenger Hunt,4
+Madiha,Aslam,4210179703984,k230846@nu.edu.pk,3138658089,FAST,Scavenger Hunt,4
+Omaima,Afaq,4210139477458,k230044@nu.edu.pk,3363393515,FAST,Scavenger Hunt,5
+Romeesa,Amir,4220191667660,k230701@nu.edu.pk,0333 3741835,FAST,Scavenger Hunt,5
+Ahmad,noorani,4210155639073,K230547@nu.edu.pk,3308551939,FAST,Scavenger Hunt,5
+Jahanzeb,khairi,4210106769893,K224746@nu.edu.pk,1111111111,FAST,Scavenger Hunt,5
+Shayan,,2222222222222,k224148@nu.edu.pk,3357574798,missingo,Scavenger Hunt,3
+Ahmed,Raza,2222222222222,k224422@nu.edu.pk,3352582092,missingo,Scavenger Hunt,5
+Huzaifa,Ahmed,2222222222222,k224175@nu.edu.pk,3342882358,missingo,Scavenger Hunt,5
+Muhammad,Faiq Afaq,2222222222222,k232008@nu.edu.pk,03318406464/3350611242,missingo,Scavenger Hunt,5
+Muhammad,Shayan Shaikh,2222222222222,k230761@nu.edu.pk,3162649810,missingo,Scavenger Hunt,5
+Amna,Mansoor,2222222222222,k225159@nu.edu.pk,3113808650,missingo,Scavenger Hunt,3
+Fakeha,Shakeel,2222222222222,k232039@nu.edu.pk,3412586190,missingo,Scavenger Hunt,5
+Arsal,Bin Mohsin,2222222222222,arsalbinmohsin@gmail.com,3330216661,missingo,Scavenger Hunt,5
+Syed,Abdullah Bin Tariq,2222222222222,k224253@nu.edu.pk,3360238380,missingo,Scavenger Hunt,5
+Shayan,Aamir,2222222222222,k230623@nu.edu.pk,3313261025,missingo,Scavenger Hunt,5
+mehreen,ashar,2222222222222,k230869@nu.edu.pk,3108345359,missingo,Scavenger Hunt,4
+Muhammad,Zajnan Aslam,2222222222222,k230880@nu.edu.pk,3394001817,missingo,Scavenger Hunt,5
+Umaima,Fatima,2222222222222,k236087@nu.edu.pk,3171008949,missingo,Scavenger Hunt,5
+Hamaiz,Siddiqui,4210186886489,muhammad.hamaiz8@gmail.com,3370352997,FAST,Scavenger Hunt,5
+hamza,siddique,4210186886489,k224245@nu.edu.pk,3352357700,FAST,Scavenger Hunt,5
+Abdul,Ghani,4210182972557,k213598@nu.edu.pk,3102221565,FAST,Scavenger Hunt,5
+Umer,khan,4210191485821,k230798@nu.edu.pk,3308696449,FAST,Scavenger Hunt,5
+Emanay,Arshad,4130409238520,k224602@nu.edu.pk,3341308768,FAST,Scavenger Hunt,5
+Uroosha,Zehra,4220139663648,k224048@nu.edu.pk,3333569374,FAST,Scavenger Hunt,5
+Fahad,Sheikh,4210135906183,k230579@nu.edu.pk,3308452494,FAST,Scavenger Hunt,5
+Saad,Qamar,4210159391099,saadbinqamar22@gmail.com,3352055100,FAST,Scavenger Hunt,5
+Lamia,,4220129811194,lamiajrofficial@gmail.com,3312560138,FAST,Scavenger Hunt,5
+Asad,Tariq,4220127423917,asad.tariqatf@gmail.com,3322503863,FAST,Scavenger Hunt,5
+noureen,suleman,4130384945008,K230736@nu.edu.pk,3353639141,FAST,Scavenger Hunt,4
+Warisha,Siddiqui,4220185729112,k224186@nu.edu.pk,3338954630,FAST,Scavenger Hunt,5
+Marium,Nasir,4150407548796,mariumnasir760@gmail.com,3303622088,Fast,Auto CAD,1
+Mahad,Bawani,4220183604559,k236034@nu.edu.pk,3061362869,Fast,Auto CAD,1
+Arshiya,Jumani,4220147667564,arshiyaejazjumani@gmail.com,3082294994,Fast,Auto CAD,1
+Fasih,ur Rehman,4250143597973,rehman4504911@cloud.neduet.edu.pk,3022271772,NEDUET,Auto CAD,1
+Hassin,Sikander,4210138707313,beme2245102@szabist.pk,3020812288,SZABIST,Auto Cad,1
+Saood,,4530462103047,k190413@nu.edu.pk,3162503908,Fast khi,Speed Soldering,2
+Muhammad,kamran pirzada,4240162016687,kamranpirzaada@gmail.com,3252732305,Fast Karachi campus,Speed Soldering,2
+M.Asfar,,44401080766159,K236115@nu.edu.pk,3133914625,FAST,Speed Soldering,2
+Muhammad,Saim,4220138597919,saimalee7246@gmail.com,3332401518,NED,Project Exhibition,5
+SOHAIB,AKBAR KHILJI,4250164841259,fa21beee0031@maju.edu,03434080343,MAJU,Project Exhibition,4
+Hussain,aslam,2222222222222,fa21bece0007@maju.edu.pk,303 0469468,MAJU,Project Exhibition,3
+Ahmed,Ali,2222222222222,ali.7864ahmad@gmail.com,3117785110,missingo,Block Chain Blitz,1
+Afraz,Alam,2222222222222,afrazalam140@gmail.com,3341301558,Fast,Block Chain Blitz,1
+Muhammad,Anas,4220136411515,k214556@nu.edu.pk,3341891347,FAST,Block Chain Blitz,2
+Robas,Ahmed Shah,4130585986547,robasahmedshah@gmail.com,3003626836,FAST NUCES KARACHI,Block Chain Blitz,1
+Abizar,Qutb,4230132087229,k224288@nu.edu.pk,3309335253,Fast University Karachi,Block Chain Blitz,2
+Asjad,Rehan,4220132556593,asjadbinrehan@outlook.com,3482990599,Fast KHI,Block Chain Blitz,2
+Zahra,Safdar,4230158745834,zahrasafdar06@gmail.com,3352253538,FAST,Block Chain Blitz,2
+Aliyan,Ahmed,2222222222222,aliyanahmed853@gmail.com,3232732106,missingo,UI/UX,2
+Amsal,Khan,2222222222222,amsal.k124@gmail.com,3212121751,UBIT,UI/UX,2
+Usaid,Ahmed,4210184619435,k214531@nu.edu.pk,3180010470,Fast,UI/UX,2
+Soha,Ather,4210154732038,Sohaather987@gmail.com,3012396831,Bahria University,UI/UX,1
+Dania,ishaq,4220179641314,k224811@nu.edu.pk,320 0093502,Fast,UI/UX,2
+Ruhan,Ahmed,4250174681899,k224812@nu.edu.pk,3182762468,FAST,UI/UX,1
+Syed,Muhammad Fakhir,4210139343025,mfakhir866@gmail.com,3333887340,UBIT,UI/UX,1
+Zainab,Athar,4220114776150,noorzainabathar@gmail.com,3302233682,Szabist,UI/UX,2
+Muhammad,Mujtaba,4212846784038,muhammadmujtabaofficial92@gmail.com,3343142808,FAST,UI/UX,2
+Bushra,khan,4220192005712,bushra.saquib2016@gmail.com,3131210397,PAF KIET,UI/UX,2
+Abdul,Qadeer,4310314379019,malikqadeer3005@gmail.com,3367303005,Sukkur IBA University,UI/UX,2
+Moiz,Ullah Siddiqui,4210105859169,K213572@nu.edu.pk,3352062824,FAST NUCES,UI/UX,2
+Beenish,,4200071604976,k213865@nu.edu.pk,3358100070,FAST,UI/UX,2
+Sarim,Ahmed,2222222222222,k230703@nu.edu.pk,3092149209,missingo,App Development,5
+Qirrat,Azam,2222222222222,qiratazam123@gmail.com,03363897501,DHA Suffah University,App Development,1
+Hamza,Alam Hashmi,4220109959093,hamzahalam2001@gmail.com,3022398534,UBIT,App Development,2
+Bharti,,4410388058196,k224832@nu.edu.pk,3335666150,FAST,App Development,2
+Saad,Bin Khalid,4220145950569,ayyansaad46@gmail.com,3133094567,Fast,App Development,2
+Muhammad,Saad Muzamil,4220124503949,muhammadsaadmuzamil@gmail.com,3202491438,KU,App Development,4
+Syed,Muhammad Hassan naqvi,4210170979613,Gaha87818@gmail.com,3323254380,FAST KHI,App Development,4
+Hamdan,Vohra,2222222222222,k224318@nu.edu.pk,3042021751,missingo,Pseudo War,3
+Yousuf,Ahmed Siddiqui,4210124639947,K214594@nu.edu.pk,3319765860,Fast,Pseudo War,3
+Haiqa,Khan,4250190972462,k224665@nu.edu.pk,3323108852,Fast,Pseudo War,2
+Syed,Ammar Ali,4210120450515,k230740@nu.edu.pk,3342121401,Fast,Pseudo War,3
+Hira,Iftikhar,4220194013766,k224474@nu.edu.pk,3303723129,Fast,Pseudo War,3
+Hassan,Jamal,4250103440917,k225157@nu.edu.pk,3118424040,FAST,Pseudo War,2
+S,M Irtiza Aqa Naqvi,4210199913009,k200408@nu.edu.pk,3462978964,Fast,Pseudo War,1
+haneesh,ali rizvi,4210118531348,k224240@nu.edu.pk,3188108178,Fast,Pseudo War,3
+Muaviah,Huzaifah,4220173136191,muaviahmapara@gmail.com,3071053701,Jamia Baitussalam,Pseudo War,1
+Aheed,Khan,4210181290681,k225018@nu.edu.pk,3353221442,Fast,Pseudo War,3
+Alishba,Jaffery,4210161053882,k214512@nu.edu.pk,3362240777,Fast,Pseudo War,3
+Sareem,Farooqui,4250118953310,k213381@nu.edu.pk,3152098191,FAST,Pseudo War,3
+Rohail,Rashid Khan,4210132289039,k213152@nu.edu.pk,3172569408,FAST,Pseudo War,3
+Muhammad,Khubaib Lodhi,4210147375525,k214596@nu.edu.pk,3203023729,FAST,Pseudo War,3
+Ashar,Zamir,4210153762851,ashar.zamir67@gmail.com,3131213500,FAST,Pseudo War,3
+Shariq,Hassan Khan,4210124449985,k230626@nu.edu.pk,3212069777,FAST,Pseudo War,3
+Saad,Brohi,4220169018893,k224165@nu.edu.pk,3332197912,FAST,Pseudo War,3
+Mahrukh,Shariq,4210125158900,k233023@nu.edu.pk,3172876186,FAST,Pseudo War,2
+Khadija,Ibrahim,4210177699618,k213054@nu.edu.pk,3333766584,FAST,Pseudo War,3
+Lamia,Rashid Jamal,4220129811194,k224524@nu.edu.pk,3312560138,FAST,Pseudo War,2
+Alishba,,4440459783248,alishbatahirarain@gmail.com,3413111350,Bahria University,Pseudo War,3
+Aazain,,4220153417101,syedaazainhasan@gmail.com,3076638558,Bahria University,Pseudo War,3
+Fatima,,4230148424932,fatimamumtaz486@gmail.com,3304955867,Bahria University,Pseudo War,3
+Abeer,asif,4230145031062,abeeezzqureshii@gmail.com,3141006214,Bahria University Karachi,Pseudo War,3
+Syeda,Fakhira Saghir,4250168471560,k224413@nu.edu.pk,3002129955,FAST,Pseudo War,3
+Muhammad,Ayyan Amir,4230188136379,k233010@nu.edu.pk,3323983506,FAST  Khi,Pseudo War,3
+Khoula,Marium,4210199565588,k230564@nu.edu.pk,3112401410,FAST NU,Pseudo War,2
+Asher,Ahmed,4210168113677,k230511@nu.edu.pk,3178910078,FAST,Pseudo War,2
+Nehdia,Shah,4210157454028,k230770@nu.edu.pk,3332657124,FAST,Pseudo War,3
+Syed,Ammar Asdaque,4210127802663,k213923@nu.edu.pk,3152776791,FASTNUCES,Pseudo War,3
+Zunaira,Amjad,3630257403992,azunaira036@gmail.com,3146771806,FAST,Pseudo War,2
+Aalyan,Hussain,4230107523463,aaliyanhussain2002@gmail.com,3233263529,Fast Nuces,Pseudo War,3
+Waniya,Meerub,4250145981662,k230014@nu.edu.pk,3022271776,FAST KHI,Pseudo War,2
+Haya,Amir,4220140222386,k230600@nu.edu.pk,03072274545,FAST KHI,Pseudo War,2
+Sania,,4510214000950,K230658@nu.edu.pk,3324622190,FAST,Pseudo War,3
+M.Asim,,410160366293,K224161@nu.edu.pk,3102227875,FAST KHI,Pseudo War,2
+Hafsa,noman,4220168050606,K224274@nu.edu.pk,3211100690,FASTKHI,Pseudo War,2
+Umer,taiyab,4220153625063,K232016@nu.edu.pk,03132271030,FAST,Pseudo War,2
+Ali,Ahmed,4220101720281,k224058@nu.edu.pk,3111025467,Fast khi,Pseudo War,3
+Ayan,khan,4210129776903,k228720@nu.edu.pk,3312622487,Fast khi,Pseudo War,3
+Muhammad,anas,4250190992291,K213246@nu.edu.pk,3332832905,FAST KHI,Pseudo War,2
+Hadi,armughan,4210164277391,Hadiarmughan13@gmail.com,3184890210,FAST KHU,Pseudo War,3
+Muhammad,Shahmir Ahmed Siddiqui,2222222222222,k213563@nu.edu.pk,3352650558,missingo,Capture the Flag,3
+Abdulbar,,2222222222222,k224685@nu.edu.pk,3402212025,missingo,Capture the Flag,3
+Muhammad,Hussain,2222222222222,k213584@nu.edu.pk,3302945389,missingo,Capture the Flag,3
+Muhammad,Sarim Raza,2222222222222,hackipy1337@gmail.com,3012588773,missingo,Capture the Flag,1
+Sandeep,Kumar,2222222222222,k224723@nu.edu.pk,3353770365,missingo,Capture the Flag,3
+Sarim,Mohammad Khan,4230159514643,k214754@nu.edu.pk,3323841875,Fast,Capture the Flag,3
+Anas,Saleem,4210154450233,k220500@nu.edu.pk,3131079206,Fast,Capture the Flag,3
+Shuja,,4220102319029,syedshujauddinhashmi@gmail.com,3462640729,NED,Capture the Flag,3
+Muhammad,Younis,4510124958315,younisj278@gmail.com,3014764534,Sukkur IBA,Capture the Flag,3
+Muhammad,Amir Rehman,4130381221625,amirrehman2005@gmail.com,3173903014,Fast,Capture the Flag,3
+Faez,Siddiqui,4210189087013,mo.faez.sidd@gmail.com,3452464826,Fast,Capture the Flag,2
+Syed,Uzair Ali,4410319828409,k224695@nu.edu.pk,3153358619,FAST,Capture the Flag,3
+Amna,Farooq,4210116391730,k213575@nu.edu.pk,3363762339,FAST,Capture the Flag,3
+Arham,Zulfiqar,4210169193285,k224707@nu.edu.pk,3181154942,FAST,Capture the Flag,3
+Eizza,Sakina,3840179774202,k224760@nu.edu.pk,3332453675,FAST,Capture the Flag,3
+Shaffan,Mazhar,4220164247765,shaffan2938@gmail.com,3341668844,DHA Suffa,Capture the Flag,3
+Abdullah,Shahbaz,4210174028671,Megachar0x01@protonmail.com,3092290554,FUUAST,Capture the Flag,3
+Amna,Binte Mudabbir,4220163028564,bintemudabbir@gmail.com,3131215507,FAST,Capture the Flag,3
+Lachman,Das,4410131439345,lachmand26@gmail.com,3344270801,Fast karachi,Capture The Flag,2
+Hamdan,Qureshi,4220187549385,k200327@nu.edu.pk,3112268187,FAST NUCES Karachi,Capture The Flag,3
+Rameel,Saleem Subzwari,4220174089415,k213564@nu.edu.pk,3203084091,FAST,Capture The Flag,3
+Muhammad,Omar Faizi,4210139184061,k201757@nu.edu.pk,3308473287,FAST NUCES KARACHI,Capture The Flag,3
+Abdullah,shaikh,4220103947023,k214783@nu.edu.pk,3100033956,fast nuces,Capture The Flag,3
+Moosa,Ahmed,4210127413547,k224703@nu.edu.pk,3152823731,FAST NUCES,Capture The Flag,3
+Huzaifa,ghori,4210164340211,k213602@gmail.com,3342317370,Fast,Capture The Flag,3
+Murtaza,,4200005915619,k214758@nu.edu.pk,3430084124,Fast karachi,Capture The Flag,2
+Umar,Saad,4210120254559,jehangiri777@gmail.com,3343388474,FAST NUCES,Capture The Flag,3
+Ahmed,Pinger,4220174378111,pingerahmed@gmail.com,3337746437,Southern Illinois University,Capture The Flag,1
+Huzaifa,Siraj,4210167747177,huzaifasiraj4@gmail.com,3001399149,FAST,Capture The Flag,3
+Muhammad,shaheer khan,4200058873929,k213311@nu.edu.pk,3182816979,Fast,Capture the Flag,3
+Kashmala,hashmi,4220168393444,K213579@nu.edu.pk,03312316078,FAST,Capture the Flag,3
+Moiz,Ullah Siddiqui,4210105859169,K213572@nu.edu.pk,3352062824,FAST NUCES,UI/UX,2
+Yousuf,Raza,2222222222222,k225079@nu.edu.pk,3060288911,missingo,Web Development,2
+Ali,Asad Sayani,2222222222222,aliasadsayani28@gmail.com,3339255147,missingo,Web Development,2
+Maham,Tahir,2222222222222,mahamst31@gmail.com,3122410173,missingo,Web Development,3
+Mohammad,Riyan,2222222222222,mohammadriyan428@gmail.com,3120287142,missingo,Web Development,3
+Muhammad,Faseeh,2222222222222,cfaseeh@gmail.com,3202253676,missingo,Web Development,3
+Ammar,,2222222222222,zulfiaarammar8@gmail.com,3061821180,missingo,Web Development,1
+M,Shoaib Hussain,2222222222222,kaifhussain026@gmail.com,3112664496,KASBIT,Web Development,2
+Rameen,,2222222222222,rameenshakil9@gmail.com,3412969396,AlYes,Web Development,1
+Sundus,khalid,2222222222222,sunduskhalid121@gmail.com,3182153814,Aptech,Web Development,2
+Bilal,Ahmed,4250176710501,zaheerbilal440@gmail.com,3068373530,Virtual University,Web Development,1
+Adnan,Ahmed,3810191891723,adnanahmedbilalbn@gmail.com,3023081256,KIET,Web Development,3
+Abdul,Hammad,4410272351069,ghumanhammad420@gmail.com,3353463895,Fast,Web Development,3
+Syed,Muhammad Umar,4210163639969,umarbinuzair2006@gmail.com,3102457792,NED,Web Development,3
+Shahzaib,,4540258670141,muhammadshahzaib3999@gmail.com,3101249956,Dawood University,Web Development,3
+Muhammad,Hassaan,4230179407885,k230570@nu.edu.pk,3367871326,FAST,Web Development,3
+Abdul,Rafay,4230199389321,k213076@nu.edu.pk,3101367105,FAST,Web Development,1
+Zainab,Talha,3740564874380,k214941@nu.edu.pk,3303210346,FAST,Web Development,3
+Syed,Muhammad Huzaifa Aslam,4200099606689,huzaifa.oct@gmail.com,3318354551,NED,Web Development,3
+Abhishek,Kumar,4350305361811,abhishekkumar.bscsf21kdk@ibasuk.edu.pk,3337303712,Sukkur Institute of Business Administration,Web Development,3
+Mohsin,Ali Khan,4220117723583,mohsinalihere@gmail.com,3180200601,Sindh Madressatul Islam University,Web Development,2
+Syed,Ukkashah Ahmed Shah,4210174903701,k230055@nu.edu.pk,3334030002,FAST NUCES,Web Development,3
+Ibrahim,Johar,4250131872289,k230074@nu.edu.pk,3002154419,FASTNUCES,Web Development,3
+Salman,Ahmed,4250130868401,say2salmanahmed@gmail.com,3192721646,SMIT,Web Development,3
+Syed,Talha Hussain,4200099785005,pc16777.syedtalhahussain@gmail.com,3193511792,Sir Syed University of Engineering and Technology,Web Development,3
+Muhammad,Asad Siddiqui,4210185085165,asadsiddiqui616@gmail.com,3308310690,GDSC DHA SUFFA,Web Development,3
+Muhammad,,4200073135041,k213899@nu.edu.pk,3363063471,FAST NUCES,Web Development,2
+Anas,Hassan,4250137730111,k201726@nu.edu.pk,3182104413,FAST,Web Development,3
+Muhammad,Abbas,4230181896975,abbasmohammad812@gmail.com,3322236757,NUCES FAST karachi,Web Development,3
+Syed,Muhammad shees ali,4210142107525,Sheessyed101@gmail.con,3131087151,FAST KHI,Web Development,3
+Sameer,Ahmed,4140538967573,k225193@nu.edu.pk,3043313007,FAST,Web Development,2
+Fatima,Farhan,2222222222222,k224217@nu.edu.pk,3162125686,missingo,Code Sprint,3
+Abdur,Rehman Aziz,2222222222222,rehmanaziz1246@gmail.com,3142377070,missingo,Code Sprint,3
+Abdul,Rafey,2222222222222,k224182@nu.edu.pk,3351442299,Fast,Code Sprint,3
+Mikail,Iqbal,2222222222222,k230841@nu.edu.pk,3022999880,Fast,Code Sprint,3
+Syed,Ezaan Hussain,4210176997875,k224531@nu.edu.pk,3122759217,Fast,Code Sprint,3
+Usama,Meer,4250128260479,usamameer256@gmail.com,3102501425,KU,Code Sprint,3
+Hasnain,Shabbir,4210106488055,hasnainshabbir124@gmail.com,3343237362,UBIT,Code Sprint,3
+Hamad,Saqib,4210126159767,hamadsaqib2@gmail.com,3172772704,UBIT,Code Sprint,3
+Muhammad,Taaha,4230152272411,taaha2004@gmail.com,3243410764,Fast,Code Sprint,3
+Fiza,Farooq,4250115013978,k224546@nu.edu.pk,3014997152,Fast,Code Sprint,2
+Kirsh,Kumar,4550183003353,k230021@nu.edu.pk,3203990568,FAST,Code Sprint,2
+Muhammad,Abdul Rehman,4259198475391,k224291@nu.edu.pk,3258985639,FAST,Code Sprint,2
+Muhammad,Noman Asif Khan,4220144023251,k225007@nu.edu.pk,3363438254,FAST,Code sprint,3
+Kinza,Afzal,4210157969742,K230842@nu.edu.pk,3362487562,FAST,Code Sprint,3
+Naba,Yousuf,4230130009586,nabay0519@gmail.com,3312416587,DHA Suffa,Code Sprint,3
+Muhammad,Ahmed,4230145656241,k225181@nu.edu.pk,3048855049,Fast,Code Sprint,3
+Keertan,lal,4510354699013,kirtanrakhria27@gmail.com,3192449624,Fast,Code Sprint,1
+Ahmed,Mustafa,4330445061245,k213370@nu.edu.pk,3132538919,FAST,Code Sprint,3
+Tarooba,Ahmed,4210120134230,taroobaahmed991@gmail.com,3343460967,FAST ICS,Code Sprint,2
+Mohammad,Abdurrahman amir,4220143256027,k224150@nu.edu.pk,3332459272,FAST,Code Sprint,3
+Bilal,Shakeel,4220152417503,k224191@nu.edu.pk,3373244433,FAST,Code Sprint,3
+Muhammad,Rehan Khan,5440032926565,k213172@nu.edu.pk,3352923275,FAST,Code Sprint,3
+Muhammad,Umar Naeem,4200023494321,k213968@nu.edu.pk,3384023924,FAST,Code Sprint,2
+Mohammad,Azain,4200005324791,Mohammadazain21@gmail.com,3313443547,FAST,Code Sprint,3
+Abrar,Malik,4210192162059,k224429@nu.edu.pk,3199242495,FAST,Code Sprint,3
+Muhammad,Salar,4130634046671,k214619@nu.edu.pk,3343246729,FAST,Code Sprint,3
+Muhammad,Zubair,4220188718235,m.zubair162004@gmail.com,3498281411,NED,Code Sprint,1
+Areeb,Ahmed,4210144879663,areebirfan585@gmail.com,3072033474,FAST,Code Sprint,3
+Syed,Onais Ali Shah,4210128998763,onaisali4952@gmail.com,3332127720,FAST,Code Sprint,3
+Heo,Juseong,0000M765Q7859,k224576@nu.edu.pk,3111188819,FAST NUCES,Code Sprint,3
+Rayyan,Ali,4230156993961,k230532@nu.edu.pk,3242491707,FAST,Code Sprint,3
+Muzammil,Siddiqui,4210103747529,k232001@nu.edu.pk,3062234484,FAST,Code Sprint,3
+Hassan,shaikh,4220189247481,Shaikhhassan921@gmail.com,3313127949,FAST,Code Sprint,3
+Sumair,,4330422631013,sumairaliphulpoto1232@gmail.com,3223400816,Sukkur IBA University,Code Sprint,3
+Ibad,ur Rehman,4220197963011,k230517@nu.edu.pk,3353740242,FAST,Code Sprint,3
+Syed,Faaiz Noman,4250121827739,faaiznoman713@gmail.com,3152670715,Bahria uni karachi,Code Sprint,3
+Hafsa,Shakeel,4210132466950,k225013@nu.edu.pk,3312824323,FAST KHI,Code Sprint,3
+Nomeer,Ahsan,4210159979425,k232040@nu.edu.pk,3303714539,FAST NUCES,Code Sprint,3
+Syeda,Zunaira Ali,4210119273444,k230751@nu.edu.pk,3357864729,Fast NUCES Karachi,Code Sprint,3
+Abdul,Qadir Tareen,4220158606357,i222127@nu.edu.pk,3049088492,FAST NUCES KARACHI,Code Sprint,3
+Mohammad,Burhanuddin,4210103167203,k213358@nu.edu.pk,3368136386,Fast university,Code Sprint,3
+Avinash,,4510118489423,avighai17@gmail.com,3313166064,Fast Nuces,Code Sprint,3
+Tulaib,Tauseef,4220161699179,k224437@nu.edu.pl,3120980369,Fast,Code Sprint,2
+Sareena,Shahid,4230184466292,sareenashahid5678@outlook.com,3350381698,Behria University,Code Sprint,3
+Raza,Jaun,4220155297799,razajaunwadiwala@gmail.com,3367021999,University Of Karachi,Code Sprint,3
+Arslan,Amir,4220142385169,k224208@nu.edu.pk,3201245762,Fast,Code Sprint,2
+Syed,Abdullah Azzam,4220196245721,syedabdullahazzam@gmail.com,3003394939,FAST  NUCES Karachi,Code Sprint,2
+Muneeb,Azeem,4220188006051,k213167@nu.edu.pk,3323738272,FAST NUCES,Code Sprint,3
+Muhammmed,Saleem,4210144911295,muhammadsaleemyameen.91@gmail.com,3312886035,Dha Suffa University,Code Sprint,3
+Muhammad,Arish Khan,4220140773289,k224118@nu.edu.pk,3554657687,FAST NUCES,Code Sprint,3
+Muhammad,Sabeeh,4200045211811,k230002@nu.edu.pk,3010089951,NUCES FAST KARACHI,Code Sprint,3
+Rahim,Khan,4210120546711,k214536@nu.edu.pk,3363927036,FAST,Code Sprint,3
+hasnain,raza,4200010466385,k224284@nu.edu.pk,3408677738,fast,Code Sprint,3
+Arqam,Habib,4420694163987,arqamghauri3@gmail.com,3162371173,missingo,Code Sprint,3
+M.UMER,,4250194172783,K224160@nu.edu.pk,3320327940,FAST KHI,Code Sprint,3
+Taha,ashraf,4210191020453,K230697@nu.edu.pk,3121277319,FAST KHI,Code Sprint,3
+Hahaha,iqbal,6110177945478,K225178@nu.edu.pk,03015540208,FAST,Code Sprint,2
+Kumail,,5440023693293,K230791@nu.edu.pk,3305961799,FAST,Code Sprint,3
+Aun,abbas,4250180349281,K224059@nu.edu.pk,3408379300,FAST KHI,Code Sprint,3
+Umer,orakzai,4200039141529,K224084@nu.edu.pk,3351255502,FAST,Code Sprint,3
+Hasheem,iftikhar,4230152165077,k224350@nu.edu.pk,3042623508,Fast,Code Sprint,3
+Moiz,ul haq,4220118637203,k224587@nu.edu.pk,3360077707,Fast,Code Sprint,3
+Abdul,ahad munaf,4200039502001,K230590@nu.edu.pk,3302983005,FAST KHI,Code Sprint,3
+sandesh,ghayani,4350203618625,k232004@nu.edu.pk,3337155515,fast khi,Code Sprint,3
+moiz,siddiqui,4210151838775,k232080@nu.edu.pk,3332078787,fast khi,Code Sprint,3
+Umer,Rehman,4220115606023,K224467@nu.edu.pk,3363121868,Fast khi,Code Sprint,3
+Babar,subzwari,4230171602097,K213202@nu.edu.pk,3352172480,FAST KHI,Code Sprint,3
+Anas,Shoaib,4220151063409,k224833@nu.edu.pk,3353215645,FAST,Code Sprint,3
+Samay,kumar,4550180490145,k230620@nu.edu.pk,3363270516,Fast khi,Code Sprint,3
+Haseeb,mujtaba,6110185750199,K224307@nu.edu.pk,3362220332,Fast,Code Sprint,3
+Saad,Ahmed,4220169046695,K224345@nu.edu.pk,03122260640,FAST,Code Sprint,3
+Muhammad,Murtaza,4530132470193,k213804@nu.edu.pk,3166699155,FAST KHI,Code Sprint,3
+Muhammad,Ismail Awan,4250197827321,k224225@nu.edu.pk,3154969781,FAST,Code Sprint,3
+Affan,jan,4220134115997,K224475@nu.edu.pk,3208381276,FAST KHI,Code Sprint,3
+Syed,Muhammad Mehdi,4210102229815,k224480@nu.edu.pk,3323388793,FAST,Code Sprint,3
+Sameed,hassan,4240106174095,K224447@nu.edu.pk,3343304832,FAST,Code Sprint,3
+Hamza,Ahmed,4220150496663,k230636@nu.edu.pk,3342228071,FAST,Code Sprint,3
+Ashna,jamal,4210135129068,Ashna_jamal21@live.com,3241291802,FAST KHI,Code Sprint,2
+Rida,Qazi,4210191191932,K224409@nu.edu.pk,3362073453,FAST KHI,Code Sprint,3
+Abdul,wasey,4220117420195,K224172@nu.edu.pk,3040122112,FAST KHI,Code Sprint,3
+Alishba,hassan,4220152022980,K224333@nu.edu.pk,3302544306,FAST KHI,Code Sprint,3
+Aehris,hashmi,4210105190777,K230870@nu.edu.pk,3342883231,FAST KHI,Code Sprint,2
+Sajjad,Ahmed,4210109395695,K230754@nu.edu.pk,3368551684,FAST KHI,Code Sprint,3
+Mohammad,Hammad ud din,4220112739755,K230863@nu.edu.pk,3222978119,FAST KHI,Code Sprint,3
+M.omer,khan,4210188881851,K224418@nu.edu.pk,3337227870,FAST KHI,Code Sprint,3
+Ahad,Aziz,4210142081813,k213241@nu.edu.pk,3072924474,FAST,Code Sprint,3
+Wasay,,4210108566625,k213435@nu.edu.pk,1111111111,FAST,Code Sprint,2
+Muhammad,Danish,2222222222222,k224381@nu.edu.pk,3153400742,Fast,Hackathon,4
+Abdullah,Ellahi,4230139260291,k225190@nu.edu.pk,3118151508,Fast,Hackathon,4
+Hasan,Abdul Rehman Qadir,9040601991003,k228727@nu.edu.pk,3232572321,Fast,Hackathon,4
+Shehzeen,Fatima,4250133064036,syedi98@hotmail.com,3327816461,QamareBani Hashim Higher Secondary School,Hackathon,4
+Aawaiz,Ali,4220162361147,k224573@nu.edu.pk,3153738555,Fast,Hackathon,3
+Syed,Ali Murtza,4220107550863,k224297@nu.edu.pk,3162211320,Fast,Hackathon,3
+Hammad,Anwar,4250189269912,hammad.anwar3464@gmail.com,3344732994,Fast,Hackathon,3
+Murtaza,Abbas,4220189399685,k224368@nu.edu.pk,3358130438,Fast,Hackathon,3
+Syed,Haider Murtaza,4240139608387,k230666@nu.edu.pk,3320008917,Fast,Hackathon,3
+Amna,,4230193659610,k230066@nu.edu.pk,3303788088,FAST,Hackathon,4
+Abdul,Mateen Mudassir,4200004657889,k225070@nu.edu.pk,3111657322,FAST,Hackathon,3
+Rao,Hashir,4250188946541,k213337@nu.edu.pk,3101122205,FAST,Hackathon,3
+Usman,Ghani,4410285446619,usmankk645@gmail.com,3179660640,FAST,Hackathon,4
+Tehseen,Karam,4210152891645,tehseenkaram781@gmail.com,3272298437,Fast,Hackathon,4
+sanjna,,4430389703400,k232022@nu.edu.pk,3342511870,FAST,Hackathon,2
+Keyaan,Minhas,4220103957187,keyaanminhas@gmail.com,3101039037,Nixor College,Hackathon,1
+Abdul,Moiz,4220149435137,sheikhmoizshahbaz1@gmail.com,3353075337,FAST,Hackathon,4
+Faez,Siddiqui,4210189087013,k213617@nu.edu.pk,3452464826,FAST,Hackathon,4
+Neha,Aamir,4140956974944,k224116@nu.edu.pk,3323301210,Fast,Hackathon,4
+Huzaifa,Quershi,4210162529905,huzaifa981981@gmail.com,3361208880,NED,Hackathon,4
+Uswa,Safdar,3130364003334,k233017@nu.edu.pk,3499558695,FAST,Hackathon,4
+Uzain,Ahmed,4210166206167,k224319@nu.edu.pk,3332275445,FAST,Hackathon,4
+Muhammad,hassaan,4160107024997,m.hassaan10.mh10@gmail.com,3181327942,FAST,Hackathon,4
+Mohammad,Anas,4230184179715,anassarwar14@gmail.com,3363884230,FAST,Hackathon,3
+Abdul,Rehman,4130288123547,abdulrehmanq028@gmail.com,3103077442,FAST,Hackathon,4
+abdul,rafay,4130703675413,k214591@nu.edu.pk,3238257821,FAST,Hackathon,2
+Basit,Ali,4220174213205,k214510@nu.edu.pk,3332482468,FAST,Hackathon,4
+Syed,Abdul Rehman,4210148360713,k213156@nu.edu.pk,3353278656,FAST,Hackathon,3
+Roohan,Ahmed,4210162074961,roohanbvs@gmail.com,3032160324,FAST,Hackathon,4
+Muhammad,Taha,4250124984305,tahayousuf14@gmail.com,3062710857,FAST,Hackathon,4
+Hassan,Ahmed Khan,4210168270787,hassanahmedkhan1st@gmail.com,3406422085,KU,AI Showdown,3
+Syed,Saad Ullah Hussaini,4210137028395,k214736@nu.edu.pk,3192051692,Fast,AI Showdown,3
+Azaan,Nabi Khan,4220153587941,k213208@nu.edu.pk,3002408350,Fast,AI Showdown,3
+Muhammad,Fahad Qureshi,4230115410637,qmuhammadfahad@gmail.com,3310400294,UBIT,AI Showdown,1
+Aizaz,Usman,4220161342711,aizazusman4698@gmail.com,3107991693,Private,AI Showdown,1
+Sajad,Ali,4170107345399,sajjadbaba7866@gmail.com,3153751569,FAST,AI Showdown,3
+Abdullah,Baqai,4210197189735,k214710@nu.edu.pk,3112543889,Fast,AI Showdown,3
+Muhammad,Ibrahim,4210131066283,K213093@nu.edu.pk,3333717630,Fast,AI Showdown,3
+Muhib,Siddiqui,4210134245385,k213089@nu.edu.pk,3452173033,Fast,AI Showdown,3
+Muhammad,Murad,4510175097283,k213064@nu.edu.pk,3493136976,Fast,AI Showdown,3
+Subhan,Khurshid,3520050356103,k213096@nu.edu.pk,3344202595,Fast,AI Showdown,2
+Faisal,Khan,4200045834255,k214727@nu.edu.pk,3400035419,Fast,AI Showdown,3
+Hammad,sharif,4220168849459,k236051@nu.edu.pk,3475771803,Fast,AI Showdown,1
+Ahmed,Raza,4220154892115,k213056@nu.edu.pk,3019362064,Fast,AI Showdown,1
+Sidra,Shakeel,4230111735598,sidrashakeelkhan2005@gmail.com,3332607766,Denning,AI Showdown,1
+Alyan,Khowaja,4110470501305,k213262@nu.edu.pk,3342701877,Fast,AI Showdown,3
+Tayyib,Ismail,4230169756895,tayyibismail1234@gmail.com,3322977266,Fast,AI Showdown,3
+Aroon,Kumar,4520744232721,k214707@nu.edu.pk,3043860166,Fast,AI Showdown,3
+Muhammad,Ameen Bohio,4530497781419,k224086@nu.edu.pk,3055743656,Fast,AI Showdown,3
+Muhammad,Ismail Awan,4250197827321,k224225@nu.edu.pk,3154969781,FAST,AI Showdown,2
+Roain,kumar,4410412939667,k213184@nu.edu.pk,3313044524,FAST,AI Showdown,1
+Hairam,Naseem,3520285220097,hairam90@gmail.com,3008804447,Fast,AI Showdown,3
+Muhammad,Hassan,4220187106801,k213576@nu.edu.pk,3168958159,Fast,AI Showdown,3
+Junaid,Sayani,4200076249021,k213401@nu.edu.pk,3142159553,Fast,AI Showdown,3
+Abdul,Mateen Mudassir,4200004657889,abdulmateenmudassir@gmail.com,3111657322,FAST,AI Showdown,2
+Shaeel,bin khalil,3730198796843,k214741@nu.edu.pk,3110276465,FAST,AI Showdown,3
+Ali,Raza,4210176563285,aaleeraza998@gmail.com,3121191768,FAST,AI Showdown,3
+Arham,Shahbaz,4220149434187,k201739@nu.edu.pk,3493134313,FAST,AI Showdown,1
+Abdul,Qadeer,4310314379019,qadeermalik3005@gmail.com,3367303005,Sukkur IBA,AI Showdown,1
+Yusra,,4210104462728,k213446@nu.edu.pk,3353851031,FAST,AI Showdown,3
+Syed,Aadil Ahmed,4210196481721,aadil.ahmed1@gmail.com,3310242447,FAST,AI Showdown,1
+Muhammad,Sarim Khan,4220123821835,k201682@nu.edu.pk,3323814267,FAST,AI Showdown,3
+Ismail,,4210124691165,k213118@nu.edu.pk,3340202266,FAST,AI Showdown,3
+Keyaan,Minhas,4220103957187,ka4ma777@gmail.com,3101039037,Nixor College,AI Showdown,1
+Abdul,Haseeb,4170106368703,k225069@nu.edu.pk,3003007163,FAST,AI Showdown,1
+Sameer,Uddin,4210173349443,k214716@nu.edu.pk,3487402997,FAST,AI Showdown,3
+Taha,Ahmed,4210170965167,K214833@nu.edu.pk,3171201701,FAST,AI Showdown,3
+Syed,Salman Ali Zaidi,4220138807939,K214598@nu.edu.pk,3030356646,FAST,AI Showdown,3
+Rayyan,Alam,4210111743577,k224373@nu.edu.pk,3012477280,FAST,AI Showdown,4
+Gautam,kumar,4310322915391,gautamthorani@gmail.com,3343400616,Sukkur IBA,AI Showdown,2
+Fahad,Zahid,4210185543001,k201637@nu.edu.pk,3352546857,FAST,AI Showdown,3
+Mufaddal,Hatim,4230111122191,mufaddalhatim53@gmail.com,3082352320,Szabist,AI Showdown,2
+Dhanesh,Kumar,4420512305107,k214581@nu.edu.pk,3208763368,FAST,AI Showdown,3
+Syed,Muhammad Irtiza,4250181424483,irtiza.s2918@gmail.com,3181122703,FAST,AI Showdown,3
+Syed,Muhammad Affan Razvi,4220148826829,syedaffan1095@gmail.com,3323107289,DHA Suffa,AI Showdown,3
+Muhammad,Hammad,4160106354637,i230544@nu.edu.pk,3120323690,Fast,Game Development,5
+Baas,zunnaiyyer,4210197160119,baaszunnaiyyer@gmail.com,3493131433,UBIT,Game Development,1
+Syed,Muhamamad Ismail Ul Haq,4210195773165,syedismailulhaq@gmail.com,3118362984,FAST,Game Development,5
+AbdulRahim,Siddiqui,4220158836089,abdulrahim381996@gmail.com,3043155377,DHA Suffa,Game Development,1
+Muhammad,Hasan,2222222222222,muh.hasan914@gmail.com,3222512211,missingo,Code in the Dark,3
+Sabih,Uddin,2222222222222,k224347@nu.edu.pk,3358155374,missingo,Code in the Dark,2
+Muhammad,Waqas,4530248694519,mwaqasm4530@gmail.com,3133010095,Aptech,Code in the Dark,3
+Muhammad,Ehan Ahmed,4220190944703,k213366@nu.edu.pk,3242814574,Fast,Code in the Dark,2
+Anas,Hussain,4220159233051,anashussain2711@gmail.com,3344488941,UBIT,Code in the Dark,1
+Asghar,ali,4230189949905,k224415@nu.edu.pk,3192583564,FAST,Code in the Dark,3
+Aliyan,Ahmed Naqvi,4210140198255,k213266@nu.edu.pk,3312932375,FAST,Code in the Dark,3
+HAFSA,IMTIAZ,4210157126278,hafsaimtiaz0915@gmail.com,3113865434,NED,Code in the Dark,3
+Syed,Ghalib Hussain Zaidi,4250121711721,k224536@nu.edu.pk,3052531932,FAST,Code in the Dark,3
+Muhammad,Arman Khan,4210191749807,armankhanp766@gmail.com,3102985611,FAST,Code in the Dark,3
+Muhammad,Shaheer,4210191175077,k213323@nu.edu.pk,3353186729,FASTNUCES,Code in the Dark,3
+Muhammad,Abid Zafar Khan,4210186294611,k230835@nu.edu.pk,3362394885,FAST NUCES KHI,Code in the Dark,3
+Zain,Kizilbash,4220154168719,k214675@nu.edu.pk,3442848832,Fast,Code in the Dark,3
+Muhammad,Saqlain,4220148860361,mohammadsaqlain253@gmail.com,3498725789,UBIT,Code in the Dark,2
+Abdullah,Farooqui,4210145127449,k224257@nu.edu.pk,3323357597,Fast Karachi,Code in the Dark,3
+Adina,Faraz,4130429361876,k230008@nu.edu.pk,3473885896,FAST Karachi,Code in the Dark,3
+Saad,Rashid,4220185809385,k224108@nu.edu.pk,3312795144,FAST,Code in the Dark,2
+Muhammad,Talha Shaikh,4250112836761,k214564@nu.edu.pk,3278242103,FAST Karachi,Code in the Dark,3
+Owais,Rafiq,4230179821441,k232042@nu.edu.pk,03363277876,FAST Karachi,Code in the Dark,3
+Ghulam,hussain,4220193674211,K224280@nu.edu.pk,3062703259,FAST Karachi,Code in the Dark,4
+Abdul,Hadi,4250157209351,k233041@nu.edu.pk,3072121275,FAST Karachi,Code in the Dark,3
+Hassan,baig,4210164612039,K224696@nu.edu.pk,3313779306,FAST Karachi,Code in the Dark,3
+Akshay,Mandhan,4350304922043,k214658@nu.edu.pk,3351295802,FAST,Code in the Dark,3
+Baneen,Fatima,2222222222222,k213833@nu.edu.pk,3332998469,Fast,Database Design,3
+Bilal,Hasan,4130426544199,k214669@nu.edu.pk,3213006903,Fast,Database Design,2
+Muhammad,Isam,4210180360413,isamboy94@gmail.com,3330205458,Bahria University,Database Design,3
+Murtaza,Ahmed,4210152022589,k213440@nu.edu.pk,3131075880,Fast,Database Design,3
+Abeer,Saad,4220161286680,k214862@nu.edu.pk,3082284197,Fast,Database Design,2
+Arham,Raza,4220141997669,arhamraza1@hotmail.com,3343664034,Bahria University,Database Design,3
+muhammad,adeel shariff,4200005702687,adeelshariff26@gmail.com,3363432340,Bahria University,Database Design,3
+Syed,Salman Ali Zaidi,4220138807939,k214598@nu.edu.pk,3030356646,Fast,Database Design,3
+Shaheer,Badar,4210175907401,Shaheerbadar35@gmail.com,3328205514,Fast,Database Design,2
+Qasim,hasan,4220109679771,k213210@nu.edu.pk,3342170946,Fast,Database Design,3
+Ashhad,Hassan Siddiqui,4210143636289,k213248@nu.edu.pk,3131008297,Fast,Database Design,3
+Umer,Tariq,4200091999733,umer.tariq3261@gmail.com,3322742538,FAST,Database Design,2
+Samia,illyas,4220155922574,k214947@nu.edu.pk,3072680846,FAST,Database Design,3
+Muhammad,Hamza,4220141296963,k213253@nu.edu.pk,3312338867,FAST,Database Design,3
+Muhammad,Hassan,4220160078867,k214577@nu.edu.pk,3471267196,FAST,Database Design,3
+Syed,Kashan Raza,4210116949111,syedkreza14@gmail.com,3323726604,University of Karachi,Database Design,2
+Syed,Khizar Ali,4210109943341,k213329@nu.edu.pk,3212153986,FAST NUCES,Database Design,3
+Mehreen,Fatima,4210163379110,k213233@nu.edu.pk,3212164870,FASTNUCES,Database Design,3
+Yousha,Masood,4220190924123,k213928@nu.edu.pk,3341289583,FAST NUCES karachi,Database Design,3
+Ramiz,Tabani,4210196383039,k213268@nu.edu.pk,3362379769,FAST NUCES,Database Design,3
+Anfaal,Abdul Hai,4230133372114,k214879@nu.edu.pk,3322767525,Fast Nuces,Database Design,2
+Sheza,Farooq,3330333126600,k213240@nu.edu.pk,3322139209,FAST,Database Design,2
+Love,Kumar,4440462316537,k213354@nu.edu.pk,3163158504,FAST,Database Design,3
+Ahsan,Ashraf,4220125428899,K213186@nu.edu.pk,3132135384,National University of Computer and Emerging Sciences,Database Design,3
+Aman,Raj,4350304274279,araj32279@gmail.com,3353194297,Sukkur IBA University,Database Design,3
+Sagar,Chhabriya,4310373561613,sagarchhabriya33@gmail.com,3363362473,Sukkur IBA University,Database Design,2
+Rohit,Kumar,4520753283211,k214616@nu.edu.pk,3203170932,National University of Computer and Emerging Sciences,Database Design,2
+Neeraj,,4220135609935,neerajotwani23@gmail.com,3222883752,FAST,Database Design,3
+Amin,farjad,4220105089821,K200344@nu.edu.pk,3132159719,Fast,Database Design,1
+Fayez,Shahid,4210131200803,k200262@nu.edu.pk,3122085760,FAST,DB Design,3
+Ahmed,Ali,4220151612207,k213212@nu.edu.pk,3352149666,FAST,Chat Craft,3
+Muhammad,Sohaib Baig,4230170113733,k224204@nu.edu.pk,3222477214,FAST,Chat Craft,2
+Shayan,Haider,4210164733223,haidershayan732@gmail.com,3353604985,FAST NUCES,Chat Craft,3
+Muhammad,John Raza,4210141605257,k230069@nu.edu.pk,3262799905,FAST,Chat Craft,1
+Syed,Bilal Ali,4220159414743,bilalmeghani91@gmail.com,3340202464,FAST,Chat Craft,3
+Shaheer,Ul Islam Siddiqui,4210137836267,k214936@nu.edu.pk,3052751129,Fast nuces,Chat Craft,3
+Abdul,Aleem Ahmed,4220183798465,abdulaleem45@outlook.com,3117762632,FAST NUCES,Chat Craft,3
+Sohaib,Sarosh Shamsi,4230184824673,k213278@nu.edu.pk,3330220803,Fast,Chat Craft,3
+Affan,Iqbal,4250189107111,k213057@nu.edu.pk,3112096457,FAST NUCES,Chat Craft,2
+Syed,Salman Ali Zaidi,4220138807939,syedsalman1823@gmail.com,3030356646,FAST,Chat Craft,3
+ABDUL,BARI,4320328700803,k230659@nu.edu.pk,3340299067,Fast university Karachi campus,Chat Craft,3
+Bilal,Abdul,4250152554637,memonbilal162@gmail.com,3357212559,Fast Nuces,Chat Craft,3
+Zain,Kizilbash,4220154168719,zainkizilbash8832@gmail.com,3442848832,Fast,Chat Craft,1
+Tanisha,,4510161764178,k230067@nu.edu.pk,3363802568,FAST,Chat Craft,2
+Sumsam,Ali,4520380656013,k201075@nu.edu.pk,3003110643,FAST,Chat Craft,3
+Ahmed,Raza,4220126409825,k224081@nu.edu.pk,3307051591,Fast Karachi,Chat Craft,2
+Sheikh,Muhammad Aarib Azfar,4220133224097,k213342@nu.edu.pk,3360746110,FAST NUCES,Chat Craft,1
+Sheikh,Muhammad Aarib Azfar,4220133224097,k213342@nu.edu.pk,3360746110,FAST NUCES,Chat Craft,1
+Murtaza,Ahmed,4210152022588,murtazaahmad087@gmail.com,3131075880,Fast Nuces Karachi,Chatcraft,3
+Khowaja,Muneeb Hasan,4210161358373,k213848@nu.edu.pk,3353036800,FAST National University,Chatcraft,3
+Abdul,rafay Shaikh,4210163004955,shaikhabdulrafay03@gmail.com,3040001513,Fast,Chat Craft,2
+Hafsa,Salman,4220188871154,K213070@nu.edu.pk,3300257307,Fast,Chat Craft,3
+Asad,tariq,4220127423917,K214899@nu.edu.pk,3322503863,FAST KHI,Chat Craft,3
+Owais,aamir,4220155239559,K224322@nu.edu.pk,3112502187,FAST KHI,Chat Craft,2
+Ammar,Qasmi,2222222222222,ammarsqasmi@gmail.com,3332650596,missingo,Speed Debugging,3
+Ahmed,Raza,2222222222222,k224422@nu.edu.pk,3352582092,missingo,Speed Debugging,3
+Muhammad,Huzaifa,2222222222222,k224337@nu.edu.pk,3002293822,missingo,Speed Debugging,3
+Fatima,Sallem,2222222222222,fasaleem112@gmail.com,3080328677,missingo,Speed Debugging,2
+Ayan,Hasan,2222222222222,k224367@nu.edu.pk,3306860349,missingo,Speed Debugging,3
+Alizah,Basit,2222222222222,k225155@nu.edu.pk,3340290828,missingo,Speed Debugging,3
+Muhammad,Shayan Shaikh,2222222222222,k230761@nu.ed.pk,3162649810,missingo,Speed Debugging,3
+Abdur,Rehman Ahmed,2222222222222,k224666@nu.edu.pk,3315073434,missingo,Speed Debugging,3
+Unaiza,Rehman,423017761506,k230763@nu.edu.pk,3032863696,Fast,Speed Debugging,3
+Sharmeen,Rauf,4220143923698,sharmeenpakistan8@gmail.com,3368568864,PAF Kiet,Speed Debugging,3
+Arham,Khan,4220173320259,k224080@nu.edu.pk,3202073526,Fast,Speed Debugging,3
+Daniyal,Ahmed,4210154449167,k232011@nu.edu.pk,3154681771,Fast,Speed Debugging,3
+Raheem,Rehman,4220199727351,k230771@nu.edu.pk,3352190623,Fast,Speed Debugging,3
+SHAILA,WAZEER,4510110426238,sshailafeb@gmail.com,3442787518,UBIT,Speed Debugging,3
+Muhammad,hammad,4250105694331,k232005@nu.edu.pk,3313194269,Fast,Speed Debugging,3
+Muhammad,Mufeez,4210108151883,k230800@nu.edu.pk,3182993401,Fast,Speed Debugging,3
+Salman,Javed,4210147319915,k213439@nu.edu.pk,3426813077,FAST,Speed Debugging,3
+Tasbiha,Saeed,4220167795400,k230889@nu.edu.pk,3158130425,FAST,Speed Debugging,3
+Aniqa,Azhar,4220122303256,k224228@nu.edu.pk,3342221019,FAST,Speed Debugging,3
+Shahzaib,Ali,4230114478611,shahzaibofficial1108@gmail.com,3493394069,Private,Speed Debugging,1
+Faizan,Raza,4230175835045,faizanraza405@yahoo.com,3248209792,Fast,Speed Debugging,3
+Shah,Hunain,4220163600639,k233032@nu.edu.pk,3645026446,Fast,Speed Debugging,3
+Dania,Zehra,4250132977022,k224152@nu.edu.pk,3341247860,Fast,Speed Debugging,2
+Maham,Farooqi,4220177268078,k224831@nu.edu.pk,3313564637,Fast,Speed Debugging,3
+Moosa,Memon,4140979754893,k224067@nu.edu.pk,3252484481,Fast,Speed Debugging,3
+Abeer,Aslam,3840371770472,k224349@nu.edu.pk,3161265522,Fast,Speed Debugging,3
+Muhammad,Touseef,3840331270103,touseefnaveed777@gmail.com,3111441081,Fast,Speed Debugging,3
+Abdullah,Mohammedi,4220172386323,k224514@nu.edu.pk,3233057699,Fast,Speed Debugging,3
+Syed,Muhammad Zaid,3520113362303,k213348@nu.edu.pk,3333351590,FAST,Speed Debugging,2
+zain,rizwan,3520154805265,k224215@nu.edu.pk,3156808739,Fast,Speed Debugging,3
+Zaina,Liaquat ali,4220138272602,zainaliaquatali15@gmail.com,3125703480,FAST,Speed Debugging,3
+Jawairia,Hammad,3310032286168,k230774@nu.edu.pk,3089336565,FAST,Speed Debugging,3
+Muhammad,Shariq Nadeem,4210198488223,k224285@nu.edu.pk,3218779157,FAST,Speed Debugging,3
+Momina,Naeem,4210166443600,momina.naeeem@gmail.com,O3317051026,Bahria University,Speed Debugging,1
+Bisma,Abid,4220167561626,bismaabid50@gmail.com,3368019995,FAST,Speed Debugging,3
+Syeda,Rabia Hashmi,4210156532758,sraabiahh@gmail.com,3343460173,FAST,Speed Debugging,3
+Syed,Sohaib Zaidi,4220157634055,syedsohaibzaidi@gmail.com,3343051676,DHA Suffa,Speed Debugging,2
+Rida,E Zehra Dars,4130685042326,darsrida483@gmail.com,3343652726,DHA Suffa,Speed Debugging,3
+Amna,husain,4230144012660,k225102@nu.edu.pk,3022937043,FAST,Speed Debugging,2
+Seher,Imtiaz,4220181283436,k213363@nu.edu.pk,03093018194,FAST,Speed Debugging,3
+Uzair,ahmed,4210108655673,K224189@nu.edu.pk,03332613889,FAST,Speed Debugging,3
+Muhammad,Umer,4210174906457,k213219@nu.edu.pk,923312189062,FAST,Speed Debugging,3
+Raaiha,Syed,4210290809360,k224460@nu.edu.pk,3061245496,FAST,Speed Debugging,3
+Shayan,,2222222222222,k224148@nu.edu.pk,3357574798,missingo,Competitive Programming,3
+Syed,Shees Ali,2222222222222,k225047@nu.edu.pk,3101288664,missingo,Competitive Programming,2
+Sohaib,Sarosh Shamsi,2222222222222,K213278@nu.edu.pk,3330220803,missingo,Competitive Programming,3
+AbdulRehman,Nasir,2222222222222,k230854@nu.edu.pk,3320213899,missingo,Competitive Programming,3
+Zain,Ul Rab,2222222222222,zayn.rab604@gmail.com,3108804893,missingo,Competitive Programming,3
+Huzaifa,Jawad,2222222222222,k200175@nu.edu.pk,3333020339,missingo,Competitive Programming,3
+Muhammad,Qambar Hussain,2222222222222,muhammadqambarhussain@gmail.com,3312210936,missingo,Competitive Programming,3
+Sahil,Latif,2222222222222,i230763@nu.edu.pk,3048105667,missingo,Competitive Programming,3
+Humaima,Moin,2222222222222,moinhumaimakhan@gmail.com,3432981139,University of Karachi,Competitive Programming,3
+Huzaifa,Javed,2222222222222,huzaifa.tatari@Gmail.com,3324080101,DHA Suffah University,Competitive Programming,3
+Safee,Imran,4220129929375,safiimran205@gmail.com,3182899569,DJ College,Competitive Programming,1
+Muhammad,Bilal Asif,4250147335461,k224846@nu.edu.pk,3363240985,Fast,Competitive Programming,3
+Taaha,Khan,4230199503365,k230583@nu.edu.pk,3238297443,FAST,Competitive Programming,3
+Shaheer,Uddin Ahmed,4210171234925,ahmedshaheeruddin@outlook.com,3352005111,FAST,Competitive Programming,3
+Abdul,Basit,4220185032103,k230526@nu.edu.pk,3323682733,Fast,Competitive Programming,2
+Daniyal,Saeed Dani,4220131597883,k224233@nu.edu.pk,3144017395,Fast,Competitive Programming,3
+Aliyan,Navaid,4220196707601,k230686@nu.edu.pk,3323457495,Fast,Competitive Programming,3
+Mohid,Raheel Khan,4210130688489,k233000@nu.edu.pk,3052047651,Fast,Competitive Programming,3
+Mustafa,,4250138171223,mustafashahzadarif@gmail.com,3159999434,Fast,Competitive Programming,3
+Lucky,,4430385561103,k225144@nu.edu.pk,3332521754,Fast,Competitive Programming,3
+NOORULLAH,MEMON,4130648321693,nursmemon@gmail.com,3081036933,Bahria University,Competitive Programming,3
+Taha,Rind,4550240127125,taharind45@gmail.com,3063470775,Bahria University,Competitive Programming,3
+Syed,Taha Zaidi,4220119137289,tahazaidi2004@gmail.com,3111844899,FAST,Competitive Programming,2
+Aqsa,masood,4420414512864,k224459@nu.edu.pk,3362811923,FAST,Competitive Programming,3
+Aliraza,Baloch,4220160196789,arbaloch2005@gmail.com,3222221571,NED,Competitive Programming,2
+Abdul,bari,4230170853427,abdulbari131103@gmail.com,3357473587,NED,Competitive Programming,3
+Ali,rafay,4220123552349,k214886@nu.edu.pk,3357473587,FAST,Competitive Programming,3
+Areeba,Arif,4220152946626,k230618@nu.edu.pk,3102502784,FAST,Competitive Programming,3
+Muhammad,Abdullah Khan,4250122932557,abdullahk4803@gmail.com,3101211969,Bahria University,Competitive Programming,3
+Muhammad,Yasir,4130397433185,k225090@nu.edu.pk,3180336582,FAST,Competitive Programming,3
+Hussain,Ahmed Siddiqui,4220159318041,hussain.siddiqui.5th@gmail.com,3432367294,UBIT,Competitive Programming,2
+Abdul,Rahim,4210198834387,k213951@nu.edu.pk,3142374986,FAST,Competitive Programming,3
+Ali,jaffry,4210104198545,k224430@nu.edu.pk,3111644870,FAST,Competitive Programming,3
+Sajjad,Ali,4250127182097,sajjadali1714@gmail.com,3112903664,Indus University,Competitive Programming,3
+Abdul,Ahad Munaf,4200039502001,k230590@nu.edu.pk,3302983005,Fast Karachi,Competitive Programming,3
+Khizer,Yousuf Zai,4210175591515,khizeryz14@gmail.com,3342648682,UBITUoK,Competitive Programming,3
+Abdur,Rehman,4220132793441,k224105@nu.edu.pk,3166302347,FAST NU,Competitive Programming,3
+Muneeb,Ul Haq,4230104968627,k230578@nu.edu.pk,3352221884,FAST NUCES,Competitive Programming,3
+Avinash,,4510118489423,K213413@nu.edu.pk,3313166064,Fast Nuces,Competitive Programming,3
+Marvi,Brohi,4310231906292,balochmarvi283@gmail.com,3193261191,Sukkur IBA University,Competitive Programming,2
+Rabia,Zulfiqar,4220123472964,K230851@nu.edu.pk,3316062436,FAST nuces,Competitive Programming,3
+Syed,Ammar Asdaque,4210127802663,ammarasdaque@gmail.com,3152776791,FASTNUCES,Competitive Programming,3
+Muhammmqd,Saleem,4210144911295,m.saleemyameen.91@gmail.com,3312886035,Dha Suffa University,Competitive Programming,3
+Syed,Yousif Ali Shah,4330457621619,yousifalisyed@gmail.com,3229387592,FAST university,Competitive Programming,1
+Shahmir,Sindhu,4220155607837,fa22bscs0159@maju.edu.pk,3103504444,Muhammad Ali Jinnah University,Competitive Programming,1
+Aatif,Ali khan,4530150360385,k230029@nu.edu.pk,3089676977,Fast KHI CS,Competitive Programming,2
+Shees,Shoaib,4210186185657,Muhammadsheesshoaib7@gmail.com,3022123635,Fast University,Competitive Programming,3
+Wasif,Shahzad,4230158365867,wasif_shahzad_1@outlook.com,3303490218,Bahria College NORE1,Competitive Programming,1
+Jahanzaib,Arif awan,3650179319883,noemail@gmail.com,03442101179,FAST,Competitive Programming,3
+Mutahir,Ahmed,4210131484863,mutahitahmed001@gmail.com,3302357555,FAST,Competitive Programming,3
+Arsh,Omar mufti,4220126109589,k230648@nu.edu.pk,3452433224,FAST,Competitive Programming,3
+Deena,Naz,42201 22609488,sp23bsse0014@maju.edu.pk,321 8722893,MAJU,Competitive Programming,3
+Mohsin,Ali Bukhari,42301 80832723,fa22bscs0153@maju.edu.pk,333 2923859,MAJU,Competitive Programming,3
+Muhammad,Bilal Sheikh,4230189987775,sp23bscs0090@maju.edu.pk,325 8455701,MAJU,Competitive Programming,3
+Aazmeer,Iqbal,4240186762051,fa22bscs0192@maju.edu.pk,316 2353762,MAJU,Competitive Programming,3
+Syed,HussamUddin,4210167293029,k224658@nu.edu.pk,3121170037,FAST,Competitive Programming,3
+Sameer,Rajani,4230159337369,i230760@nu.edu.pk,3363114886,Fast,Robo War,4
+Syed,Taha Zaidi,4220119137289,k230577@nu.edu.pk,3111844899,Fast,Robo War,4
+Syed,Maaz Hussain,4220179721843,k225004@nu.edu.pk,3328826748,Fast,Robo Sumo,4
+Arsam,Uzair,4220160108687,arsam.uzairr@gmail.com,3312645559,FAST,Robo Sumo,2
+Muhammad,Mehdi,4210121662903,idhem.abdi1234@gmail.com,3112839632,Ubit,Robo Sumo,3
+Muhammad,Rawaha,4210128420833,0159@st.thelabschool.pk,3453468881,The LAB School,Robo Sumo,4
+Muhammad,Tauseen Siddiqui,4210152255355,0085@st.thelabschool.pk,3453468881,The LAB School,Robo Sumo,2
+Alishaz,Bulani,2222222222222,alishazbulani@gmail.com,3342048676,Private,Robo Soccer,2
+Faraz,Nasir,4220143337735,k225010@nu.edu.pk,3302515477,Fast,Robo Soccer,4
+Arsam,Uzair,4220160108687,k225006@nu.edu.pk,3312645559,FAST,Robo Soccer,2
+Muhammad,Mehdi,4210121662903,syed.muhamadmehdi12345@gmail.com,3112839632,UBIT,Robo Soccer,2
+Daniyal,Faisal,4230124336287,Daniyalfaisal2005@gmail.com,3358222970,Fast,Robo Soccer,4
+Farhan,Ali,4210149806311,idhem.abdi123@gmail.com,3112533044,UBIT,Robo Soccer,3
+Zeeshan,Mustafa,4220193194645,k213919@nu.edu.pk,3422625647,FAST,Robo Soccer,3
+Ameem,Uddin Ahmed,4220126319025,ameemuddin13@gmail.com,3448581301,Karachi Institute Of Economics And Technology,Robo Soccer,2
+Muhammad,Omer Hashmi,4220180187719,omerhashmi362@gmail.com,3362249353,PAF KIET,Robo Soccer,3
+SHAHMEER,,4220159181509,shahmeerramzan702@gmail.com,3268979395,KIET,Robo Soccer,2
+Khubaib,Salman,4210117452557,khubaibsalman2004@gmail.com,3213682819,Karachi Institute Of Economics And Technology,Robo Soccer,2
+Awwab,Ahmed Shaikh,4210196342653,0115@st.thelabschool.pk,3453468881,The LAB School,Robo Soccer,2
+Muhammad,Hashir Bin Asadullah,4210105272949,0055@st.thelabschool.pk,3453468881,The LAB School,Robo Soccer,2
+Shaheer,Ahmad Farooqui,4210192373649,0146@st.thelabschool.pk,3453468881,The LAB School,Robo Soccer,2
+Basam,Tahir,4220168877271,basantahir007@gmail.com,3183766645,MAJU,Line Following Robot,2
+Bazan,Tariq,4210131366231,bazantariq73@gmail.com,3146049240,Dawood University of Engineering & Technology,Line Following Robot,2
+UQBAH,KHAN,4210190817331,khan.uqbah@gmail.com,3125594062,Lab School,Line Following Robot,2
+Malaika,ajaz,4220103343994,ajazmk3196@gmail.com,3167020266,NEDUET,Line Following Robot,4
+Ahmed,Ali,4220157416075,ahmedali642003@gmail.com,3162802987,NED,Line Following Robot,4
+Junaid,Masood,4230135211785,junaidmasood09@gmail.com,3164739839,FAST,Line Following Robot,2
+Muhammad,Mehdi,4210149806311,payman.plastic1@gmail.com,3112839632,Ubit,Line Following Robot,3
+Muhammad,Rayyan Khan,4210139977541,0083@st.thelabschol.pk,3453468881,The LAB School,Line Following Robot,2
+Muhammad,Hasan Kamal,4210187062367,0185@st.thelabschool.pk,3453468881,The LAB School,Line Following Robot,4
+Arsh,Omar mufti,4220126109589,K230648@nu.edu.pk,3452433224,FAST,Line Following Robot,3

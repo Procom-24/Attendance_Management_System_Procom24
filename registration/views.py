@@ -146,7 +146,7 @@ def participant_list(request):
 #     Best regards,
 #     PROCOM'24 Organizing Team
 #     """
-#     from_email = 'procom.net@nu.edu.pk'
+#     from_email = 'procom@nu.edu.pk'
 
 #     try:
 #         # Construct the email message
@@ -209,7 +209,7 @@ def send_qr(request, participant_id, qr_type):
 
     # You need to set your actual subject and SMTP details
     subject = subject
-    from_email = 'procom.net@nu.edu.pk'
+    from_email = 'procom@nu.edu.pk'
 
     try:
         # Construct the email message
@@ -271,7 +271,7 @@ def send_qr_all(request, qr_type):
                 email_message = render_to_string(email_message_path)
 
                 subject = subject
-                from_email = 'procom.net@nu.edu.pk'
+                from_email = 'procom@nu.edu.pk'
 
                 email = EmailMessage(
                     subject,
@@ -487,7 +487,7 @@ def mark_attendance(request):
 def generate_csv(request):
     participants = Participants.objects.filter(
         attendanceStatus='P',
-        participantcard__validitystatus='Valid'
+        # participantcard__validitystatus='Valid'
     )
 
     response = HttpResponse(content_type='text/csv')
